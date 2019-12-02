@@ -7,3 +7,4 @@ Nu är vi ju redo!
 Yes, nu kör vi!ß
 
 Hej igen
+tjena gubbs
