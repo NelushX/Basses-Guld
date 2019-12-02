@@ -1,3 +1,3 @@
 # Basses-Guld
 
-Hej Magnus här gubbs!
+Hej gubbar, nu kör vi!
