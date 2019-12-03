@@ -3,26 +3,62 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <!--Js-files for Jquery, bootstrap and our Js-File -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        <!--Our Css & bootstrap Css-->
+        <!--Bootstrap, FA & our css-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
         <link href="css/main.css" rel="stylesheet"/>
+        <!--Titel-->
         <title>Basses Guld | Javascript</title>
     </head>
     <body>
-        <header>
-
+        <header class="container-fluid">
+                 <div class="row">
+                     <div class="col-12 w-100 p-0">
+                         <div class="navbar navbar-light bg-dark">
+                            <form class="form-inline">
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                             </form>
+                             <img class="img-fluid" src="images/logga.png" alt="logo">
+                             <i class="fas fa-shopping-basket"></i>
+                        </div>
+                     </div>
+                </div>
+                <!--Navbar-->
+                <div class="row">
+                    <div class="w-100 text-center">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                      <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNav">
+                                      <ul class="navbar-nav mx-auto">
+                                        <li class="nav-item active">
+                                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#">Features</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#">Pricing</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link disabled" href="#">Disabled</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                             </nav>
+                    </div>
+                </div>
         </header>
 
-        <nav>
-
-        </nav>
+       
 
         <main>
             <section> <!-- Carousel -->
@@ -34,29 +70,29 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="https://bonusmobler.se/produkter/soffor/ex-401-och-402-lader-soffa/" target="_blank">
-                            <img class="d-block w-100" src="images/ex401.jpg" alt="EX 401 lädersoffa">
+                           
+                            <img class="d-block w-100" src="images/red.jpg" alt="blue buttons">
                             <div class="carousel-caption d-none d-md-block">
-                                <h4>Elegant lädersoffa <span class="badge badge-success">Nyhet</span></h4>
-                                <i>EX 400 med unik design och exceptionell komfort</i>
+                                <h4>Snygga knappar!<span class="badge badge-success">Nyhet</span></h4>
+                                <i>Vill du känna dig extra fin så passar denna alla skjortor!</i>
                             </div>
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="https://bonusmobler.se/oscarssons-mobel/" target="_blank">
-                            <img class="d-block w-100" src="images/lily.JPG" alt="Lily hallserie">
+                           
+                            <img class="d-block w-100" src="images/blue.jpg" alt="bronze buttons">
                             <div class="carousel-caption d-none d-md-block">
-                                <h4>Lily hallserie <span class="badge badge-success">Nyhet</span></h4>
-                                <i>Svensktillverkade hallmöbler från Oscarssons Möbel</i>
+                                <h4>Perfekt Julkapp!<span class="badge badge-danger">Julklappstips!</span></h4>
+                                <i>Ge bort dessa till någon du tycker om!</i>
                             </div>
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="https://bonusmobler.se/produkter/soffor/eden-35-sitssoffa/" target="_blank">
-                            <img class="d-block w-100" src="images/eden.JPG" alt="Eden lädersoffa">
+                            
+                            <img class="d-block w-100" src="images/grey.jpg" alt="Häftiga knappar">
                             <div class="carousel-caption d-none d-md-block">
-                                <h4>Stilrena Eden <span class="badge badge-danger">Kampanj</span></h4>
-                                <i>Modern och bekväm på samma gång</i>
+                                <h4> Personliga knappar <span class="badge badge-dark">Personligt</span></h4>
+                                <i>Vi har knappar som passar just dig och din personlighet</i>
                             </div>
                             </a>
                         </div>
@@ -85,11 +121,18 @@
             </section>
         </main>
 
-        <footer>
-            <div id="image">
-                
+        <footer class="container-fluid">  
+            <div class="col-12 justify-content-center text-center">
+                <h1 class="pt-4">BASSES GULD</h1>
+                <p class="mb-1">Sociala Medier:<p>
+                <span>FaceBook</span> <i class="fab fa-facebook-f fa-2x"></i>
+                <span>Twitter</span> <i class="fab fa-twitter fa-2x"></i>
+                <span>Instagram</span> <i class="fab fa-instagram fa-2x"></i>
             </div>
+            <div class="col-12 text-center">
+                <p class="mb-0">Direkt Kontakt</p>
+                <p class="pb-3">+46 766 32 41 43 | kontakt@bassesguld.se | Basses Guld | Tologatan 12 | 112 49 | STOCKHOLM</p>
+            </div>               
         </footer>
-        
     </body>
 </html>
