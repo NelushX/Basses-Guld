@@ -1,3 +1,4 @@
+
 header { 
     width: 100%;
     .img-fluid{
@@ -15,8 +16,10 @@ main {
     img{
     height: 400px;
 }   }
-.container-fluid{
+.footer{
     background-color: #dfcdc3;
     font-family: 'Alata', sans-serif;
     color: white;
-}
+    display: sticky;
+    bottom: 0;
+}   
