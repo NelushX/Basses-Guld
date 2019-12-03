@@ -8,7 +8,7 @@ header {
     font-size: xx-large;
     margin-right: 5%; }
 
-main img {
+main .img-fluid {
   height: 400px; }
 
 .footer {
