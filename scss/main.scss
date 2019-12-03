@@ -1,20 +1,46 @@
-
+@mixin laptop {
+    @media (min-width: $lgscreen){
+       @content;}}
+@mixin tablet {
+    @media (min-width: $mdscreen){ 
+        @content; }}
+ // variabler mixins      
+$mdscreen: 768px;
+$lgscreen: 996px;
 header { 
-    width: 100%;
-    .img-fluid{
-        height: 120px;
-        margin-right: 20% ;
+    .start {}
+    input{
+        width: 30%;
+        object-fit: cover;
+        height: 35px;
+        @include tablet {
+        }
+        
+       
     }
-    i{ 
+    .img-fluid{
+        height: 40px;
+        object-fit: cover;
+        @include tablet {
+         margin-left: 7%;
+            height: 40px;
+        }
+        @include laptop {
+            height: 120px;
+        }
+    }
+    .fa-shopping-basket{ 
         color: black;
         font-size: xx-large;
-        margin-right: 5%;
+        margin-left: 25%;
+        object-fit: cover;
     }
 }
   
 main {
     .img-fluid{
     height: 500px;
+    object-fit: cover;
 }   }
 .footer{
     background-color: #dfcdc3;

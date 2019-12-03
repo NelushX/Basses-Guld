@@ -1,15 +1,28 @@
-header {
-  width: 100%; }
-  header .img-fluid {
-    height: 120px;
-    margin-right: 20%; }
-  header i {
-    color: black;
-    font-size: xx-large;
-    margin-right: 5%; }
+header input {
+  width: 30%;
+  object-fit: cover;
+  height: 35px; }
+
+header .img-fluid {
+  height: 40px;
+  object-fit: cover; }
+  @media (min-width: 768px) {
+    header .img-fluid {
+      margin-left: 7%;
+      height: 40px; } }
+  @media (min-width: 996px) {
+    header .img-fluid {
+      height: 120px; } }
+
+header .fa-shopping-basket {
+  color: black;
+  font-size: xx-large;
+  margin-left: 25%;
+  object-fit: cover; }
 
 main .img-fluid {
-  height: 500px; }
+  height: 500px;
+  object-fit: cover; }
 
 .footer {
   background-color: #dfcdc3;
