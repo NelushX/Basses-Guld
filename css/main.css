@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-.container-fluid {
-  background-color: #dfcdc3;
-  font-family: 'Alata', sans-serif;
-  color: white; }
-
-main {
-  min-height: 70vh; }
 i {
   color: black; }
-=======
+
 header {
   width: 100%; }
   header .img-fluid {
@@ -18,7 +10,13 @@ header {
     color: black;
     font-size: xx-large;
     margin-right: 5%; }
->>>>>>> cd43f6d6e6a05512f518491f57b92fe6ca9edf78
 
 main img {
   height: 400px; }
+
+.footer {
+  background-color: #dfcdc3;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  display: sticky;
+  bottom: 0; }
