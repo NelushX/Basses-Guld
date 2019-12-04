@@ -7,19 +7,21 @@ header .first {
     width: 80px; }
     header .first .form-inline input {
       width: 80px; }
-  header .first .img-fluid {
-    height: 35px;
-    margin-right: 40px; }
-    @media (min-width: 760px) {
-      header .first .img-fluid {
-        height: 40px; } }
-    @media (min-width: 996px) {
-      header .first .img-fluid {
-        height: 120px; } }
-  header .first .fa-shopping-basket {
-    color: black;
-    font-size: xx-large;
-    margin-right: 20px; }
+
+header .img-fluid {
+  height: 35px;
+  margin-right: 40px; }
+  @media (min-width: 760px) {
+    header .img-fluid {
+      height: 40px; } }
+  @media (min-width: 996px) {
+    header .img-fluid {
+      height: 120px; } }
+
+header .fa-shopping-basket {
+  color: black;
+  font-size: xx-large;
+  margin-right: 20px; }
 
 main .img-fluid {
   height: 400px;
@@ -32,16 +34,6 @@ main .img-fluid {
   display: sticky;
   bottom: 0; }
 
-.productlist .productContainer {
-  border: 1px solid black; }
-  .productlist .productContainer img {
-    width: 100%; }
-  .productlist .productContainer p {
-    padding: 0;
-    margin: 0; }
-  .productlist .productContainer .pBrand {
-    text-transform: uppercase; }
-
 .checkoutsite .custom-checkbox {
   display: inline; }
 
@@ -53,107 +45,22 @@ main .img-fluid {
 .checkoutsite .paybox {
   background-color: #dfcdc3; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .productlist .productContainer {
-    border: 1px solid black; }
-    .productlist .productContainer img {
-      width: 100%; }
-    .productlist .productContainer p {
-      padding: 0;
-      margin: 0; }
-    .productlist .productContainer .pBrand {
-      text-transform: uppercase; }
-
-
-
+.productlist .productContainer {
+  border: 1px solid black; }
+  .productlist .productContainer .imageContainer, .productlist .productContainer .infoContainer {
+    margin: 15px; }
+  .productlist .productContainer img {
+    width: 100%; }
+  .productlist .productContainer p {
+    padding: 0;
+    margin: 0; }
+  .productlist .productContainer .pBrand {
+    text-transform: uppercase; }
+  .productlist .productContainer .pName {
+    min-height: 44px;
+    max-height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .productlist .productContainer .pPrice {
+    margin-top: 5px;
+    font-size: 1.1rem; }

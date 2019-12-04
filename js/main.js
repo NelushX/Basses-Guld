@@ -28,25 +28,25 @@ $(document).ready(function() {
 */
     for (let i = 0; i < 4; i++) {
         let productContainer = $("<div>").addClass("productContainer col-12 col-md-6 col-lg-3").appendTo($("#favorites"));
-        // productContainer.appendTo($("#favorites"));
 
         let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-        // imageContainer.appendTo(productContainer);
-
         let image = $("<img>").attr("src", products[i].image1).attr("alt", products[i].name).appendTo(imageContainer);
-        // image.appendTo(imageContainer);
 
         let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-        // infoContainer.appendTo(productContainer);
-
         let brand = $("<p>").html("<b>" + products[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-        // brand.appendTo(infoContainer);
+        let name = $("<p>").html(products[i].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + products[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
 
-        let name = $("<p>").html(products[i].name).appendTo(infoContainer);
-        // name.appendTo(infoContainer);
 
-        let price = $("<p>").html("<b>" + products[i].price + " kr" + "</b>").appendTo(infoContainer);
-        // price.appendTo(infoContainer);
+        $("img").on({
+            "mouseover" : function() {
+               this.src = products[i].image2;
+             },
+             "mouseout" : function() {
+               this.src = products[i].image1;
+             }
+           });
+
     }
 
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {

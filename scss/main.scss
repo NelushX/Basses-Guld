@@ -1,14 +1,14 @@
-header { 
-    width: 100%;
 @mixin laptop {
     @media (min-width: $lgscreen){
        @content;}}
 @mixin tablet {
     @media (min-width: $mdscreen){ 
         @content; }}
+        
  // variabler mixins      
 $mdscreen: 760px;
 $lgscreen: 996px;
+
 header {
     .first{
         height: 90px;
@@ -71,7 +71,6 @@ main {
     .paybox{
         background-color: #dfcdc3;
     }
-
 }
 
 
@@ -151,10 +150,9 @@ main {
 .productlist {
     .productContainer {
         border: 1px solid black;
-        // margin: 5px;
-        // .imageContainer {
-        //     width: 250px;
-        // }
+        .imageContainer, .infoContainer {
+            margin: 15px;
+        }
         img {
             width: 100%;
         }
@@ -168,6 +166,19 @@ main {
 
         .pBrand {
             text-transform: uppercase;
+        }
+
+        .pName {
+            min-height: 44px;
+            max-height: 44px;
+            // display: block;
+            // // white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .pPrice {
+            margin-top: 5px;
+            font-size: 1.1rem;
         }
     }
 }
