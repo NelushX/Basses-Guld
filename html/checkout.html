@@ -8,21 +8,18 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
 
      
         <!--Font-awesome-->
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-        <link href="css/main.css" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+       
         
         
         <!--Bootstrap, FA & our css-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-        <link href="css/main.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet"/>
         <!--Titel-->
         <title>Basses Guld | Javascript</title>
     </head>
@@ -35,7 +32,7 @@
                                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                              </form>
-                             <img class="img-fluid" src="images/logga.png" alt="logo">
+                             <img class="img-fluid" src="../images/logga.png" alt="logo">
                              <i class="fas fa-shopping-basket"></i>
                         </div>
                      </div>
@@ -70,24 +67,104 @@
 
        
 
-        <main>
-      <div class="container-fluid checkouttitle">
+        <main>  
+        <div class="container-fluid checkoutsite">
           <div class="row text-center">
-            <div class="col-12">
-                <h2>Kassan</h2>
+            <div class="col-12"><h2>Kassan</h2>
+            <span> Alltid Gratis Frakt! </span>
+            <i class="fas fa-shipping-fast"></i>
             </div>
+
           </div>
           <div class="row">
-                <div class="col-12">
-                    <h2>Kassan</h2>
+              <div class="col red"></div>
+              <div class="col-12 col-md-6 blue text-center cartbox">
+                   <h1>Varukorg </h1>
+                   <p>Input som loopats från clasen</p>
                 </div>
-              </div>
-              <div class="row">
-                    <div class="col-3">
-                        <h2>Kassan</h2>
-                    </div>
-                  </div>
-      </div>
+              <div class="col red"></div>
+          </div>
+          <div class="row pay">
+                <div class="col red"></div>
+                    <div class=" mt-4 col-12 col-md-6 blue paybox">
+                        <h1 class="text-center">Välj ditt sätt att betala!</h1>
+                            <div class=container>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1"><i class="fab fa-cc-visa fa-2x"></i></label>
+                                        </div>
+                                    </div>
+                                <div class="col-md-8"></div>
+                                <div class="col"> 0kr</div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                            <label class="custom-control-label" for="customCheck2"><i class="fab fa-cc-mastercard fa-2x"></i></i></label>
+                                        </div>
+                                    </div>
+                                <div class="col-md-8"></div>
+                                <div class="col"> 0kr</div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                            <label class="custom-control-label" for="customCheck3"><i class="fab fa-cc-apple-pay fa-2x"></i></i></label>
+                                        </div>
+                                    </div>
+                                <div class="col-md-8"></div>
+                                <div class="col"> 0kr</div>
+                                </div>
+                            </div>
+                            <hr>                       
+                            <h1 class="text-center">Fyll in din information</h1>
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="epost">E-post</label>
+                                            <input type="email" class="form-control" id="epost" placeholder="Email">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Namn</label>
+                                            <input type="name" class="form-control" id="name" placeholder="Bengt Hernandes...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="adress">Adress</label>
+                                        <input type="text" class="form-control" id="adress" placeholder="Tologatan 12...">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-10">
+                                            <label for="stad">Stad</label>
+                                            <input type="text" class="form-control" id="stad" placeholder="Oslo...">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="postkod">Postkod</label>
+                                            <input type="text" class="form-control" id="postkod" placeholder="123456...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">Jag accepterar vilkoren</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Lägg beställning</button>
+                                    </div>
+                                    
+                                </form>
+                        </div>
+                    <div class="col red"></div>
+                </div>
+            </div>
+
+
+
         </main>
 
         <footer>
