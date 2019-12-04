@@ -21,4 +21,28 @@ main {
     color: white;
     display: sticky;
     bottom: 0;
-}   
+}
+
+.productlist {
+    .productContainer {
+        border: 1px solid black;
+        // margin: 5px;
+        // .imageContainer {
+        //     width: 250px;
+        // }
+        img {
+            width: 100%;
+        }
+        // .infoContainer {
+
+        // }
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .pBrand {
+            text-transform: uppercase;
+        }
+    }
+}

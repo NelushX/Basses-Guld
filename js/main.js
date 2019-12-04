@@ -14,10 +14,39 @@ $(document).ready(function() {
     let prod12 = new Product("Logo Cufflink Copper", 16459610, "Paul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "images/products/12_image0.JPG", "images/products/12_image1.JPG", "images/products/12_image2.JPG", "images/products/12_image3.JPG");
 
     let products = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
+/*
+    for (let i = 0; i < 4; i++) {
+        $("<div>").addClass("productContainer" + i + " col-4").appendTo("#favorites");
+        $("<div>").addClass("imageContainer" + i).appendTo($(".productContainer" + i));
+        $("<img>").attr("src", products[i].image1).attr("alt", products[i].name).appendTo($(".imageContainer" + i));
+        
+        $("<div>").addClass("infoContainer" + i).appendTo($(".imageContainer" + i));
+        $("<p>").html("<b>" + products[i].brand + "</b>").appendTo($(".infoContainer" + i));
+        $("<p>").html(products[i].name).appendTo($(".infoContainer" + i));
+        $("<p>").html("<b>" + products[i].price + "</b>").appendTo($(".infoContainer" + i));
+    }
+*/
+    for (let i = 0; i < 4; i++) {
+        let productContainer = $("<div>").addClass("productContainer col-12 col-md-6 col-lg-3").appendTo($("#favorites"));
+        // productContainer.appendTo($("#favorites"));
 
-    for (let i = 0; i < products.length; i++) {
-        $("<img>").attr("src", products[i].image1).appendTo("#image");
-        $("<p>").html(products[i].brand).appendTo("#image");
+        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+        // imageContainer.appendTo(productContainer);
+
+        let image = $("<img>").attr("src", products[i].image1).attr("alt", products[i].name).appendTo(imageContainer);
+        // image.appendTo(imageContainer);
+
+        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+        // infoContainer.appendTo(productContainer);
+
+        let brand = $("<p>").html("<b>" + products[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        // brand.appendTo(infoContainer);
+
+        let name = $("<p>").html(products[i].name).appendTo(infoContainer);
+        // name.appendTo(infoContainer);
+
+        let price = $("<p>").html("<b>" + products[i].price + " kr" + "</b>").appendTo(infoContainer);
+        // price.appendTo(infoContainer);
     }
 
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {

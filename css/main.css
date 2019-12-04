@@ -17,3 +17,13 @@ main .img-fluid {
   color: white;
   display: sticky;
   bottom: 0; }
+
+.productlist .productContainer {
+  border: 1px solid black; }
+  .productlist .productContainer img {
+    width: 100%; }
+  .productlist .productContainer p {
+    padding: 0;
+    margin: 0; }
+  .productlist .productContainer .pBrand {
+    text-transform: uppercase; }
