@@ -13,23 +13,35 @@ header {
     .first{
         height: 90px;
         @include tablet {
-        height: 200px;
+        height: 150px;
         }
         .form-inline{
             width: 80px;
-            @include tablet {
-            }
+                @include tablet {
+                }
+                @include laptop {
+                width: 250px;
+                }
             input{
             width: 80px;
+                @include tablet {
+                width: 100px;
+                }
             }
         }
-    }
+       .btn {
+            display: none;
+                @include laptop {
+                display: inline;
+                }
+            }
+    }   
     .img-fluid{
         height: 35px;
         margin-right: 40px;
         @include tablet {
-         
-            height: 40px;
+            margin: 10%;
+            height: 100px;
         }
         @include laptop {
             height: 120px;
@@ -39,6 +51,12 @@ header {
         color: black;
         font-size: xx-large;
         margin-right: 20px;
+        @include tablet {
+           margin-left: 5%;
+        }
+        @include laptop {
+            margin-left: 10%;
+        }
     }
     
 }

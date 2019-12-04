@@ -2,18 +2,30 @@ header .first {
   height: 90px; }
   @media (min-width: 760px) {
     header .first {
-      height: 200px; } }
+      height: 150px; } }
   header .first .form-inline {
     width: 80px; }
+    @media (min-width: 996px) {
+      header .first .form-inline {
+        width: 250px; } }
     header .first .form-inline input {
       width: 80px; }
+      @media (min-width: 760px) {
+        header .first .form-inline input {
+          width: 100px; } }
+  header .first .btn {
+    display: none; }
+    @media (min-width: 996px) {
+      header .first .btn {
+        display: inline; } }
 
 header .img-fluid {
   height: 35px;
   margin-right: 40px; }
   @media (min-width: 760px) {
     header .img-fluid {
-      height: 40px; } }
+      margin: 10%;
+      height: 100px; } }
   @media (min-width: 996px) {
     header .img-fluid {
       height: 120px; } }
@@ -22,6 +34,12 @@ header .fa-shopping-basket {
   color: black;
   font-size: xx-large;
   margin-right: 20px; }
+  @media (min-width: 760px) {
+    header .fa-shopping-basket {
+      margin-left: 5%; } }
+  @media (min-width: 996px) {
+    header .fa-shopping-basket {
+      margin-left: 10%; } }
 
 main .img-fluid {
   height: 400px;
