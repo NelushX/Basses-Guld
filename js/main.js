@@ -15,6 +15,11 @@ $(document).ready(function() {
 
     let products = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
 
+    // button for clearing checkout-page
+    $("#clearbutton").click(function(){
+        $("#checkout").empty();
+      });
+    
     for (let i = 0; i < products.length; i++) {
         $("<img>").attr("src", products[i].image1).appendTo("#image");
         $("<p>").html(products[i].brand).appendTo("#image");
@@ -34,3 +39,5 @@ $(document).ready(function() {
         this.image4 = image4;
     }
 });
+
+
