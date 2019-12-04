@@ -1,27 +1,28 @@
-header input {
-  width: 30%;
-  object-fit: cover;
-  height: 35px; }
-
-header .img-fluid {
-  height: 40px;
-  object-fit: cover; }
-  @media (min-width: 768px) {
-    header .img-fluid {
-      margin-left: 7%;
-      height: 40px; } }
-  @media (min-width: 996px) {
-    header .img-fluid {
-      height: 120px; } }
-
-header .fa-shopping-basket {
-  color: black;
-  font-size: xx-large;
-  margin-left: 25%;
-  object-fit: cover; }
+header .first {
+  height: 90px; }
+  @media (min-width: 760px) {
+    header .first {
+      height: 200px; } }
+  header .first .form-inline {
+    width: 80px; }
+    header .first .form-inline input {
+      width: 80px; }
+  header .first .img-fluid {
+    height: 35px;
+    margin-right: 40px; }
+    @media (min-width: 760px) {
+      header .first .img-fluid {
+        height: 40px; } }
+    @media (min-width: 996px) {
+      header .first .img-fluid {
+        height: 120px; } }
+  header .first .fa-shopping-basket {
+    color: black;
+    font-size: xx-large;
+    margin-right: 20px; }
 
 main .img-fluid {
-  height: 500px;
+  height: 400px;
   object-fit: cover; }
 
 .footer {

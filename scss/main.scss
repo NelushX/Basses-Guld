@@ -5,23 +5,29 @@
     @media (min-width: $mdscreen){ 
         @content; }}
  // variabler mixins      
-$mdscreen: 768px;
+$mdscreen: 760px;
 $lgscreen: 996px;
-header { 
-    input{
-        width: 30%;
-        object-fit: cover;
-        height: 35px;
+header {
+    .first{
+        height: 90px;
         @include tablet {
+        height: 200px;
         }
-        
+        .form-inline{
+            width: 80px;
+            @include tablet {
+            
+            }
+            input{
+            width: 80px;
+            }
        
-    }
+    }   
     .img-fluid{
-        height: 40px;
-        object-fit: cover;
+        height: 35px;
+        margin-right: 40px;
         @include tablet {
-         margin-left: 7%;
+         
             height: 40px;
         }
         @include laptop {
@@ -31,14 +37,13 @@ header {
     .fa-shopping-basket{ 
         color: black;
         font-size: xx-large;
-        margin-left: 25%;
-        object-fit: cover;
+        margin-right: 20px;
     }
-}
+} }
   
 main {
     .img-fluid{
-    height: 500px;
+    height: 400px;
     object-fit: cover;
 }   }
 .footer{
