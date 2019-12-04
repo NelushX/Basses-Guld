@@ -33,4 +33,18 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
+    // sökfunktion
+    $("#button").on("click", function() {
+        let input = $("#search").val();
+        $("//divarna").each( function() {
+            let text = $(this).text();
+            if (text.indexOf(input)!=-1) {
+                $(this).parent().parent().show();
+            }
+            else {
+                $(this).parent().parent().hide();
+            }
+        });
+    });​
+    //
 });
