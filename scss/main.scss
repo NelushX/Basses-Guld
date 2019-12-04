@@ -1,15 +1,20 @@
+// variabler och mixins  
 @mixin laptop {
     @media (min-width: $lgscreen){
        @content;}}
 @mixin tablet {
     @media (min-width: $mdscreen){ 
         @content; }}
- // variabler mixins      
 $mdscreen: 760px;
 $lgscreen: 996px;
+// färger
+$textcolor: black;
+$barcolor: #09283a;
+$textfootercolor: white;
 header {
     .first{
         height: 90px;
+        background-color: $barcolor;
         @include tablet {
         height: 150px;
         }
@@ -65,9 +70,9 @@ main {
     object-fit: cover;
 }   }
 .footer{
-    background-color: #dfcdc3;
+    background-color: $barcolor;
     font-family: 'Alata', sans-serif;
-    color: white;
+    color: $textfootercolor;
     display: sticky;
     bottom: 0;
     margin-top: 40px;

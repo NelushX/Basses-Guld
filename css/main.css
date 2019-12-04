@@ -1,5 +1,6 @@
 header .first {
-  height: 90px; }
+  height: 90px;
+  background-color: #09283a; }
   @media (min-width: 760px) {
     header .first {
       height: 150px; } }
@@ -44,7 +45,7 @@ main .img-fluid {
   object-fit: cover; }
 
 .footer {
-  background-color: #dfcdc3;
+  background-color: #09283a;
   font-family: 'Alata', sans-serif;
   color: white;
   display: sticky;
