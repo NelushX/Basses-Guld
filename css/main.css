@@ -6,6 +6,18 @@ header {
       header .first {
         height: 150px; } }
     header .first .form-inline {
+header .first {
+  height: 90px;
+  background-color: #09283a; }
+  @media (min-width: 760px) {
+    header .first {
+      height: 150px; } }
+  header .first .form-inline {
+    width: 80px; }
+    @media (min-width: 996px) {
+      header .first .form-inline {
+        width: 250px; } }
+    header .first .form-inline input {
       width: 80px; }
       @media (min-width: 996px) {
         header .first .form-inline {
@@ -58,6 +70,11 @@ main .img-fluid {
 
 .checkoutsite {
   color: white; }
+  bottom: 0;
+  margin-top: 40px; }
+
+.checkoutsite {
+  font-family: 'Alata', sans-serif; }
   .checkoutsite .custom-checkbox {
     display: inline; }
   .checkoutsite .cartbox {
@@ -115,3 +132,6 @@ main .img-fluid {
   .productlist .productContainer .pPrice {
     margin-top: 5px;
     font-size: 1.1rem; }
+    background-color: grey; }
+  .checkoutsite .paybox {
+    background-color: grey; }
