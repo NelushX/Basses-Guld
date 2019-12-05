@@ -13,16 +13,70 @@ $(document).ready(function() {
     let prod11 = new Product("Mother of Pearl Multistripe Cufflinks Ivory", 15043310, "Paul Smith", 599, "Mother of Pearl Multistripe Cufflinks Ivory", 18, "Finns i lager", "images/products/11_image0.JPG", "images/products/11_image1.JPG", "images/products/11_image2.JPG", "images/products/11_image3.JPG");
     let prod12 = new Product("Logo Cufflink Copper", 16459610, "Paul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "images/products/12_image0.JPG", "images/products/12_image1.JPG", "images/products/12_image2.JPG", "images/products/12_image3.JPG");
 
-    let products = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
+    let favorites = [prod6, prod9, prod12, prod10];
+    let productlist = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
 
-    // button for clearing checkout-page
-    $("#clearbutton").click(function(){
-        $("#checkout").empty();
-      });
     
-    for (let i = 0; i < products.length; i++) {
-        $("<img>").attr("src", products[i].image1).appendTo("#image");
-        $("<p>").html(products[i].brand).appendTo("#image");
+    for (let i = 0; i < favorites.length; i++) {
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#favorites"));
+
+        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+        let image = $("<img>").attr("src", favorites[i].image1).attr("alt", favorites[i].name)
+            .mouseover(function() {
+                image.attr("src", favorites[i].image2);
+            })
+            .mouseout(function() {
+                image.attr("src", favorites[i].image1);
+            })
+            .appendTo(imageContainer);  
+
+        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+        let brand = $("<p>").html("<b>" + favorites[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        let name = $("<p>").html(favorites[i].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + favorites[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+    }
+
+    // Skapar favoriter som väljs random
+    /*
+    for (let i = 0; i < 4; i++) {
+        let randomNumber = Math.floor(Math.random() * 12);
+        
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#favorites"));
+
+        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+        let image = $("<img>").attr("src", productlist[randomNumber].image1).attr("alt", productlist[randomNumber].name)
+            .mouseover(function() {
+                image.attr("src", productlist[randomNumber].image2);
+            })
+            .mouseout(function() {
+                image.attr("src", productlist[randomNumber].image1);
+            })
+            .appendTo(imageContainer);  
+
+        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+        let brand = $("<p>").html("<b>" + productlist[randomNumber].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        let name = $("<p>").html(productlist[randomNumber].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + productlist[randomNumber].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+    }
+    */
+
+    for (let i = 0; i < productlist.length; i++) {
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#productlist"));
+
+        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+        let image = $("<img>").attr("src", productlist[i].image1).attr("alt", productlist[i].name)
+            .mouseover(function() {
+                image.attr("src", productlist[i].image2);
+            })
+            .mouseout(function() {
+                image.attr("src", productlist[i].image1);
+            })
+            .appendTo(imageContainer);  
+
+        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+        let brand = $("<p>").html("<b>" + productlist[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        let name = $("<p>").html(productlist[i].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {
@@ -38,168 +92,28 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
-    
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// sökfunktion
-$("#button").on("click", function() {
-    let input = $("#search").val();
-    $("//divarna").each( function() {
-        let text = $(this).text();
-        if (text.indexOf(input)!=-1) {
-            $(this).parent().parent().show();
-        }
-        else {
-            $(this).parent().parent().hide();
-        }
+    /*
+    // button for clearing checkout-page
+    $("#clearbutton").click(function(){
+        $("#checkout").empty();
     });
-});​ 
-//
+
+    
+    // sökfunktion
+    $("#button").on("click", function() {
+        let input = $("#search").val();
+        $("//divarna").each(function() {
+            let text = $(this).text();
+            if (text.indexOf(input)!=-1) {
+                $(this).parent().parent().show();
+            }
+            else {
+                $(this).parent().parent().hide();
+            }
+        });
+    });​ 
+
+    */

@@ -7,39 +7,40 @@
         @content; }}
 $mdscreen: 760px;
 $lgscreen: 996px;
+
 // färger
-$textcolor: black;
-$barcolor: #09283a;
-$textfootercolor: white;
+$blackcolor: black;
+$bluecolor: #09283a;
+$whitecolor: white;
+
 header {
     .first{
         height: 90px;
-        background-color: $barcolor;
+        background-color: $bluecolor;
         @include tablet {
         height: 150px;
         }
         .form-inline{
             width: 80px;
-            @include tablet {
-            }
-             @include laptop {
+                @include tablet {
+                }
+                @include laptop {
                 width: 250px;
-             }
+                }
             input{
             width: 80px;
-            @include tablet {
+                @include tablet {
                 width: 100px;
+                }
             }
-            
-            }
+        }
        .btn {
-           display: none;
-           @include laptop {
-               display: inline;
-        }
-        }
-       }
-       
+            display: none;
+                @include laptop {
+                display: inline;
+                }
+            }
+    }   
     .img-fluid{
         height: 35px;
         margin-right: 40px;
@@ -52,7 +53,7 @@ header {
         }
     }
     .fa-shopping-basket{ 
-        color: black;
+        color: $blackcolor;
         font-size: xx-large;
         margin-right: 20px;
         @include tablet {
@@ -62,22 +63,32 @@ header {
             margin-left: 10%;
         }
     }
- } }
+    
+}
   
 main {
     .img-fluid{
     height: 400px;
     object-fit: cover;
-}   }
+    }
+}
+
 .footer{
-    background-color: $barcolor;
+    padding-top: 15px;
+    background-color: $bluecolor;
     font-family: 'Alata', sans-serif;
-    color: $textfootercolor;
+    color: $whitecolor;
     display: sticky;
     bottom: 0;
-    margin-top: 40px;
-}   
+    img {
+        width: 125px;
+        margin-bottom: 10px;
+    }
+}
+  
 .checkoutsite{
+    color: white;
+    margin-top: 40px;
     font-family: 'Alata', sans-serif;
     .custom-checkbox{
         display: inline;
@@ -90,5 +101,150 @@ main {
     .paybox{
         background-color: grey;
     }
+}
 
-} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin for-big-phone-up {
+    @media (min-width: 510px) { @content; }
+}
+@mixin for-small-tablet-up {
+    @media (min-width: 600px) { @content; }
+}
+@mixin for-big-tablet-up {
+    @media (min-width: 768px) { @content; }
+}
+@mixin for-small-desktop-up {
+    @media (min-width: 992px) { @content; }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1600px) { @content; }
+}
+
+.productlist {
+    .productContainer {
+        margin-bottom: 15px;
+        .imageContainer {
+            margin: 15px;
+            min-height: 178px;
+            max-height: 178px;
+            line-height: 178px;
+            @include for-big-phone-up {
+                min-height: 200px;
+                max-height: 200px;
+                line-height: 200px;
+            }
+            @include for-small-tablet-up {
+                min-height: 195px;
+                max-height: 195px;
+                line-height: 195px;
+            }
+            @include for-big-tablet-up {
+                min-height: 290px;
+                max-height: 290px;
+                line-height: 290px;
+            }
+            @include for-small-desktop-up {
+                min-height: 170px;
+                max-height: 170px;
+                line-height: 170px;
+            }
+            @include for-desktop-up {
+                min-height: 215px;
+                max-height: 215px;
+                line-height: 215px;
+            }
+        }
+        img {
+            width: 100%;
+        }
+        .infoContainer {
+            margin: 15px;
+        }
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .pBrand {
+            text-transform: uppercase;
+        }
+
+        .pName {
+            min-height: 44px;
+            max-height: 44px;
+            overflow: hidden;
+        }
+        .pPrice {
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+    }
+}

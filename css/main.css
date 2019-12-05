@@ -14,45 +14,52 @@ header .first {
       @media (min-width: 760px) {
         header .first .form-inline input {
           width: 100px; } }
-    header .first .form-inline .btn {
-      display: none; }
-      @media (min-width: 996px) {
-        header .first .form-inline .btn {
-          display: inline; } }
-  header .first .img-fluid {
-    height: 35px;
-    margin-right: 40px; }
-    @media (min-width: 760px) {
-      header .first .img-fluid {
-        margin: 10%;
-        height: 100px; } }
+  header .first .btn {
+    display: none; }
     @media (min-width: 996px) {
-      header .first .img-fluid {
-        height: 120px; } }
-  header .first .fa-shopping-basket {
-    color: black;
-    font-size: xx-large;
-    margin-right: 20px; }
-    @media (min-width: 760px) {
-      header .first .fa-shopping-basket {
-        margin-left: 5%; } }
-    @media (min-width: 996px) {
-      header .first .fa-shopping-basket {
-        margin-left: 10%; } }
+      header .first .btn {
+        display: inline; } }
+
+header .img-fluid {
+  height: 35px;
+  margin-right: 40px; }
+  @media (min-width: 760px) {
+    header .img-fluid {
+      margin: 10%;
+      height: 100px; } }
+  @media (min-width: 996px) {
+    header .img-fluid {
+      height: 120px; } }
+
+header .fa-shopping-basket {
+  color: black;
+  font-size: xx-large;
+  margin-right: 20px; }
+  @media (min-width: 760px) {
+    header .fa-shopping-basket {
+      margin-left: 5%; } }
+  @media (min-width: 996px) {
+    header .fa-shopping-basket {
+      margin-left: 10%; } }
 
 main .img-fluid {
   height: 400px;
   object-fit: cover; }
 
 .footer {
+  padding-top: 15px;
   background-color: #09283a;
   font-family: 'Alata', sans-serif;
   color: white;
   display: sticky;
-  bottom: 0;
-  margin-top: 40px; }
+  bottom: 0; }
+  .footer img {
+    width: 125px;
+    margin-bottom: 10px; }
 
 .checkoutsite {
+  color: white;
+  margin-top: 40px;
   font-family: 'Alata', sans-serif; }
   .checkoutsite .custom-checkbox {
     display: inline; }
@@ -62,3 +69,52 @@ main .img-fluid {
     background-color: grey; }
   .checkoutsite .paybox {
     background-color: grey; }
+
+.productlist .productContainer {
+  margin-bottom: 15px; }
+  .productlist .productContainer .imageContainer {
+    margin: 15px;
+    min-height: 178px;
+    max-height: 178px;
+    line-height: 178px; }
+    @media (min-width: 510px) {
+      .productlist .productContainer .imageContainer {
+        min-height: 200px;
+        max-height: 200px;
+        line-height: 200px; } }
+    @media (min-width: 600px) {
+      .productlist .productContainer .imageContainer {
+        min-height: 195px;
+        max-height: 195px;
+        line-height: 195px; } }
+    @media (min-width: 768px) {
+      .productlist .productContainer .imageContainer {
+        min-height: 290px;
+        max-height: 290px;
+        line-height: 290px; } }
+    @media (min-width: 992px) {
+      .productlist .productContainer .imageContainer {
+        min-height: 170px;
+        max-height: 170px;
+        line-height: 170px; } }
+    @media (min-width: 1200px) {
+      .productlist .productContainer .imageContainer {
+        min-height: 215px;
+        max-height: 215px;
+        line-height: 215px; } }
+  .productlist .productContainer img {
+    width: 100%; }
+  .productlist .productContainer .infoContainer {
+    margin: 15px; }
+  .productlist .productContainer p {
+    padding: 0;
+    margin: 0; }
+  .productlist .productContainer .pBrand {
+    text-transform: uppercase; }
+  .productlist .productContainer .pName {
+    min-height: 44px;
+    max-height: 44px;
+    overflow: hidden; }
+  .productlist .productContainer .pPrice {
+    margin-top: 5px;
+    font-size: 1.1rem; }
