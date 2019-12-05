@@ -30,13 +30,13 @@ $whitecolor: white;
 }
 
 header {
-    .first{
+    .first {
         height: 20vh;
         background-color: $bluecolor;
         @include for-big-tablet-up {
         
         }
-        .form-inline{
+        .form-inline {
             width: 80px;
                 @include for-big-tablet-up {
                 }
@@ -59,51 +59,51 @@ header {
                 display: inline;
                 }
             }
-     a{
-         padding: 0%;
-     }
-    .img-fluid{
-        height: 50px;
-        margin-left: 40px;
-        position: relative;
-        @include for-big-tablet-up { 
-            height: 70px ;
-            margin-left: 50%;
-            position: relative;
+        a {
+            padding: 0%;
         }
-        @include strul {
-            margin-left: 70%;
+        .img-fluid{
+            height: 50px;
+            margin-left: 40px;
             position: relative;
+            @include for-big-tablet-up { 
+                height: 70px ;
+                margin-left: 50%;
+                position: relative;
+            }
+            @include strul {
+                margin-left: 70%;
+                position: relative;
+            }
+            @include for-small-desktop-up {
+                margin-left: 110%;
+                height: auto;
+                position: relative;
+            }
+            @include for-desktop-up {
+                margin-left:100%;
+            }
         }
-        @include for-small-desktop-up {
-            margin-left: 50%;
-            height: auto;
+        .fa-shopping-basket{ 
+            color: $blackcolor;
+            font-size: xx-large;
+            margin-left: 20%;
             position: relative;
-        }
-        @include for-desktop-up {
-            margin-left:70%;
+            @include for-big-tablet-up {
+                margin-left: 45%;
+                position: relative;
+            }
+            @include for-small-desktop-up {
+                margin-left: 60%;
+                position: relative;
+            }
+            @include for-desktop-up {
+                margin-left: 60%;
+                position: relative;
+            }
         }
     }
-    .fa-shopping-basket{ 
-        color: $blackcolor;
-        font-size: xx-large;
-        margin-left: 20%;
-        position: relative;
-        @include for-big-tablet-up {
-            margin-left: 45%;
-            position: relative;
-        }
-        @include for-small-desktop-up {
-            margin-left: 60%;
-            position: relative;
-        }
-        @include for-desktop-up {
-            margin-left: 60%;
-            position: relative;
-        }
-    }
-    
-} } 
+}
   
 main {
     .carousel{
