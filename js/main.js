@@ -92,6 +92,7 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
+    
 });
 
 
@@ -100,6 +101,7 @@ $(document).ready(function() {
     $("#clearbutton").click(function(){
         $("#checkout").empty();
     });
+   
 
     
     // sökfunktion
@@ -107,7 +109,7 @@ $(document).ready(function() {
         let input = $("#search").val();
         $("//divarna").each(function() {
             let text = $(this).text();
-            if (text.indexOf(input)!=-1) {
+            if (text.indexOf(input)=-1) {
                 $(this).parent().parent().show();
             }
             else {
@@ -116,4 +118,4 @@ $(document).ready(function() {
         });
     });​ 
 
-    */
+      */
