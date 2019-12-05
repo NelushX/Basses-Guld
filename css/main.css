@@ -19,46 +19,46 @@ header .first {
     @media (min-width: 992px) {
       header .first .btn {
         display: inline; } }
-
-header .img-fluid {
-  height: 50px;
-  margin-left: 40px;
-  position: relative; }
-  @media (min-width: 768px) {
-    header .img-fluid {
-      height: 70px;
-      margin-left: 50%;
-      position: relative; } }
-  @media (min-width: 840px) {
-    header .img-fluid {
-      margin-left: 70%;
-      position: relative; } }
-  @media (min-width: 992px) {
-    header .img-fluid {
-      position: relative;
-      margin-left: 40%;
-      height: 90px; } }
-  @media (min-width: 1200px) {
-    header .img-fluid {
-      margin-left: 70%; } }
-
-header .fa-shopping-basket {
-  color: black;
-  font-size: xx-large;
-  margin-left: 20%;
-  position: relative; }
-  @media (min-width: 768px) {
-    header .fa-shopping-basket {
-      margin-left: 45%;
-      position: relative; } }
-  @media (min-width: 992px) {
-    header .fa-shopping-basket {
-      margin-left: 60%;
-      position: relative; } }
-  @media (min-width: 1200px) {
-    header .fa-shopping-basket {
-      margin-left: 60%;
-      position: relative; } }
+  header .first a {
+    padding: 0%; }
+  header .first .img-fluid {
+    height: 50px;
+    margin-left: 40px;
+    position: relative; }
+    @media (min-width: 768px) {
+      header .first .img-fluid {
+        height: 70px;
+        margin-left: 50%;
+        position: relative; } }
+    @media (min-width: 840px) {
+      header .first .img-fluid {
+        margin-left: 70%;
+        position: relative; } }
+    @media (min-width: 992px) {
+      header .first .img-fluid {
+        margin-left: 50%;
+        height: auto;
+        position: relative; } }
+    @media (min-width: 1200px) {
+      header .first .img-fluid {
+        margin-left: 70%; } }
+  header .first .fa-shopping-basket {
+    color: black;
+    font-size: xx-large;
+    margin-left: 20%;
+    position: relative; }
+    @media (min-width: 768px) {
+      header .first .fa-shopping-basket {
+        margin-left: 45%;
+        position: relative; } }
+    @media (min-width: 992px) {
+      header .first .fa-shopping-basket {
+        margin-left: 60%;
+        position: relative; } }
+    @media (min-width: 1200px) {
+      header .first .fa-shopping-basket {
+        margin-left: 60%;
+        position: relative; } }
 
 main .carousel {
   height: 400px;

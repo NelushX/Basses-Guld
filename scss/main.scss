@@ -55,7 +55,9 @@ header {
                 display: inline;
                 }
             }
-    }   
+     a{
+         padding: 0%;
+     }
     .img-fluid{
         height: 50px;
         margin-left: 40px;
@@ -70,9 +72,9 @@ header {
             position: relative;
         }
         @include for-small-desktop-up {
+            margin-left: 50%;
+            height: auto;
             position: relative;
-            margin-left: 40%;
-            height: 90px;
         }
         @include for-desktop-up {
             margin-left:70%;
@@ -97,7 +99,7 @@ header {
         }
     }
     
-}
+} } 
   
 main {
     .carousel{
