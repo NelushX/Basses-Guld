@@ -8,8 +8,8 @@
 @mixin for-big-tablet-up {
     @media (min-width: 768px) { @content; }
 }
-@mixin strul {
-        @media (min-width: 840px) { @content; }
+@mixin for-smaller-desktop-up {
+    @media (min-width: 840px) { @content; }
 }
 @mixin for-small-desktop-up {
     @media (min-width: 992px) { @content; }
@@ -30,12 +30,12 @@ $whitecolor: white;
 }
 
 header {
-    .first{
+    .first {
         height: 20vh;
         background-color: $bluecolor;
         @include for-big-tablet-up {
         }
-        .form-inline{
+        .form-inline {
             width: 80px;
                 @include for-big-tablet-up {
                 }
@@ -70,21 +70,21 @@ header {
                 margin-left: 50%;
                 position: relative;
             }
-            @include strul {
+            @include for-smaller-desktop-up {
                 margin-left: 70%;
                 position: relative;
             }
             @include for-small-desktop-up {
-                margin-left: 50%;
+                margin-left: 110%;
                 height: auto;
                 position: relative;
             }
             @include for-desktop-up {
-                margin-left:70%;
+                margin-left:100%;
             }
         }
         .fa-shopping-basket{ 
-            color: $blackcolor;
+            color: white;
             font-size: xx-large;
             margin-left: 20%;
             position: relative;
