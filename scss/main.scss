@@ -8,6 +8,9 @@
 @mixin for-big-tablet-up {
     @media (min-width: 768px) { @content; }
 }
+@mixin strul {
+        @media (min-width: 840px) { @content; }
+}
 @mixin for-small-desktop-up {
     @media (min-width: 992px) { @content; }
 }
@@ -28,7 +31,7 @@ $whitecolor: white;
 
 header {
     .first{
-        height: 50vh;
+        height: 20vh;
         background-color: $bluecolor;
         @include for-big-tablet-up {
         
@@ -56,23 +59,29 @@ header {
                 display: inline;
                 }
             }
-    }   
+     a{
+         padding: 0%;
+     }
     .img-fluid{
         height: 50px;
         margin-left: 40px;
         position: relative;
         @include for-big-tablet-up { 
-            margin-left: 45%;
+            height: 70px ;
+            margin-left: 50%;
             position: relative;
-            
         }
-        @include for-small-desktop-up {
-           
+        @include strul {
             margin-left: 70%;
             position: relative;
         }
+        @include for-small-desktop-up {
+            margin-left: 50%;
+            height: auto;
+            position: relative;
+        }
         @include for-desktop-up {
-            margin-left:50%;
+            margin-left:70%;
         }
     }
     .fa-shopping-basket{ 
@@ -120,6 +129,7 @@ header {
             opacity: 1;
         }
     }
+}
 }
   
 .carouselContainer {
