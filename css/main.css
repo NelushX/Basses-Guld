@@ -1,3 +1,6 @@
+* {
+  font-family: 'Alata', sans-serif; }
+
 header .first {
   height: 20vh;
   background-color: #09283a; }
@@ -64,10 +67,15 @@ main .carousel {
   height: 400px;
   object-fit: cover; }
 
+main .indexH3 {
+  font-size: 1.5rem; }
+  @media (min-width: 768px) {
+    main .indexH3 {
+      font-size: 1.75rem; } }
+
 .footer {
   padding-top: 15px;
   background-color: #09283a;
-  font-family: 'Alata', sans-serif;
   color: white;
   display: sticky;
   bottom: 0; }
@@ -77,8 +85,7 @@ main .carousel {
 
 .checkoutsite {
   color: white;
-  margin-top: 40px;
-  font-family: 'Alata', sans-serif; }
+  margin-top: 40px; }
   .checkoutsite .custom-checkbox {
     display: inline; }
   .checkoutsite .cartbox {
@@ -136,3 +143,25 @@ main .carousel {
   .productlist .productContainer .pPrice {
     margin-top: 5px;
     font-size: 1.1rem; }
+
+.inspiration {
+  position: relative; }
+  .inspiration .inspirationText {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    color: white;
+    box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.3);
+    border-radius: 5px;
+    font-size: 0.8rem; }
+    @media (min-width: 510px) {
+      .inspiration .inspirationText {
+        top: 82%;
+        box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.5); } }
+    @media (min-width: 768px) {
+      .inspiration .inspirationText {
+        top: 85%;
+        font-size: 1.6rem;
+        box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.9); } }
