@@ -58,7 +58,7 @@
        
 
         <main>  
-        <div class="container-fluid checkoutsite">
+        <div class="container-fluid checkoutsite" id="checkout">
           <div class="row text-center">
             <div class="col-12"><h2>Kassan</h2>
             <span> Alltid Gratis Frakt! </span>
@@ -80,36 +80,36 @@
                         <h1 class="text-center">Välj ditt sätt att betala!</h1>
                             <div class=container>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-2 col-md">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                                             <label class="custom-control-label" for="customCheck1"><i class="fab fa-cc-visa fa-2x"></i></label>
                                         </div>
                                     </div>
-                                <div class="col-md-8"></div>
-                                <div class="col"> 0kr</div>
+                                <div class="col-8 col-md-8"></div>
+                                <div class="col-2 col-md"> 0kr</div>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-2 col-md">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck2">
                                             <label class="custom-control-label" for="customCheck2"><i class="fab fa-cc-mastercard fa-2x"></i></i></label>
                                         </div>
                                     </div>
-                                <div class="col-md-8"></div>
-                                <div class="col"> 0kr</div>
+                                <div class="col-8 col-md-8"></div>
+                                <div class="col-2 col-md"> <span class="align-middle">0kr</span></div>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-2 col-md">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3"><i class="fab fa-cc-apple-pay fa-2x"></i></i></label>
                                         </div>
                                     </div>
-                                <div class="col-md-8"></div>
-                                <div class="col"> 0kr</div>
+                                <div class="col-8 col-md-8"></div>
+                                <div class="col-2 col-md"> 0kr</div>
                                 </div>
                             </div>
                             <hr>                       
@@ -118,7 +118,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="epost">E-post</label>
-                                            <input type="email" class="form-control" id="epost" placeholder="Email">
+                                            <input type="email" class="form-control" id="epost" placeholder="bengt.h@live.se...">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="name">Namn</label>
@@ -144,7 +144,7 @@
                                             <input class="form-check-input" type="checkbox" id="gridCheck">
                                             <label class="form-check-label" for="gridCheck">Jag accepterar vilkoren</label>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Lägg beställning</button>
+                                        <button type="button" class="btn btn-primary" id="clearbutton">Lägg beställning</button>
                                     </div>
                                     
                                 </form>
