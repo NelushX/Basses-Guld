@@ -32,6 +32,9 @@ header {
                 @include tablet {
                 width: 100px;
                 }
+                @include laptop() {
+                    width: 150px;
+                }
             }
         }
        .btn {
@@ -42,14 +45,15 @@ header {
             }
     }   
     .img-fluid{
-        height: 35px;
+        height: 50px;
         margin-right: 40px;
-        @include tablet {
-            margin: 10%;
+        @include tablet { 
+            margin: 15%;
             height: 100px;
         }
         @include laptop {
             height: 120px;
+            margin-left: 30%;
         }
     }
     .fa-shopping-basket{ 
@@ -57,10 +61,10 @@ header {
         font-size: xx-large;
         margin-right: 20px;
         @include tablet {
-           margin-left: 5%;
+           margin-left: 25%;
         }
         @include laptop {
-            margin-left: 10%;
+            margin-left: 35%;
         }
     }
     
