@@ -5,8 +5,12 @@
 @mixin tablet {
     @media (min-width: $mdscreen){ 
         @content; }}
+        @mixin xlscreen {
+            @media (min-width: $xl){ 
+                @content; }}
 $mdscreen: 760px;
 $lgscreen: 996px;
+$xlscreen: 1200px;
 
 // färger
 $blackcolor: black;
@@ -18,7 +22,7 @@ header {
         height: 90px;
         background-color: $bluecolor;
         @include tablet {
-        height: 150px;
+        height: 170px;
         }
         .form-inline{
             width: 80px;
@@ -55,6 +59,9 @@ header {
             height: 120px;
             margin-left: 30%;
         }
+        @include xlscreen {
+            margin-left:50%;
+        }
     }
     .fa-shopping-basket{ 
         color: $blackcolor;
@@ -66,12 +73,15 @@ header {
         @include laptop {
             margin-left: 35%;
         }
+        @include xlscreen {
+            margin-left: 55%;
+        }
     }
     
 }
   
 main {
-    .img-fluid{
+    .carousel{
     height: 400px;
     object-fit: cover;
     }
