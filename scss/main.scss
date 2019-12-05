@@ -9,15 +9,14 @@ $mdscreen: 760px;
 $lgscreen: 996px;
 
 // färger
-$textcolor: black;
-$barcolor: #09283a;
-$textfootercolor: white;
+$blackcolor: black;
+$bluecolor: #09283a;
+$whitecolor: white;
 
 header {
-    background-color: $blueColor;
     .first{
         height: 90px;
-        background-color: $barcolor;
+        background-color: $bluecolor;
         @include tablet {
         height: 150px;
         }
@@ -54,7 +53,7 @@ header {
         }
     }
     .fa-shopping-basket{ 
-        color: black;
+        color: $blackcolor;
         font-size: xx-large;
         margin-right: 20px;
         @include tablet {
@@ -75,9 +74,10 @@ main {
 }
 
 .footer{
-    background-color: $barcolor;
+    padding-top: 15px;
+    background-color: $bluecolor;
     font-family: 'Alata', sans-serif;
-    color: $textfootercolor;
+    color: $whitecolor;
     display: sticky;
     bottom: 0;
     img {
