@@ -2,41 +2,39 @@
   font-family: 'Alata', sans-serif; }
 
 header .first {
-  height: 90px;
+  height: 50vh;
   background-color: #09283a; }
-  @media (min-width: 760px) {
-    header .first {
-      height: 170px; } }
   header .first .form-inline {
     width: 80px; }
-    @media (min-width: 996px) {
+    @media (min-width: 992px) {
       header .first .form-inline {
         width: 250px; } }
     header .first .form-inline input {
       width: 80px; }
-      @media (min-width: 760px) {
+      @media (min-width: 768px) {
         header .first .form-inline input {
           width: 100px; } }
-      @media (min-width: 996px) {
+      @media (min-width: 992px) {
         header .first .form-inline input {
           width: 150px; } }
   header .first .btn {
     display: none; }
-    @media (min-width: 996px) {
+    @media (min-width: 992px) {
       header .first .btn {
         display: inline; } }
 
 header .img-fluid {
   height: 50px;
-  margin-right: 40px; }
-  @media (min-width: 760px) {
+  margin-left: 40px;
+  position: relative; }
+  @media (min-width: 768px) {
     header .img-fluid {
-      margin: 15%;
-      height: 100px; } }
-  @media (min-width: 996px) {
+      margin-left: 45%;
+      position: relative; } }
+  @media (min-width: 992px) {
     header .img-fluid {
-      height: 120px;
-      margin-left: 30%; } }
+      margin-left: 70%;
+      position: relative; } }
   @media (min-width: 1200px) {
     header .img-fluid {
       margin-left: 50%; } }
@@ -44,16 +42,20 @@ header .img-fluid {
 header .fa-shopping-basket {
   color: black;
   font-size: xx-large;
-  margin-right: 20px; }
-  @media (min-width: 760px) {
+  margin-left: 20%;
+  position: relative; }
+  @media (min-width: 768px) {
     header .fa-shopping-basket {
-      margin-left: 25%; } }
-  @media (min-width: 996px) {
+      margin-left: 45%;
+      position: relative; } }
+  @media (min-width: 992px) {
     header .fa-shopping-basket {
-      margin-left: 35%; } }
+      margin-left: 60%;
+      position: relative; } }
   @media (min-width: 1200px) {
     header .fa-shopping-basket {
-      margin-left: 55%; } }
+      margin-left: 60%;
+      position: relative; } }
 
 main .carousel {
   height: 400px;

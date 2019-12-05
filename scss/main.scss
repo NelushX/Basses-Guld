@@ -1,17 +1,22 @@
 // variabler och mixins  
-@mixin laptop {
-    @media (min-width: $lgscreen){
-       @content;}}
-@mixin tablet {
-    @media (min-width: $mdscreen){ 
-        @content; }}
-@mixin xlscreen {
-    @media (min-width: $xlscreen){ 
-        @content; }}
-$mdscreen: 760px;
-$lgscreen: 996px;
-$xlscreen: 1200px;
-
+@mixin for-big-phone-up {
+    @media (min-width: 510px) { @content; }
+}
+@mixin for-small-tablet-up {
+    @media (min-width: 600px) { @content; }
+}
+@mixin for-big-tablet-up {
+    @media (min-width: 768px) { @content; }
+}
+@mixin for-small-desktop-up {
+    @media (min-width: 992px) { @content; }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1600px) { @content; }
+}
 // färger
 $blackcolor: black;
 $bluecolor: #09283a;
@@ -23,62 +28,69 @@ $whitecolor: white;
 
 header {
     .first{
-        height: 90px;
+        height: 50vh;
         background-color: $bluecolor;
-        @include tablet {
-        height: 170px;
+        @include for-big-tablet-up {
+        
         }
         .form-inline{
             width: 80px;
-                @include tablet {
+                @include for-big-tablet-up {
                 }
-                @include laptop {
+                @include for-small-desktop-up {
                 width: 250px;
                 }
             input{
             width: 80px;
-                @include tablet {
+                @include for-big-tablet-up {
                 width: 100px;
                 }
-                @include laptop() {
+                @include for-small-desktop-up {
                     width: 150px;
                 }
             }
         }
        .btn {
             display: none;
-                @include laptop {
+                @include for-small-desktop-up {
                 display: inline;
                 }
             }
     }   
     .img-fluid{
         height: 50px;
-        margin-right: 40px;
-        @include tablet { 
-            margin: 15%;
-            height: 100px;
+        margin-left: 40px;
+        position: relative;
+        @include for-big-tablet-up { 
+            margin-left: 45%;
+            position: relative;
+            
         }
-        @include laptop {
-            height: 120px;
-            margin-left: 30%;
+        @include for-small-desktop-up {
+           
+            margin-left: 70%;
+            position: relative;
         }
-        @include xlscreen {
+        @include for-desktop-up {
             margin-left:50%;
         }
     }
     .fa-shopping-basket{ 
         color: $blackcolor;
         font-size: xx-large;
-        margin-right: 20px;
-        @include tablet {
-           margin-left: 25%;
+        margin-left: 20%;
+        position: relative;
+        @include for-big-tablet-up {
+            margin-left: 45%;
+            position: relative;
         }
-        @include laptop {
-            margin-left: 35%;
+        @include for-small-desktop-up {
+            margin-left: 60%;
+            position: relative;
         }
-        @include xlscreen {
-            margin-left: 55%;
+        @include for-desktop-up {
+            margin-left: 60%;
+            position: relative;
         }
     }
     
@@ -191,24 +203,7 @@ main {
 
 
 
-@mixin for-big-phone-up {
-    @media (min-width: 510px) { @content; }
-}
-@mixin for-small-tablet-up {
-    @media (min-width: 600px) { @content; }
-}
-@mixin for-big-tablet-up {
-    @media (min-width: 768px) { @content; }
-}
-@mixin for-small-desktop-up {
-    @media (min-width: 992px) { @content; }
-}
-@mixin for-desktop-up {
-    @media (min-width: 1200px) { @content; }
-}
-@mixin for-big-desktop-up {
-    @media (min-width: 1600px) { @content; }
-}
+
 
 .productlist {
     .productContainer {
