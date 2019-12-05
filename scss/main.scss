@@ -5,9 +5,9 @@
 @mixin tablet {
     @media (min-width: $mdscreen){ 
         @content; }}
-        @mixin xlscreen {
-            @media (min-width: $xl){ 
-                @content; }}
+@mixin xlscreen {
+    @media (min-width: $xlscreen){ 
+        @content; }}
 $mdscreen: 760px;
 $lgscreen: 996px;
 $xlscreen: 1200px;
@@ -16,6 +16,10 @@ $xlscreen: 1200px;
 $blackcolor: black;
 $bluecolor: #09283a;
 $whitecolor: white;
+
+* {
+    font-family: 'Alata', sans-serif;
+}
 
 header {
     .first{
@@ -85,12 +89,17 @@ main {
     height: 400px;
     object-fit: cover;
     }
+    .indexH3 {
+        font-size: 1.5rem;
+        @include for-big-tablet-up {
+            font-size: 1.75rem;
+        }
+    }
 }
 
 .footer{
     padding-top: 15px;
     background-color: $bluecolor;
-    font-family: 'Alata', sans-serif;
     color: $whitecolor;
     display: sticky;
     bottom: 0;
@@ -103,7 +112,6 @@ main {
 .checkoutsite{
     color: white;
     margin-top: 40px;
-    font-family: 'Alata', sans-serif;
     .custom-checkbox{
         display: inline;
     }
@@ -259,6 +267,30 @@ main {
         .pPrice {
             margin-top: 5px;
             font-size: 1.1rem;
+        }
+    }
+}
+
+.inspiration {
+    position: relative;
+    .inspirationText {  
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px;
+        color: white;
+        box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.3);
+        border-radius: 5px;
+        font-size: 0.8rem;
+        @include for-big-phone-up {
+            top: 82%;
+            box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.5);
+        }
+        @include for-big-tablet-up {
+            top: 85%;
+            font-size: 1.6rem;
+            box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.9);
         }
     }
 }
