@@ -1,18 +1,51 @@
-header {
-  width: 100%; }
-  header .img-fluid {
-    height: 120px;
-    margin-right: 20%; }
-  header i {
+header .first {
+  height: 90px;
+  background-color: #09283a; }
+  @media (min-width: 760px) {
+    header .first {
+      height: 150px; } }
+  header .first .form-inline {
+    width: 80px; }
+    @media (min-width: 996px) {
+      header .first .form-inline {
+        width: 250px; } }
+    header .first .form-inline input {
+      width: 80px; }
+      @media (min-width: 760px) {
+        header .first .form-inline input {
+          width: 100px; } }
+    header .first .form-inline .btn {
+      display: none; }
+      @media (min-width: 996px) {
+        header .first .form-inline .btn {
+          display: inline; } }
+  header .first .img-fluid {
+    height: 35px;
+    margin-right: 40px; }
+    @media (min-width: 760px) {
+      header .first .img-fluid {
+        margin: 10%;
+        height: 100px; } }
+    @media (min-width: 996px) {
+      header .first .img-fluid {
+        height: 120px; } }
+  header .first .fa-shopping-basket {
     color: black;
     font-size: xx-large;
-    margin-right: 5%; }
+    margin-right: 20px; }
+    @media (min-width: 760px) {
+      header .first .fa-shopping-basket {
+        margin-left: 5%; } }
+    @media (min-width: 996px) {
+      header .first .fa-shopping-basket {
+        margin-left: 10%; } }
 
 main .img-fluid {
-  height: 500px; }
+  height: 400px;
+  object-fit: cover; }
 
 .footer {
-  background-color: #dfcdc3;
+  background-color: #09283a;
   font-family: 'Alata', sans-serif;
   color: white;
   display: sticky;
