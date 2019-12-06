@@ -24,6 +24,7 @@
 $blackcolor: black;
 $bluecolor: #09283a;
 $whitecolor: white;
+$yellowcolor: #ffce54;
 
 * {
     font-family: 'Alata', sans-serif;
@@ -84,7 +85,7 @@ header {
             }
         }
         .fa-shopping-basket{ 
-            color: white;
+            color: $yellowcolor;
             font-size: xx-large;
             margin-left: 20%;
             position: relative;
@@ -132,30 +133,59 @@ header {
 }
   
 .carouselContainer {
-    .img-fluid{
-    height: 550px;
-    object-fit: cover;
+    .img-fluid {
+        height: 350px;
+        object-fit: cover;
+        @include for-big-phone-up {
+            height: 450px;
+        }
+        @include for-big-tablet-up {
+            height: 550px;
+        }
     }
     .carouselBox {
         position: relative;
         .carouselText {
             position: absolute;
-            top: 80%;
+            top: 78%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding: 15px;
+            border: 2px solid white;
+            padding: 10px;
             color: white;
+            text-align: center;
+            font-size: 0.8rem;
             box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.3);
             border-radius: 5px;
-            font-size: 0.8rem;
             @include for-big-phone-up {
-                top: 82%;
+                top: 78%;
                 box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.5);
             }
             @include for-big-tablet-up {
-                top: 85%;
-                font-size: 1.6rem;
+                top: 75%;
+                padding: 30px;
+                font-size: 1.4em;
                 box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.9);
+            }
+            h4 {
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                @include for-big-phone-up {
+                    font-size: 1.8rem;
+                }
+                @include for-big-tablet-up {
+                    font-size: 2.2rem;
+                }
+                @include for-desktop-up() {
+                    font-size: 2.2rem;
+                }
+            }
+            hr {
+                background-color: white;
+                height: 1px;
+                @include for-big-phone-up {
+                    height: 3px;
+                }
             }
         }
     }
