@@ -46,7 +46,11 @@ header .first {
       header .first .img-fluid {
         margin-left: 100%; } }
   header .first .fa-shopping-basket {
+<<<<<<< HEAD
     color: #ffce54;
+=======
+    color: white;
+>>>>>>> f0639380c4001428daf185b396e46bdc87a3175b
     font-size: xx-large;
     margin-left: 20%;
     position: relative; }
