@@ -1,0 +1,13 @@
+@import 'mixins_colors_general';
+
+.footer {
+    padding-top: 15px;
+    background-color: $bluecolor;
+    color: $whitecolor;
+    display: sticky;
+    bottom: 0;
+    img {
+        width: 125px;
+        margin-bottom: 10px;
+    }
+}

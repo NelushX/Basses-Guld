@@ -92,5 +92,8 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
-});
 
+    $(".scrollupicon").on("click", function() {
+        $("html,body").animate({scrollTop:0},'50');
+    });
+});

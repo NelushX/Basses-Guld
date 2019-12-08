@@ -1,0 +1,161 @@
+@import 'mixins_colors_general';
+
+.carouselContainer {
+    .img-fluid {
+        height: 350px;
+        object-fit: cover;
+        @include for-big-phone-up {
+            height: 450px;
+        }
+        @include for-big-tablet-up {
+            height: 550px;
+        }
+        @include for-desktop-up {
+            height: 600px;
+        }
+    }
+    .carouselBox {
+        position: relative;
+        .carouselText {
+            position: absolute;
+            top: 78%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid $whitecolor;
+            padding: 10px;
+            color: $whitecolor;
+            text-align: center;
+            font-size: 0.8rem;
+            box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.3);
+            border-radius: 5px;
+            @include for-big-phone-up {
+                top: 78%;
+                box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.5);
+            }
+            @include for-big-tablet-up {
+                top: 75%;
+                padding: 30px;
+                font-size: 1.4em;
+                box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.9);
+            }
+            h4 {
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                @include for-big-phone-up {
+                    font-size: 1.8rem;
+                }
+                @include for-big-tablet-up {
+                    font-size: 2.2rem;
+                }
+                @include for-desktop-up() {
+                    font-size: 2.2rem;
+                }
+            }
+            hr {
+                background-color: $whitecolor;
+                height: 1px;
+                @include for-big-phone-up {
+                    height: 3px;
+                }
+            }
+        }
+    }
+}
+
+.productCategoriText {
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+.indexH3 {
+    font-size: 1.5rem;
+    @include for-big-tablet-up {
+        font-size: 1.75rem;
+    }
+}
+
+.productlist {
+    .productContainer {
+        margin-bottom: 15px;
+        .imageContainer {
+            margin: 15px;
+            min-height: 178px;
+            max-height: 178px;
+            line-height: 178px;
+            @include for-big-phone-up {
+                min-height: 200px;
+                max-height: 200px;
+                line-height: 200px;
+            }
+            @include for-small-tablet-up {
+                min-height: 195px;
+                max-height: 195px;
+                line-height: 195px;
+            }
+            @include for-big-tablet-up {
+                min-height: 290px;
+                max-height: 290px;
+                line-height: 290px;
+            }
+            @include for-small-desktop-up {
+                min-height: 170px;
+                max-height: 170px;
+                line-height: 170px;
+            }
+            @include for-desktop-up {
+                min-height: 215px;
+                max-height: 215px;
+                line-height: 215px;
+            }
+        }
+        img {
+            width: 100%;
+        }
+        .infoContainer {
+            margin: 15px;
+        }
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .pBrand {
+            text-transform: uppercase;
+        }
+
+        .pName {
+            min-height: 44px;
+            max-height: 44px;
+            overflow: hidden;
+        }
+        .pPrice {
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.inspiration {
+    position: relative;
+    .inspirationText {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px;
+        color: $whitecolor;
+        box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.3);
+        border-radius: 5px;
+        font-size: 0.8rem;
+        @include for-big-phone-up {
+            top: 82%;
+            box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.5);
+        }
+        @include for-big-tablet-up {
+            top: 85%;
+            font-size: 1.6rem;
+            box-shadow: 0px 0px 35px 4px rgba(160, 150, 5, 0.9);
+        }
+    }
+}

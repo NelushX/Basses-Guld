@@ -1,0 +1,101 @@
+@import 'mixins_colors_general';
+
+header {
+    .first {
+        height: 85px;
+        background-color: $bluecolor;
+        @include for-big-tablet-up {
+            height: 105px;
+        }
+        @include for-desktop-up {
+            height: 125px;
+        }
+        @include for-big-desktop-up {
+            height: 175px;
+        }
+        .form-inline {
+            input {
+                width: 80px;
+                @include for-big-tablet-up {
+                    width: 150px;
+                }
+                @include for-small-desktop-up {
+                    width: 175px;
+                }
+            }
+            input::placeholder {
+                opacity: 0;
+                @include for-small-desktop-up {
+                    opacity: 1;
+                }
+            }
+        }
+        .btn {
+            display: none;
+            @include for-desktop-up {
+                display: inline;
+                margin-top: 10px;
+                margin-left: 61.735px;
+                background-color: $lightgreycolor_bootstrap;
+            }
+        }
+        .img-fluid {
+            height: 50px;
+            margin-left: 40px;
+            @include for-big-tablet-up { 
+                height: 70px ;
+                margin-left: 50%;
+            }
+            @include for-smaller-desktop-up {
+                margin-left: 70%;
+            }
+            @include for-small-desktop-up {
+                margin-left: 110%;
+                height: auto;
+            }
+            @include for-desktop-up {
+                margin-left: 100%;
+            }
+        }
+        .fa-shopping-basket { 
+            color: $whitecolor;
+            font-size: 1.7rem;
+            margin-left: 20%;
+            @include for-big-tablet-up {
+                font-size: 1.9rem;
+                margin-left: 45%;
+            }
+            @include for-small-desktop-up {
+                font-size: 2rem;
+                margin-left: 60%;
+            }
+        }
+    }
+    .navbar-nav {
+        padding: 0;
+        margin: 0;
+        font-size: 1.3rem;
+        .nav-item {
+            padding: 9px 0px;
+            margin: 0px 20px;
+            display: inline-block;
+            position: relative;
+        }
+        .nav-item::before {
+            transition: 300ms;
+            height: 5px;
+            content: "";
+            position: absolute;
+            background-color: $bluecolor;
+        }
+        .nav-item-fade-up::before {
+            width: 100%;
+            bottom: 5px;
+            opacity: 0;
+        }
+        .nav-item-fade-up:hover::before {
+            bottom: 11px;
+            opacity: 1;
+        }
+    }
+}

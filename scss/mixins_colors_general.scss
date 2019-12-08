@@ -1,0 +1,32 @@
+@mixin for-big-phone-up {
+    @media (min-width: 510px) { @content; }
+}
+@mixin for-small-tablet-up {
+    @media (min-width: 600px) { @content; }
+}
+@mixin for-big-tablet-up {
+    @media (min-width: 768px) { @content; }
+}
+@mixin for-smaller-desktop-up {
+    @media (min-width: 840px) { @content; }
+}
+@mixin for-small-desktop-up {
+    @media (min-width: 992px) { @content; }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1600px) { @content; }
+}
+
+$blackcolor: black;
+$bluecolor: #09283a;
+$whitecolor: white;
+$yellowcolor: #ffce54;
+$lightgreycolor_bootstrap: #f8f9fa;
+$lightgreycolor: #f3f3f3;
+
+* {
+    font-family: 'Alata', sans-serif;
+}
