@@ -96,4 +96,8 @@ $(document).ready(function() {
     $(".scrollupicon").on("click", function() {
         $("html,body").animate({scrollTop:0},'50');
     });
+
+    $("#confirmButton").on("click", function() {
+        window.open("thankyou.html");
+    });
 });

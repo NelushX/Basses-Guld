@@ -114,12 +114,18 @@ header .navbar-nav {
 * {
   font-family: 'Alata', sans-serif; }
 
+html {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 235px; }
+
 .footer {
+  position: absolute;
+  bottom: 0;
+  height: 235px;
   padding-top: 15px;
   background-color: #09283a;
-  color: white;
-  display: sticky;
-  bottom: 0; }
+  color: white; }
   .footer img {
     width: 125px;
     margin-bottom: 10px; }
