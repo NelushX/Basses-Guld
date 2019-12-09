@@ -93,4 +93,30 @@ $(document).ready(function() {
         this.image4 = image4;
     }
 });
+    /*
+let input = $("#input").val();
+$("#search").on("click",function(input, productlist){
+    searchlist = []; 
+for (let i = 0; i < productlist.length; i++) {
+    let exist = productlist[i];
+    if (exist == input) {
+        productlist.push(searchlist);
+}
+else {
+   let error = $("<p>").text("Tyvärr kunde vi inte hitta några produkter för din sökning, testa sök på något annat");
+}}
 
+});
+*/
+let input = $("#input").val();
+$("#search").on("click", function(){
+let newarray = $.grep(productlist, function(){
+    return (productlist.price == input && productlist.name == input && productlist.description == input);
+});
+ for (let i = 0; i < newarray.length; i++) {
+    let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+    let brand = $("<p>").html("<b>" + productlist[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+    let name = $("<p>").html(productlist[i].name).addClass("pName").appendTo(infoContainer);
+    let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+ } 
+});
