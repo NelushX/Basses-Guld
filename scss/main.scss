@@ -190,7 +190,9 @@ header {
         }
     }
 }
-
+.hidden {
+    display: none; 
+}
 .footer{
     padding-top: 15px;
     background-color: $bluecolor;

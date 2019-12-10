@@ -139,6 +139,9 @@ header .navbar-nav {
         .carouselContainer .carouselBox .carouselText hr {
           height: 3px; } }
 
+.hidden {
+  display: none; }
+
 .footer {
   padding-top: 15px;
   background-color: #09283a;

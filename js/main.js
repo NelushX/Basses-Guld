@@ -92,22 +92,23 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
+        $(input).change( function () {
+          let filter = $(this).val();
+          if (filter) {
+            $(list).find("a:notss(:contains(" + filter + "))").parent().slideUp();
+            $(list).find("a:contains(" + filter + ")").parent().slideDown();
+          } else {
+            $(list).find("li").slideDown();
+          }
+        });
+        
+     
+    
 });
-    /*
-let input = $("#input").val();
-$("#search").on("click",function(input, productlist){
-    searchlist = []; 
-for (let i = 0; i < productlist.length; i++) {
-    let exist = productlist[i];
-    if (exist == input) {
-        productlist.push(searchlist);
-}
-else {
-   let error = $("<p>").text("Tyvärr kunde vi inte hitta några produkter för din sökning, testa sök på något annat");
-}}
 
-});
-*/
+    /*
+
+
 let input = $("#input").val();
 $("#search").on("click", function(){
 let newarray = $.grep(productlist, function(){
@@ -119,4 +120,4 @@ let newarray = $.grep(productlist, function(){
     let name = $("<p>").html(productlist[i].name).addClass("pName").appendTo(infoContainer);
     let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
  } 
-});
+});*/
