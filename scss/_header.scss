@@ -57,8 +57,7 @@ header {
                 margin-left: 100%;
             }
         }
-        .fa-shopping-basket { 
-            color: $whitecolor;
+        i { 
             font-size: 1.7rem;
             margin-left: 20%;
             @include for-big-tablet-up {
@@ -69,7 +68,17 @@ header {
                 font-size: 2rem;
                 margin-left: 60%;
             }
+            .fas {
+                color: $whitecolor;
+                text-decoration: none;
+            }
         }
+        .card.card-body{
+            z-index: 1000;
+            text-align:start;
+            width: 150px;
+        }
+       
     }
     .navbar-nav {
         padding: 0;

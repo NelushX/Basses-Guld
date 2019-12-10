@@ -75,18 +75,24 @@ header .first {
     @media (min-width: 1200px) {
       header .first .img-fluid {
         margin-left: 100%; } }
-  header .first .fa-shopping-basket {
-    color: white;
+  header .first i {
     font-size: 1.7rem;
     margin-left: 20%; }
     @media (min-width: 768px) {
-      header .first .fa-shopping-basket {
+      header .first i {
         font-size: 1.9rem;
         margin-left: 45%; } }
     @media (min-width: 992px) {
-      header .first .fa-shopping-basket {
+      header .first i {
         font-size: 2rem;
         margin-left: 60%; } }
+    header .first i .fas {
+      color: white;
+      text-decoration: none; }
+  header .first .card.card-body {
+    z-index: 1000;
+    text-align: start;
+    width: 150px; }
 
 header .navbar-nav {
   padding: 0;
@@ -189,35 +195,8 @@ html {
         .carouselContainer .carouselBox .carouselText hr {
           height: 3px; } }
 
-<<<<<<< HEAD
-.hidden {
-  display: none; }
-
-.footer {
-  padding-top: 15px;
-  background-color: #09283a;
-  color: white;
-  display: sticky;
-  bottom: 0; }
-  .footer img {
-    width: 125px;
-    margin-bottom: 10px; }
-
-.checkoutsite {
-  color: white;
-  margin-top: 40px; }
-  .checkoutsite .custom-checkbox {
-    display: inline; }
-  .checkoutsite .cartbox {
-    width: 300px;
-    height: 300px;
-    background-color: grey; }
-  .checkoutsite .paybox {
-    background-color: grey; }
-=======
 .productCategoriText p {
   font-size: 1.2rem; }
->>>>>>> 7723cf3c2e754e96e692c7b634ddf945bceed695
 
 .indexH3 {
   font-size: 1.5rem; }

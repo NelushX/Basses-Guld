@@ -24,11 +24,16 @@
                     <div class="navbar navbar-expand-md navbar-light first">
                         <form class="form-inline">
                             <input type="search" aria-label="Search" id="input" class="form-control mr-2" placeholder="Vad letar du efter?">
-                            <button class="btn" id="search" type="submit">Sök</button>
                         </form>
                         <a href="index.html"><img class="img-fluid" src="images/logga.png" alt="logo"></a>
-                        <i class="fas fa-shopping-basket"></i>
-                    </div>
+                        <i><a class="fas fa-shopping-basket" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"></a></i>
+                    
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                            <div class="card card-body">
+                             produkter
+                            </div>
+                          </div>
+                        </div>
                 </div>
             </div>        
             <!--Navbar-->
@@ -126,7 +131,7 @@
             <section class="container productlist text-center mb-3">
                 <div class="row" id="productlist"></div>
             </section>
-            <div id="srcresult"></div>
+            
         </main>
 
         <aside>
