@@ -104,7 +104,7 @@ $(document).ready(function() {
         
      
     
-});
+
 
     /*
 
@@ -121,3 +121,12 @@ let newarray = $.grep(productlist, function(){
     let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
  } 
 });*/
+
+    $(".scrollupicon").on("click", function() {
+        $("html,body").animate({scrollTop:0},'50');
+    });
+
+    $("#confirmButton").on("click", function() {
+        window.open("thankyou.html");
+    });
+});

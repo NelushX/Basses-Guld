@@ -1,0 +1,21 @@
+@import 'mixins_colors_general';
+
+.scrollupicon {
+    position: relative;
+    img {
+        position: fixed;
+        transition: 1000;
+        bottom: 15px;
+        right: 15px;
+        margin: 0px;
+        padding: 10px 25px;
+        z-index: 1;
+        width: 100px;
+        @include for-big-tablet-up {
+            width: 100px;
+        }
+        @include for-desktop-up {
+            width: 125px;
+        }
+    }
+}
