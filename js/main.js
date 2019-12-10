@@ -92,35 +92,11 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
-        $(input).change( function () {
-          let filter = $(this).val();
-          if (filter) {
-            $(list).find("a:notss(:contains(" + filter + "))").parent().slideUp();
-            $(list).find("a:contains(" + filter + ")").parent().slideDown();
-          } else {
-            $(list).find("li").slideDown();
-          }
-        });
-        
-     
-    
-
-
-    /*
-
-
-let input = $("#input").val();
-$("#search").on("click", function(){
-let newarray = $.grep(productlist, function(){
-    return (productlist.price == input && productlist.name == input && productlist.description == input);
-});
- for (let i = 0; i < newarray.length; i++) {
-    let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-    let brand = $("<p>").html("<b>" + productlist[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-    let name = $("<p>").html(productlist[i].name).addClass("pName").appendTo(infoContainer);
-    let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
- } 
-});*/
+    $("#input").keyup(function() {
+        let search = $(this).val();
+        $(".productContainer").show();
+        if (search) $(".productContainer").not(":contains(" + search + ")").hide();
+    });
 
     $(".scrollupicon").on("click", function() {
         $("html,body").animate({scrollTop:0},'50');
