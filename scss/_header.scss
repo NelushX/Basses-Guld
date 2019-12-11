@@ -30,15 +30,6 @@ header {
                 }
             }
         }
-        .btn {
-            display: none;
-            @include for-desktop-up {
-                display: inline;
-                margin-top: 10px;
-                margin-left: 61.735px;
-                background-color: $lightgreycolor_bootstrap;
-            }
-        }
         .img-fluid {
             height: 50px;
             margin-left: 40px;
@@ -58,6 +49,7 @@ header {
             }
         }
         i { 
+            color: $whitecolor;
             font-size: 1.7rem;
             margin-left: 20%;
             @include for-big-tablet-up {
@@ -68,19 +60,16 @@ header {
                 font-size: 2rem;
                 margin-left: 60%;
             }
-            .fas {
-                color: $whitecolor;
-                text-decoration: none;
-            }
         }
-        .card.card-body{
-            z-index: 1000;
-            text-align:start;
-            width: 150px;
-            height: 150px;
-            
-        }
-       
+               
+           .basket {
+               width: 20%;
+               height: 20%;
+               z-index: 1000;
+               display: none;
+               
+           }   
+        }       
     }
     .navbar-nav {
         padding: 0;
@@ -109,4 +98,3 @@ header {
             opacity: 1;
         }
     }
-}

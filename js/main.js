@@ -11,7 +11,7 @@ $(document).ready(function() {
     let prod9 = new Product("Steel Meisterstück Cuff Links Blue", 14010310, "montblanc", 3400, "Manschettknappar från varumärket Montblanc. Dessa manschettknappar är tillverkade i rostfritt stål, med en unik yta i mittdelen, skapad av ett hexagonalt mönster av blått lack.", 16, "Finns i lager", "images/products/9_image0.JPG", "images/products/9_image1.JPG", "images/products/9_image2.JPG", "images/products/9_image3.JPG");
     let prod10 = new Product("Big Ben Cufflinks", 15020810, "paul Smith", 1099, "manschettknappar från Paul Smith tillverkade i koppar och zink. Föreställer avbildning av Big Ben. Logotyp graverad på bakfästena.", 18, "Finns i lager", "images/products/10_image0.JPG", "images/products/10_image1.JPG", "images/products/10_image2.JPG", "images/products/10_image3.JPG");
     let prod11 = new Product("Mother of Pearl Multistripe Cufflinks Ivory", 15043310, "paul Smith", 599, "Mother of Pearl Multistripe Cufflinks Ivory", 18, "Finns i lager", "images/products/11_image0.JPG", "images/products/11_image1.JPG", "images/products/11_image2.JPG", "images/products/11_image3.JPG");
-    let prod12 = new Product("Logo Cufflink Copper", 16459610, "aul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "images/products/12_image0.JPG", "images/products/12_image1.JPG", "images/products/12_image2.JPG", "images/products/12_image3.JPG");
+    let prod12 = new Product("Logo Cufflink Copper", 16459610, "paul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "images/products/12_image0.JPG", "images/products/12_image1.JPG", "images/products/12_image2.JPG", "images/products/12_image3.JPG");
 
     let favorites = [prod6, prod9, prod12, prod10];
     let productlist = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
@@ -79,6 +79,7 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
+
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {
         this.name = name;
         this.artnr = artnr;
@@ -92,6 +93,7 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
+    
     $("#input").keyup(function() {
         let search = $(this).val().toLowerCase();
         $(".productContainer").show();
@@ -106,6 +108,9 @@ $(document).ready(function() {
         $("#favorites").show();
         $(".indexH3").show();
         }
+    });
+    $("#shoppingcart").on("click", function(){
+        $("#basketInfo").css("display","block");
     });
    
     $(".scrollupicon").on("click", function() {

@@ -50,14 +50,6 @@ header .first {
     @media (min-width: 992px) {
       header .first .form-inline input::placeholder {
         opacity: 1; } }
-  header .first .btn {
-    display: none; }
-    @media (min-width: 1200px) {
-      header .first .btn {
-        display: inline;
-        margin-top: 10px;
-        margin-left: 61.735px;
-        background-color: #f8f9fa; } }
   header .first .img-fluid {
     height: 50px;
     margin-left: 40px; }
@@ -76,6 +68,7 @@ header .first {
       header .first .img-fluid {
         margin-left: 100%; } }
   header .first i {
+    color: white;
     font-size: 1.7rem;
     margin-left: 20%; }
     @media (min-width: 768px) {
@@ -86,35 +79,32 @@ header .first {
       header .first i {
         font-size: 2rem;
         margin-left: 60%; } }
-    header .first i .fas {
-      color: white;
-      text-decoration: none; }
-  header .first .card.card-body {
+  header .first .basket {
+    width: 20%;
+    height: 20%;
     z-index: 1000;
-    text-align: start;
-    width: 150px;
-    height: 150px; }
+    display: none; }
 
-header .navbar-nav {
+.navbar-nav {
   padding: 0;
   margin: 0;
   font-size: 1.3rem; }
-  header .navbar-nav .nav-item {
+  .navbar-nav .nav-item {
     padding: 9px 0px;
     margin: 0px 20px;
     display: inline-block;
     position: relative; }
-  header .navbar-nav .nav-item::before {
+  .navbar-nav .nav-item::before {
     transition: 300ms;
     height: 5px;
     content: "";
     position: absolute;
     background-color: #09283a; }
-  header .navbar-nav .nav-item-fade-up::before {
+  .navbar-nav .nav-item-fade-up::before {
     width: 100%;
     bottom: 5px;
     opacity: 0; }
-  header .navbar-nav .nav-item-fade-up:hover::before {
+  .navbar-nav .nav-item-fade-up:hover::before {
     bottom: 11px;
     opacity: 1; }
 
