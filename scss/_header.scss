@@ -30,15 +30,6 @@ header {
                 }
             }
         }
-        .btn {
-            display: none;
-            @include for-desktop-up {
-                display: inline;
-                margin-top: 10px;
-                margin-left: 61.735px;
-                background-color: $lightgreycolor_bootstrap;
-            }
-        }
         .img-fluid {
             height: 50px;
             margin-left: 40px;
@@ -57,7 +48,7 @@ header {
                 margin-left: 100%;
             }
         }
-        .fa-shopping-basket { 
+        i { 
             color: $whitecolor;
             font-size: 1.7rem;
             margin-left: 20%;
@@ -70,6 +61,15 @@ header {
                 margin-left: 60%;
             }
         }
+               
+           .basket {
+               width: 20%;
+               height: 20%;
+               z-index: 1000;
+               display: none;
+               
+           }   
+        }       
     }
     .navbar-nav {
         padding: 0;
@@ -98,4 +98,3 @@ header {
             opacity: 1;
         }
     }
-}

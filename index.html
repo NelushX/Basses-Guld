@@ -24,17 +24,41 @@
                     <div class="navbar navbar-expand-md navbar-light first">
                         <form class="form-inline">
                             <input type="search" aria-label="Search" id="input" class="form-control mr-2" placeholder="Vad letar du efter?">
-                            <button class="btn" id="search" type="submit">Sök</button>
                         </form>
                         <a href="index.html"><img class="img-fluid" src="images/logga.png" alt="logo"></a>
-                        <i class="fas fa-shopping-basket"></i>
+                       <!-- Button trigger modal -->
+                    <!-- Modal -->
+                    <i class="fas fa-shopping-basket" data-toggle="modal" data-target="#exampleModalCenter">
+                    </i>
+                    
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Din varukorg</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <img id="basketImage">
+                            <p id="basketPrice">kr</p>
+                            <p id="totPriceBasket">kr</p>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fortsätt Handla</button>
+                            <button type="button" class="btn btn-primary">Gå till kassan</button>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
-            </div>        
+             </div>
+        </div>
             <!--Navbar-->
             <div class="row">
                 <div class="w-100">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item nav-item-fade-up"><a class="nav-link active" href="index.html">Manschettknappar <span class="sr-only">(current)</span></a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Armband</a></li>
@@ -128,6 +152,7 @@
             <section class="container productlist text-center mb-3">
                 <div class="row" id="productlist"></div>
             </section>
+            
         </main>
 
         <aside>
