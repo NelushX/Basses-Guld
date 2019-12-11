@@ -101,7 +101,7 @@ $(document).ready(function() {
         $(".indexH3").hide();
         if (search)  $(".productContainer").not(":contains(" + search + ")").hide();
         else {
-            $(".inspiration").show();
+        $(".inspiration").show();
         $(".carouselContainer").show();
         $("#favorites").show();
         $(".indexH3").show();
