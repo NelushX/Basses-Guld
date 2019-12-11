@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     
     for (let i = 0; i < favorites.length; i++) {
-        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#favorites"));
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "favoriteid_" + [i]).appendTo($("#favorites"));
 
         let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
         let image = $("<img>").attr("src", favorites[i].image1).attr("alt", favorites[i].name)
@@ -61,7 +61,7 @@ $(document).ready(function() {
     */
 
     for (let i = 0; i < productlist.length; i++) {
-        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#productlist"));
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + [i]).appendTo($("#productlist"));
 
         let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
         let image = $("<img>").attr("src", productlist[i].image1).attr("alt", productlist[i].name)
@@ -97,7 +97,142 @@ $(document).ready(function() {
         $("html,body").animate({scrollTop:0},'50');
     });
 
-    $("#confirmButton").on("click", function() {
-        window.open("thankyou.html");
+    let customers = [];
+
+    $("#confirmButton").on("click", function(event) {
+        // $("main").addClass("d-none");
+        // $("article").addClass("d-block");
+
+        event.preventDefault();
+
+        let ordernumber = Math.floor(Math.random()*999999);
+        customers.push(ordernumber);
+
+        let epost = $("#epost").val();
+        customers.push(epost);
+        // $("#epostInput").html(epost);
+
+        let phone = $("#phone").val();
+        customers.push(phone);
+        // $("#phoneInput").html(phone);
+        
+        let name = $("#name").val();
+        customers.push(name);
+        // $("#nameInput").html(name);
+
+        let adress = $("#adress").val();
+        customers.push(adress);
+        // $("#adressInput").html(adress);
+
+        let city = $("#city").val();
+        customers.push(city);
+        // $("#cityInput").html(city);
+
+        let zipcode = $("#zipcode").val();
+        customers.push(zipcode);
+        // $("#zipcodeInput").html(zipcode);
+
+        sessionStorage.setItem("customerList", JSON.stringify(customers));
+    
+        window.open("thankyou.html", "_self");
     });
+
+
+    $("#id_0").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod1));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_1").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod2));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_2").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod3));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_3").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod4));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_4").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod5));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_5").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod6));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_6").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod7));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_7").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod8));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+
+    $("#id_8").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod9));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+
+    $("#id_9").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod10));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_10").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod11));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_11").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod12));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+});
+
+$(document).ready(function(){
+
+    let prodlist1 = JSON.parse(localStorage.getItem("prodList"));
+ 
+    let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
+    // headImg.attr("class", "imageContainer");
+
+    $(".headimg").append(headImg);
+    $(".title").html(prodlist1.name);
+    $(".brand").html(prodlist1.brand);
+    $(".artnmr").html(prodlist1.artnr);
+    $(".description").html(prodlist1.description);
+    $(".price").html("Pris: " + prodlist1.price + ":-");
+    $(".stock").html(prodlist1.stock);
+
+    
+
+    // localStorage.clear();
+
+});
+
+
+$(document).ready(function() {
+
+    let customer = JSON.parse(sessionStorage.getItem("customerList"));
+
+    $("#ordernumber").html(customer[0]);
+    $("#epostThankYou").html(customer[1]);
+    $("#phoneThankYou").html(customer[2]);
+    $("#nameThankYou").html(customer[3]);
+    $("#adressThankYou").html(customer[4]);
+    $("#cityThankYou").html(customer[5]);
+    $("#zipcodeThankYou").html(customer[6]);
+
 });
