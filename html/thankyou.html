@@ -19,7 +19,7 @@
         <title>Basses Guld | Tack för din beställning</title>
     </head>
     <body>
-        <header class="container-fluid">
+        <header class="container-fluid sticky-top">
             <div class="row start">
                 <div class="col-12 col-lg-12 w-100 p-0">
                     <div class="navbar navbar-expand-md navbar-light first">
@@ -27,23 +27,25 @@
                             <input type="search" aria-label="Search" id="input" class="form-control mr-2" placeholder="Vad letar du efter?">
                         </form>
                         <a href="../index.html"><img class="img-fluid" src="../images/logga.png" alt="logo"></a>
-                        <i class="fas fa-shopping-basket"></i>
+                        <i class="fas fa-shopping-basket invisible" data-toggle="modal" data-target="#shoppingModal"></i>
                     </div>
                 </div>
-            </div>        
-            <!--Navbar-->
+            </div>
+        </header>
+
+        <nav class="container-fluid">
             <div class="row">
                 <div class="w-100">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item nav-item-fade-up"><a class="nav-link" href="../index.html">Manschettknappar</a></li>
+                            <li class="nav-item nav-item-fade-up"><a class="nav-link active" href="../index.html">Manschettknappar <span class="sr-only">(current)</span></a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Armband</a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Halsband</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
-        </header>
+        </nav>
 
         <main>
             <section class="container text-center">

@@ -1,5 +1,12 @@
 $(document).ready(function() {
+    $(".sticky-top").removeAttr("style");
+    // Back-to-top icon
+    $(".scrollupicon").on("click", function() {
+        $("html,body").animate({scrollTop:0},'50');
+    });
 
+
+    // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG");
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "images/products/2_image0.JPG", "images/products/2_image1.JPG", "images/products/2_image2.JPG", "images/products/2_image3.JPG");
     let prod3 = new Product("Cuff Links Golf Gold / Green", 10529410, "skultuna", 599, "Manschettknappar från Skultuna. En ny produktlinje som hyllar en av Storbritanniens mest klassiska sporter, golf. Tillverkade i guldpläterad mässing.", 17, "Finns i lager", "images/products/3_image0.JPG", "images/products/3_image1.JPG", "images/products/3_image2.JPG", "images/products/3_image3.JPG");
@@ -17,6 +24,7 @@ $(document).ready(function() {
     let productlist = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
 
     
+    // Loop for favoritelist
     for (let i = 0; i < favorites.length; i++) {
         let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "favoriteid_" + [i]).appendTo($("#favorites"));
 
@@ -36,30 +44,8 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + favorites[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
-    // Skapar favoriter som väljs random
-    /*
-    for (let i = 0; i < 4; i++) {
-        let randomNumber = Math.floor(Math.random() * 12);
-        
-        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#favorites"));
 
-        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-        let image = $("<img>").attr("src", productlist[randomNumber].image1).attr("alt", productlist[randomNumber].name)
-            .mouseover(function() {
-                image.attr("src", productlist[randomNumber].image2);
-            })
-            .mouseout(function() {
-                image.attr("src", productlist[randomNumber].image1);
-            })
-            .appendTo(imageContainer);  
-
-        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-        let brand = $("<p>").html("<b>" + productlist[randomNumber].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-        let name = $("<p>").html(productlist[randomNumber].name).addClass("pName").appendTo(infoContainer);
-        let price = $("<p>").html("<b>" + productlist[randomNumber].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
-    }
-    */
-
+    // Loop for productlist
     for (let i = 0; i < productlist.length; i++) {
         let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + [i]).appendTo($("#productlist"));
 
@@ -79,7 +65,6 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
-
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {
         this.name = name;
         this.artnr = artnr;
@@ -94,6 +79,8 @@ $(document).ready(function() {
         this.image4 = image4;
     }
     
+
+    // Searchfunction
     $("#input").keyup(function() {
         let search = $(this).val().toLowerCase();
         $(".productContainer").show();
@@ -101,63 +88,41 @@ $(document).ready(function() {
         $(".carouselContainer").hide();
         $("#favorites").hide();
         $(".indexH3").hide();
+        
         if (search)  $(".productContainer").not(":contains(" + search + ")").hide();
+
         else {
-        $(".inspiration").show();
-        $(".carouselContainer").show();
-        $("#favorites").show();
-        $(".indexH3").show();
+            $(".inspiration").show();
+            $(".carouselContainer").show();
+            $("#favorites").show();
+            $(".indexH3").show();
         }
     });
-    $("#shoppingcart").on("click", function(){
-        $("#basketInfo").css("display","block");
+
+
+    // Click on favoriteproduct -> product.html
+    $("#favoriteid_0").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod6));
+        window.open("../Basses-Guld/html/product.html", "_self");
     });
-   
-    $(".scrollupicon").on("click", function() {
-        $("html,body").animate({scrollTop:0},'50');
+
+    $("#favoriteid_1").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod9));
+        window.open("../Basses-Guld/html/product.html", "_self");
     });
 
-    let customers = [];
+    $("#favoriteid_2").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod12));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
 
-    $("#confirmButton").on("click", function(event) {
-        // $("main").addClass("d-none");
-        // $("article").addClass("d-block");
-
-        event.preventDefault();
-
-        let ordernumber = Math.floor(Math.random()*999999);
-        customers.push(ordernumber);
-
-        let epost = $("#epost").val();
-        customers.push(epost);
-        // $("#epostInput").html(epost);
-
-        let phone = $("#phone").val();
-        customers.push(phone);
-        // $("#phoneInput").html(phone);
-        
-        let name = $("#name").val();
-        customers.push(name);
-        // $("#nameInput").html(name);
-
-        let adress = $("#adress").val();
-        customers.push(adress);
-        // $("#adressInput").html(adress);
-
-        let city = $("#city").val();
-        customers.push(city);
-        // $("#cityInput").html(city);
-
-        let zipcode = $("#zipcode").val();
-        customers.push(zipcode);
-        // $("#zipcodeInput").html(zipcode);
-
-        sessionStorage.setItem("customerList", JSON.stringify(customers));
-    
-        window.open("thankyou.html", "_self");
+    $("#favoriteid_3").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod10));
+        window.open("../Basses-Guld/html/product.html", "_self");
     });
 
 
+    // Click on product -> product.html
     $("#id_0").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod1));
         window.open("../Basses-Guld/html/product.html", "_self");
@@ -219,8 +184,68 @@ $(document).ready(function() {
         localStorage.setItem("prodList", JSON.stringify(prod12));
         window.open("../Basses-Guld/html/product.html", "_self");
     });
+
+
+    // Shoppingcart
+    $("#shoppingcart").on("click", function(){
+        $("#basketInfo").css("display", "block");
+    });
+
+
+    // Checkout to thankyou-page
+    let customers = [];
+
+    $("#confirmButton").on("click", function(event) {
+        // $("main").addClass("d-none");
+        // $("article").addClass("d-block");
+
+        event.preventDefault();
+
+        let ordernumber = Math.floor(Math.random()*999999);
+        customers.push(ordernumber);
+
+        let epost = $("#epost").val();
+        customers.push(epost);
+        // $("#epostInput").html(epost);
+
+        let phone = $("#phone").val();
+        customers.push(phone);
+        // $("#phoneInput").html(phone);
+        
+        let name = $("#name").val();
+        customers.push(name);
+        // $("#nameInput").html(name);
+
+        let adress = $("#adress").val();
+        customers.push(adress);
+        // $("#adressInput").html(adress);
+
+        let city = $("#city").val();
+        customers.push(city);
+        // $("#cityInput").html(city);
+
+        let zipcode = $("#zipcode").val();
+        customers.push(zipcode);
+        // $("#zipcodeInput").html(zipcode);
+
+        sessionStorage.setItem("customerList", JSON.stringify(customers));
+    
+        window.open("thankyou.html", "_self");
+    });
+
+    let customer = JSON.parse(sessionStorage.getItem("customerList"));
+
+    $("#ordernumber").html(customer[0]);
+    $("#epostThankYou").html(customer[1]);
+    $("#phoneThankYou").html(customer[2]);
+    $("#nameThankYou").html(customer[3]);
+    $("#adressThankYou").html(customer[4]);
+    $("#cityThankYou").html(customer[5]);
+    $("#zipcodeThankYou").html(customer[6]);
 });
 
+
+// Show productinformation on product.html
 $(document).ready(function(){
 
     let prodlist1 = JSON.parse(localStorage.getItem("prodList"));
@@ -236,23 +261,6 @@ $(document).ready(function(){
     $(".price").html("Pris: " + prodlist1.price + ":-");
     $(".stock").html(prodlist1.stock);
 
-    
-
     // localStorage.clear();
-
-});
-
-
-$(document).ready(function() {
-
-    let customer = JSON.parse(sessionStorage.getItem("customerList"));
-
-    $("#ordernumber").html(customer[0]);
-    $("#epostThankYou").html(customer[1]);
-    $("#phoneThankYou").html(customer[2]);
-    $("#nameThankYou").html(customer[3]);
-    $("#adressThankYou").html(customer[4]);
-    $("#cityThankYou").html(customer[5]);
-    $("#zipcodeThankYou").html(customer[6]);
 
 });
