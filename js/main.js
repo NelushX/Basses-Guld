@@ -9,7 +9,7 @@ $(document).ready(function() {
     let prod7 = new Product("Franzisko Cufflinks Navy", 12733910, "boss", 649, "Manschettknappar från BOSS. Tillverkade i silverpläterad mässing med infällning i metall och stansad logotyp.", 17, "Finns i lager", "images/products/7_image0.JPG", "images/products/7_image1.JPG", "images/products/7_image2.JPG", "images/products/7_image3.JPG");
     let prod8 = new Product("PIX Steel Cufflinks Blue Resin", 16058610, "montblanc", 2250, "Den enkla men exklusiva designen till dessa manschettknappar från Montblanc är tagen från arkitektrörelsen Bauhaus samt uppkallad efter det historiska PIX-varumärket.", 16, "Finns i lager", "images/products/8_image0.JPG", "images/products/8_image1.JPG", "images/products/8_image2.JPG", "images/products/8_image3.JPG");
     let prod9 = new Product("Steel Meisterstück Cuff Links Blue", 14010310, "montblanc", 3400, "Manschettknappar från varumärket Montblanc. Dessa manschettknappar är tillverkade i rostfritt stål, med en unik yta i mittdelen, skapad av ett hexagonalt mönster av blått lack.", 16, "Finns i lager", "images/products/9_image0.JPG", "images/products/9_image1.JPG", "images/products/9_image2.JPG", "images/products/9_image3.JPG");
-    let prod10 = new Product("Big Ben Cufflinks", 15020810, "paul Smith", 1099, "manschettknappar från Paul Smith tillverkade i koppar och zink. Föreställer avbildning av Big Ben. Logotyp graverad på bakfästena.", 18, "Finns i lager", "images/products/10_image0.JPG", "images/products/10_image1.JPG", "images/products/10_image2.JPG", "images/products/10_image3.JPG");
+    let prod10 = new Product("Big Ben Cufflinks", 15020810, "paul Smith", 1099, "Manschettknappar från Paul Smith tillverkade i koppar och zink. Föreställer avbildning av Big Ben. Logotyp graverad på bakfästena.", 18, "Finns i lager", "images/products/10_image0.JPG", "images/products/10_image1.JPG", "images/products/10_image2.JPG", "images/products/10_image3.JPG");
     let prod11 = new Product("Mother of Pearl Multistripe Cufflinks Ivory", 15043310, "paul Smith", 599, "Mother of Pearl Multistripe Cufflinks Ivory", 18, "Finns i lager", "images/products/11_image0.JPG", "images/products/11_image1.JPG", "images/products/11_image2.JPG", "images/products/11_image3.JPG");
     let prod12 = new Product("Logo Cufflink Copper", 16459610, "paul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "images/products/12_image0.JPG", "images/products/12_image1.JPG", "images/products/12_image2.JPG", "images/products/12_image3.JPG");
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     
     for (let i = 0; i < favorites.length; i++) {
-        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#favorites"));
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "favoriteid_" + [i]).appendTo($("#favorites"));
 
         let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
         let image = $("<img>").attr("src", favorites[i].image1).attr("alt", favorites[i].name)
@@ -61,7 +61,7 @@ $(document).ready(function() {
     */
 
     for (let i = 0; i < productlist.length; i++) {
-        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").appendTo($("#productlist"));
+        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + [i]).appendTo($("#productlist"));
 
         let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
         let image = $("<img>").attr("src", productlist[i].image1).attr("alt", productlist[i].name)
@@ -79,7 +79,6 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
-
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {
         this.name = name;
         this.artnr = artnr;
@@ -93,9 +92,8 @@ $(document).ready(function() {
         this.image3 = image3;
         this.image4 = image4;
     }
-    
     $("#input").keyup(function() {
-        let search = $(this).val().toLowerCase();
+        let search = $("#input").val().toLowerCase();
         $(".productContainer").show();
         $(".inspiration").hide();
         $(".carouselContainer").hide();
@@ -109,15 +107,160 @@ $(document).ready(function() {
         $(".indexH3").show();
         }
     });
-    $("#shoppingcart").on("click", function(){
-        $("#basketInfo").css("display","block");
-    });
-   
+
     $(".scrollupicon").on("click", function() {
         $("html,body").animate({scrollTop:0},'50');
     });
+   
+    let customers = [];
 
-    $("#confirmButton").on("click", function() {
-        window.open("thankyou.html");
+    $("#confirmButton").on("click", function(event) {
+        // $("main").addClass("d-none");
+        // $("article").addClass("d-block");
+
+        event.preventDefault();
+
+        let ordernumber = Math.floor(Math.random()*999999);
+        customers.push(ordernumber);
+
+        let epost = $("#epost").val();
+        customers.push(epost);
+        // $("#epostInput").html(epost);
+
+        let phone = $("#phone").val();
+        customers.push(phone);
+        // $("#phoneInput").html(phone);
+        
+        let name = $("#name").val();
+        customers.push(name);
+        // $("#nameInput").html(name);
+
+        let adress = $("#adress").val();
+        customers.push(adress);
+        // $("#adressInput").html(adress);
+
+        let city = $("#city").val();
+        customers.push(city);
+        // $("#cityInput").html(city);
+
+        let zipcode = $("#zipcode").val();
+        customers.push(zipcode);
+        // $("#zipcodeInput").html(zipcode);
+
+        sessionStorage.setItem("customerList", JSON.stringify(customers));
+    
+        window.open("thankyou.html", "_self");
     });
+
+
+    $("#id_0").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod1));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_1").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod2));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_2").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod3));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_3").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod4));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_4").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod5));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_5").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod6));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_6").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod7));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_7").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod8));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+
+    $("#id_8").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod9));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+
+    $("#id_9").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod10));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_10").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod11));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+
+    $("#id_11").on("click", function(){
+        localStorage.setItem("prodList", JSON.stringify(prod12));
+        window.open("../Basses-Guld/html/product.html", "_self");
+    });
+});
+
+$(document).ready(function(){
+
+    let prodlist1 = JSON.parse(localStorage.getItem("prodList"));
+ 
+    let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
+    // headImg.attr("class", "imageContainer");
+
+    $(".headimg").append(headImg);
+    $(".title").html(prodlist1.name);
+    $(".brand").html(prodlist1.brand);
+    $(".artnmr").html(prodlist1.artnr);
+    $(".description").html(prodlist1.description);
+    $(".price").html("Pris: " + prodlist1.price + ":-");
+    $(".stock").html(prodlist1.stock);
+
+
+
+    // localStorage.clear();
+
+});
+
+let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
+let basket = [];
+$("#addToBasket").on("click",function(){
+    $.each(prodlist1, function(i,val){
+    $("#basketImage").append(headImg);
+    $("#basketTitle").html(prodlist1.name);
+    $("#basketBrand").html(prodlist1.brand);
+    $("#basketArtnr").html(prodlist1.artnr);
+    $("#basketPrice").html("Pris: " + prodlist1.price + ":-");
+    prodlist1.push(basket);
+});
+});
+
+
+$(document).ready(function() {
+
+    let customer = JSON.parse(sessionStorage.getItem("customerList"));
+
+    $("#ordernumber").html(customer[0]);
+    $("#epostThankYou").html(customer[1]);
+    $("#phoneThankYou").html(customer[2]);
+    $("#nameThankYou").html(customer[3]);
+    $("#adressThankYou").html(customer[4]);
+    $("#cityThankYou").html(customer[5]);
+    $("#zipcodeThankYou").html(customer[6]);
+
 });
