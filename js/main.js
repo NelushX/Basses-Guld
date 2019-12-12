@@ -185,12 +185,7 @@ $(document).ready(function() {
     });
 
 
-    // Shoppingcart
-    $("#shoppingcart").on("click", function(){
-        $("#basketInfo").css("display", "block");
-    });
-    
-    let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
+let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
 let basket = [];
 $("#addToBasket").on("click",function(){
     $.each(prodlist1, function(i,val){
