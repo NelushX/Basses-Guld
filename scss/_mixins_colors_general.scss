@@ -30,3 +30,13 @@ $lightgreycolor: #f3f3f3;
 * {
     font-family: 'Alata', sans-serif;
 }
+
+// Needed to remove padding opening modal
+.modal-open {
+    padding-right: 0px !important;
+    overflow-y: scroll;
+}
+
+header.container-fluid {
+    width: auto;
+}

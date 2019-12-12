@@ -19,7 +19,7 @@
         <title>Basses Guld | Kassa</title>
     </head>
     <body>
-        <header class="container-fluid">
+        <header class="container-fluid sticky-top">
             <div class="row start">
                 <div class="col-12 col-lg-12 w-100 p-0">
                     <div class="navbar navbar-expand-md navbar-light first">
@@ -27,143 +27,205 @@
                             <input type="search" aria-label="Search" id="input" class="form-control mr-2" placeholder="Vad letar du efter?">
                         </form>
                         <a href="../index.html"><img class="img-fluid" src="../images/logga.png" alt="logo"></a>
-                        
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Din varukorg</h5>
+                        <i class="fas fa-shopping-basket" data-toggle="modal" data-target="#shoppingModal"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <div class="modal" id="shoppingModal" tabindex="-1" role="dialog" aria-labelledby="shoppingModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="shoppingModalLongTitle">Din varukorg</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            </div>
-                            <div class="modal-body">
+                        </div>
+                        <div class="modal-body">
                             <img id="basketImage">
                             <p id="basketPrice">kr</p>
                             <p id="totPriceBasket">kr</p>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fortsätt Handla</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fortsätt handla</button>
                             <button type="button" class="btn btn-primary">Gå till kassan</button>
-                            </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
-            </div>        
-            <!--Navbar-->
+            </div>
+        </section>
+
+        <nav class="container-fluid">
             <div class="row">
                 <div class="w-100">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item nav-item-fade-up"><a class="nav-link" href="../index.html">Manschettknappar</a></li>
+                            <li class="nav-item nav-item-fade-up"><a class="nav-link active" href="../index.html">Manschettknappar <span class="sr-only">(current)</span></a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Armband</a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Halsband</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
-        </header>
-
-       
+        </nav>
 
         <main>  
-            <div class="container-fluid checkoutsite" id="checkout">
-                <div class="row text-center">
-                    <div class="col-12"><h2>Kassan</h2>
-                    <span> Alltid Gratis Frakt! </span>
-                    <i class="fas fa-shipping-fast"></i>
-                    </div>
-                </div>
+            <div class="container checkoutsite">
                 <div class="row">
-                    <div class="col red"></div>
-                        <div class="col-12 col-md-6 blue text-center cartbox">
-                            <h3>Varukorg </h3>
-                            <p>Input som loopats från clasen</p>
-                        </div>
-                    <div class="col red"></div>
-                </div>
-                <div class="row pay">
-                    <div class="col red"></div>
-                        <div class=" mt-4 col-12 col-md-6 blue paybox">
-                            <h3 class="text-center">Välj ditt sätt att betala!</h3>
-                                <div class=container>
-                                    <div class="row">
-                                        <div class="col-2 col-md">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="customRadio1" name="payment">
-                                                <label class="custom-control-label" for="customRadio1"><i class="fab fa-cc-visa fa-2x"></i></label>
-                                            </div>
-                                        </div>
-                                    <div class="col-8 col-md-8"></div>
-                                    <div class="col-2 col-md"> 0kr</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-2 col-md">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="customRadio2" name="payment">
-                                                <label class="custom-control-label" for="customRadio2"><i class="fab fa-cc-mastercard fa-2x"></i></label>
-                                            </div>
-                                        </div>
-                                    <div class="col-8 col-md-8"></div>
-                                    <div class="col-2 col-md"> <span class="align-middle">0kr</span></div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-2 col-md">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="customRadio3" name="payment">
-                                                <label class="custom-control-label" for="customRadio3"><i class="fab fa-cc-apple-pay fa-2x"></i></label>
-                                            </div>
-                                        </div>
-                                    <div class="col-8 col-md-8"></div>
-                                    <div class="col-2 col-md"> 0kr</div>
-                                    </div>
-                                </div>
-                                <hr>                       
-                                <h3 class="text-center">Fyll i din information</h3>
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="epost">E-post</label>
-                                                <input type="email" class="form-control" id="epost" placeholder="bengt.h@live.se...">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Namn</label>
-                                                <input type="name" class="form-control" id="name" placeholder="Bengt Hernandes...">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="adress">Adress</label>
-                                            <input type="text" class="form-control" id="adress" placeholder="Tologatan 12...">
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-10">
-                                                <label for="stad">Stad</label>
-                                                <input type="text" class="form-control" id="stad" placeholder="Stockholm...">
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label for="postkod">Postkod</label>
-                                                <input type="text" class="form-control" id="postkod" placeholder="11249...">
-                                            </div>
-                                        </div>
-                                        <div class="form-group text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                <label class="form-check-label" for="gridCheck">Jag accepterar köpvillkoren</label>
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-primary" id="confirmButton">Lägg beställning</button>
-                                        </div>
-                                        
-                                    </form>
+                    <div class="col text-center">
+                        <h2>Kassan</h2>
+                        <span>Alltid Gratis Frakt!</span>
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
-                    <div class="col red"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center cartbox">
+                        <h3>Varukorg </h3>
+                        <p>Input som loopats från clasen</p>
+                    </div>
+                </div>
+                
+                <div class="row pay">
+                    <div class=" mt-4 col paybox">
+                        <h3 class="text-center">Välj ditt sätt att betala!</h3>
+                            
+
+                        <div class="row">
+                            <div class="col text-left">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="customRadio1" name="payment">
+                                    <label class="custom-control-label" for="customRadio1"><i class="fab fa-cc-visa fa-2x"></i></label>
+                                </div>
+                            </div>
+                            <div class="col text-right mr-3">
+                                <p>0kr</p>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col text-left">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="customRadio2" name="payment">
+                                    <label class="custom-control-label" for="customRadio2"><i class="fab fa-cc-mastercard fa-2x"></i></label>
+                                </div>
+                            </div>
+                            <div class="col text-right mr-3">
+                                <p>0kr</p>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col text-left">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="customRadio3" name="payment">
+                                    <label class="custom-control-label" for="customRadio3"><i class="fab fa-cc-apple-pay fa-2x"></i></label>
+                                </div>
+                            </div>
+                            <div class="col text-right mr-3">
+                                <p>0kr</p>
+                            </div>
+                        </div>
+                        <hr>
+                       
+                        <h3 class="text-center">Fyll i din information</h3>
+                        <!-- <form novalidate class="needs-validation"> -->
+                        <form class="was-validated" novalidate="">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="epost">E-post</label>
+                                    <input type="email" class="form-control" name="epost" id="epost" required>
+                                        <div class="invalid-feedback">
+                                            Fyll i din e-postadress
+                                        </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="phone">Telefon</label>
+                                    <input type="text" class="form-control" name="phone" id="phone" required>
+                                        <div class="invalid-feedback">
+                                            Fyll i ditt telefonnummer
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="name">Namn</label>
+                                    <input type="text" class="form-control" name="name" id="name" required>
+                                        <div class="invalid-feedback">
+                                            Fyll i ditt namn
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="adress">Adress</label>
+                                <input type="text" class="form-control" name="adress" id="adress" required>
+                                    <div class="invalid-feedback">
+                                        Fyll i din adress
+                                    </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="city">Stad</label>
+                                    <input type="text" class="form-control" name="city" id="city" required>
+                                        <div class="invalid-feedback">
+                                            Fyll i din stad
+                                        </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="zipcode">Postkod</label>
+                                    <input type="text" class="form-control" name="zipcode" id="zipcode" required>
+                                        <div class="invalid-feedback">
+                                            Fyll i din postkod
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="gridCheck" id="gridCheck" required>
+                                    <label class="form-check-label" for="gridCheck">Jag accepterar köpvillkoren</label>
+                                        <div class="invalid-feedback">
+                                            Du måste godkänna villkoren!
+                                        </div>
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary" id="confirmButton">Lägg beställning</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>
+
+        <article class="d-none">
+            <section class="container text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <br>
+                        <h3>Tack för din beställning!</h3>
+                        <br>
+                        <p>Ordernummer: <b><span id="ordernumber"></span></b></p>
+                        <br>
+                        <p>Inom kort kommer en orderbekräftelse skickas till din mail.</p>
+                        <br>
+                        <p>Nedan följer den kontaktinformation vi mottagit av dig:</p>
+                        <p>E-post: <b><span id="epostInput"></span></b></p>
+                        <p>Telefon: <b><span id="phoneInput"></span></b></p>
+                        <p>Namn: <b><span id="nameInput"></span></b></p>
+                        <p>Adress: <b><span id="adressInput"></span></b></p>
+                        <p>Stad: <b><span id="cityInput"></span></b></p>
+                        <p>Postkod: <b><span id="zipcodeInput"></span></b></p>
+                        <br>
+                        <br>
+                        <p>Vi alla på Basses Guld önskar dig en fortsatt fin dag!</p>
+                        <br>
+                    </div>
+                </div>
+            </section>
+        </article>
 
         <footer>
             <div class="container-fluid footer">   

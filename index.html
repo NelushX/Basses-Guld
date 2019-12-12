@@ -18,7 +18,7 @@
         <title>Basses Guld | Javascript</title>
     </head>
     <body>
-        <header class="container-fluid">
+        <header class="container-fluid sticky-top">
             <div class="row start">
                 <div class="col-12 col-lg-12 w-100 p-0">
                     <div class="navbar navbar-expand-md navbar-light first">
@@ -26,21 +26,23 @@
                             <input type="search" aria-label="Search" id="input" class="form-control mr-2" placeholder="Vad letar du efter?">
                         </form>
                         <a href="index.html"><img class="img-fluid" src="images/logga.png" alt="logo"></a>
-                       <!-- Button trigger modal -->
-                    <!-- Modal -->
-                    <i class="fas fa-shopping-basket" data-toggle="modal" data-target="#exampleModalCenter">
-                    </i>
-                    
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Din varukorg</h5>
+                        <i class="fas fa-shopping-basket" data-toggle="modal" data-target="#shoppingModal"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <div class="modal" id="shoppingModal" tabindex="-1" role="dialog" aria-labelledby="shoppingModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="shoppingModalLongTitle">Din varukorg</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            </div>
-                            <div class="modal-body">
+                        </div>
+                        <div class="modal-body">
                             <img id="basketImage">
                             <p id="basketPrice"></p>
                             <p id="totPriceBasket"></p>
@@ -48,14 +50,13 @@
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fortsätt Handla</button>
                             <button type="button" class="btn btn-primary">Gå till kassan</button>
-                            </div>
-                        </div>
-                        </div>
+                            </div>  
                     </div>
                 </div>
-             </div>
-        </div>
-            <!--Navbar-->
+            </div>
+        </section>
+
+        <nav class="container-fluid">
             <div class="row">
                 <div class="w-100">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
@@ -67,9 +68,7 @@
                     </nav>
                 </div>
             </div>
-        </header>
-
-       
+        </nav>
 
         <main>
             <section class="carouselContainer"> <!-- Carousel -->
@@ -112,9 +111,11 @@
             </section>
 
             <section class="container mt-4 mb-2">
-                <div class="col-12 text-center productCategoriText">
-                    <p>Manschettknappar är en subtil detalj som kan berätta mycket om bärarens personlighet. Accessoaren är formell och placeras i en skjorta med dubbel manschett. Välj ett lekfullt motiv eller en stilren silverpläterad variant.</p>
-                    <hr>
+                <div class="row">
+                    <div class="col-12 text-center productCategoriText">
+                        <p>Manschettknappar är en subtil detalj som kan berätta mycket om bärarens personlighet. Accessoaren är formell och placeras i en skjorta med dubbel manschett. Välj ett lekfullt motiv eller en stilren silverpläterad variant.</p>
+                        <hr>
+                    </div>
                 </div>
             </section>
     
