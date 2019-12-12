@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    $(".sticky-top").removeAttr("style");
     // Back-to-top icon
     $(".scrollupicon").on("click", function() {
         $("html,body").animate({scrollTop:0},'50');
@@ -89,7 +88,7 @@ $(document).ready(function() {
         $("#favorites").hide();
         $(".indexH3").hide();
         
-        if (search)  $(".productContainer").not(":contains(" + search + ")").hide();
+        if (search) $(".productContainer").not(":contains(" + search + ")").hide();
 
         else {
             $(".inspiration").show();
@@ -103,49 +102,49 @@ $(document).ready(function() {
     // Click on favoriteproduct -> product.html
     $("#favoriteid_0").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod6));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#favoriteid_1").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod9));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#favoriteid_2").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod12));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#favoriteid_3").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod10));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
 
     // Click on product -> product.html
     $("#id_0").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod1));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_1").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod2));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_2").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod3));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_3").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod4));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_4").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod5));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
    
     let customers = [];
@@ -185,39 +184,39 @@ $(document).ready(function() {
 
     $("#id_5").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod6));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_6").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod7));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_7").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod8));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
 
     $("#id_8").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod9));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
 
     $("#id_9").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod10));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_10").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod11));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 
     $("#id_11").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod12));
-        window.open("../Basses-Guld/html/product.html", "_self");
+        window.open("html/product.html", "_self");
     });
 });
 
