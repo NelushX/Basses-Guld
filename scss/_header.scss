@@ -60,54 +60,7 @@ header {
                 font-size: 2rem;
                 margin-left: 60%;
             }
-<<<<<<< HEAD
-        }
-               
-           .basket {
-               width: 20%;
-               height: 20%;
-               z-index: 1000;
-               display: none;
-               
-           }   
-        }       
-    }
-    .navbar-nav {
-        padding: 0;
-        margin: 0;
-        font-size: 1.3rem;
-        .nav-item {
-            padding: 9px 0px;
-            margin: 0px 20px;
-            display: inline-block;
-            position: relative;
-        }
-        .nav-item::before {
-            transition: 300ms;
-            height: 5px;
-            content: "";
-            position: absolute;
-            background-color: $bluecolor;
-        }
-        .nav-item-fade-up::before {
-            width: 100%;
-            bottom: 5px;
-            opacity: 0;
-        }
-        .nav-item-fade-up:hover::before {
-            bottom: 11px;
-            opacity: 1;
-        }
-    }
-    
-=======
         } 
-        // .basket {
-        //     width: 20%;
-        //     height: 20%;
-        //     z-index: 1000;
-        //     display: none;
-        // }  
     }       
 }
->>>>>>> e18986adde245a2e9012ca3f2349a0885187438e
+

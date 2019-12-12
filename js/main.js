@@ -15,7 +15,7 @@ $(document).ready(function() {
     let prod7 = new Product("Franzisko Cufflinks Navy", 12733910, "boss", 649, "Manschettknappar från BOSS. Tillverkade i silverpläterad mässing med infällning i metall och stansad logotyp.", 17, "Finns i lager", "images/products/7_image0.JPG", "images/products/7_image1.JPG", "images/products/7_image2.JPG", "images/products/7_image3.JPG");
     let prod8 = new Product("PIX Steel Cufflinks Blue Resin", 16058610, "montblanc", 2250, "Den enkla men exklusiva designen till dessa manschettknappar från Montblanc är tagen från arkitektrörelsen Bauhaus samt uppkallad efter det historiska PIX-varumärket.", 16, "Finns i lager", "images/products/8_image0.JPG", "images/products/8_image1.JPG", "images/products/8_image2.JPG", "images/products/8_image3.JPG");
     let prod9 = new Product("Steel Meisterstück Cuff Links Blue", 14010310, "montblanc", 3400, "Manschettknappar från varumärket Montblanc. Dessa manschettknappar är tillverkade i rostfritt stål, med en unik yta i mittdelen, skapad av ett hexagonalt mönster av blått lack.", 16, "Finns i lager", "images/products/9_image0.JPG", "images/products/9_image1.JPG", "images/products/9_image2.JPG", "images/products/9_image3.JPG");
-    let prod10 = new Product("Big Ben Cufflinks", 15020810, "paul Smith", 1099, "Manschettknappar från Paul Smith tillverkade i koppar och zink. Föreställer avbildning av Big Ben. Logotyp graverad på bakfästena.", 18, "Finns i lager", "images/products/10_image0.JPG", "images/products/10_image1.JPG", "images/products/10_image2.JPG", "images/products/10_image3.JPG");
+    let prod10 = new Product("Big Ben Cufflinks", 15020810, "paul Smith", 1099, "manschettknappar från Paul Smith tillverkade i koppar och zink. Föreställer avbildning av Big Ben. Logotyp graverad på bakfästena.", 18, "Finns i lager", "images/products/10_image0.JPG", "images/products/10_image1.JPG", "images/products/10_image2.JPG", "images/products/10_image3.JPG");
     let prod11 = new Product("Mother of Pearl Multistripe Cufflinks Ivory", 15043310, "paul Smith", 599, "Mother of Pearl Multistripe Cufflinks Ivory", 18, "Finns i lager", "images/products/11_image0.JPG", "images/products/11_image1.JPG", "images/products/11_image2.JPG", "images/products/11_image3.JPG");
     let prod12 = new Product("Logo Cufflink Copper", 16459610, "paul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "images/products/12_image0.JPG", "images/products/12_image1.JPG", "images/products/12_image2.JPG", "images/products/12_image3.JPG");
 
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     // Searchfunction
     $("#input").keyup(function() {
-        let search = $("#input").val().toLowerCase();
+        let search = $(this).val().toLowerCase();
         $(".productContainer").show();
         $(".inspiration").hide();
         $(".carouselContainer").hide();
@@ -146,41 +146,6 @@ $(document).ready(function() {
         localStorage.setItem("prodList", JSON.stringify(prod5));
         window.open("html/product.html", "_self");
     });
-   
-    let customers = [];
-
-    $("#confirmButton").on("click", function(event) {
-        // $("main").addClass("d-none");
-        // $("article").addClass("d-block");
-
-        event.preventDefault();
-
-        let ordernumber = Math.floor(Math.random()*999999);
-        customers.push(ordernumber);
-
-        let epost = $("#epost").val();
-        customers.push(epost);
-        // $("#epostInput").html(epost);
-
-        let phone = $("#phone").val();
-        customers.push(phone);
-        // $("#phoneInput").html(phone);
-        
-        let name = $("#name").val();
-        customers.push(name);
-        // $("#nameInput").html(name);
-
-        let adress = $("#adress").val();
-        customers.push(adress);
-        // $("#adressInput").html(adress);
-
-        let city = $("#city").val();
-        customers.push(city);
-        // $("#cityInput").html(city);
-
-        let zipcode = $("#zipcode").val();
-        customers.push(zipcode);
-        // $("#zipcodeInput").html(zipcode);
 
     $("#id_5").on("click", function(){
         localStorage.setItem("prodList", JSON.stringify(prod6));
@@ -218,8 +183,81 @@ $(document).ready(function() {
         localStorage.setItem("prodList", JSON.stringify(prod12));
         window.open("html/product.html", "_self");
     });
+
+
+    // Shoppingcart
+    $("#shoppingcart").on("click", function(){
+        $("#basketInfo").css("display", "block");
+    });
+    
+    let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
+let basket = [];
+$("#addToBasket").on("click",function(){
+    $.each(prodlist1, function(i,val){
+    $("#basketImage").append(headImg);
+    $("#basketTitle").html(prodlist1.name);
+    $("#basketBrand").html(prodlist1.brand);
+    $("#basketArtnr").html(prodlist1.artnr);
+    $("#basketPrice").html("Pris: " + prodlist1.price + ":-");
+    prodlist1.push(basket);
+});
 });
 
+
+    // Checkout to thankyou-page
+    let customers = [];
+
+    $("#confirmButton").on("click", function(event) {
+        // $("main").addClass("d-none");
+        // $("article").addClass("d-block");
+
+        event.preventDefault();
+
+        let ordernumber = Math.floor(Math.random()*999999);
+        customers.push(ordernumber);
+
+        let epost = $("#epost").val();
+        customers.push(epost);
+        // $("#epostInput").html(epost);
+
+        let phone = $("#phone").val();
+        customers.push(phone);
+        // $("#phoneInput").html(phone);
+        
+        let name = $("#name").val();
+        customers.push(name);
+        // $("#nameInput").html(name);
+
+        let adress = $("#adress").val();
+        customers.push(adress);
+        // $("#adressInput").html(adress);
+
+        let city = $("#city").val();
+        customers.push(city);
+        // $("#cityInput").html(city);
+
+        let zipcode = $("#zipcode").val();
+        customers.push(zipcode);
+        // $("#zipcodeInput").html(zipcode);
+
+        sessionStorage.setItem("customerList", JSON.stringify(customers));
+    
+        window.open("thankyou.html", "_self");
+    });
+
+    let customer = JSON.parse(sessionStorage.getItem("customerList"));
+
+    $("#ordernumber").html(customer[0]);
+    $("#epostThankYou").html(customer[1]);
+    $("#phoneThankYou").html(customer[2]);
+    $("#nameThankYou").html(customer[3]);
+    $("#adressThankYou").html(customer[4]);
+    $("#cityThankYou").html(customer[5]);
+    $("#zipcodeThankYou").html(customer[6]);
+});
+
+
+// Show productinformation on product.html
 $(document).ready(function(){
 
     let prodlist1 = JSON.parse(localStorage.getItem("prodList"));
@@ -235,36 +273,6 @@ $(document).ready(function(){
     $(".price").html("Pris: " + prodlist1.price + ":-");
     $(".stock").html(prodlist1.stock);
 
-
-
     // localStorage.clear();
-
-});
-
-let headImg = $("<img>").attr("src", "../" + prodlist1.image1)
-let basket = [];
-$("#addToBasket").on("click",function(){
-    $.each(prodlist1, function(i,val){
-    $("#basketImage").append(headImg);
-    $("#basketTitle").html(prodlist1.name);
-    $("#basketBrand").html(prodlist1.brand);
-    $("#basketArtnr").html(prodlist1.artnr);
-    $("#basketPrice").html("Pris: " + prodlist1.price + ":-");
-    prodlist1.push(basket);
-});
-});
-
-
-$(document).ready(function() {
-
-    let customer = JSON.parse(sessionStorage.getItem("customerList"));
-
-    $("#ordernumber").html(customer[0]);
-    $("#epostThankYou").html(customer[1]);
-    $("#phoneThankYou").html(customer[2]);
-    $("#nameThankYou").html(customer[3]);
-    $("#adressThankYou").html(customer[4]);
-    $("#cityThankYou").html(customer[5]);
-    $("#zipcodeThankYou").html(customer[6]);
 
 });
