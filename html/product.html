@@ -8,6 +8,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../js/product.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
 
         <!--Bootstrap, FA & our css-->
@@ -65,7 +66,7 @@
                 <div class="w-100">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item nav-item-fade-up"><a class="nav-link active" href="../index.html">Manschettknappar <span class="sr-only">(current)</span></a></li>
+                            <li class="nav-item nav-item-fade-up"><a class="nav-link" href="../index.html">Manschettknappar</a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Armband</a></li>
                             <li class="nav-item nav-item-fade-up"><a class="nav-link disable" href="#">Halsband</a></li>
                         </ul>
@@ -74,29 +75,27 @@
             </div>
         </nav>
 
-        <div class="container-fluid product">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-md-8">
-                    <div class="container">
-                        <div class="row text-center">
-                        <div class="col-md-2 smallimg">Small images</div>
-                        <div class="col-md-5 headimg"></div>
-                        <div class="col-md-5">
-                                <p class="title"></p>
-                                <p class="brand"></p>
-                                <p class="artnmr"></p>
-                                <p class="description"></p>
-                                <p class="price"></p>
-                                <p class="stock"></p>
-                                <button type="button" id="addToBasket" class="btn btn-primary">Lägg i varukorg</button>
-                        </div>
-                    </div>
+        <main>
+            <section class="container productpage">
+                <div class="row">
+                    <div class="col-12 col-md-6" id="productpageLeft"></div>
+                    <div class="col-12 col-md-6" id="productpageRight"></div>
+                </div>
+            </section>
+
+            <section class="container text-center">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        <hr>
+                        <h3 class="indexH3 mt-2">LIKNANDE PRODUKTER</h3>
                     </div>
                 </div>
-                <div class="col"></div>
-            </div>
-        </div>
+            </section>
+            
+            <section class="container productlist text-center">
+                <div class="row" id="lookalike"></div>
+            </section>
+        </main>
         
         <footer>
             <div class="container-fluid footer">   
