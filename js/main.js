@@ -80,27 +80,62 @@ $(document).ready(function() {
     
 
     // Searchfunction
-    $("#input").keyup(function() {
-        let search = $(this).val().toLowerCase();
-        $(".productContainer").show();
-        $(".inspiration").hide();
-        $(".carouselContainer").hide();
-        $("#favorites").hide();
-        $(".indexH3").hide();
+    // $("#input").keyup(function() {
+    //     let search = $(this).val().toLowerCase();
+    //     $(".productContainer").show();
+    //     $(".inspiration").hide();
+    //     $(".carouselContainer").hide();
+    //     $("#favorites").hide();
+    //     $(".indexH3").hide();
+        
 
         
 
-        // Presentera searchResult
+    //     // Presentera searchResult
         
-        if (search) $(".productContainer").not(":contains(" + search + ")").hide();
+    //     if (search) $(".productContainer").not(":contains(" + search + ")").hide();
 
-        else {
-            $(".inspiration").show();
-            $(".carouselContainer").show();
-            $("#favorites").show();
-            $(".indexH3").show();
+    //     else {
+    //         $(".inspiration").show();
+    //         $(".carouselContainer").show();
+    //         $("#favorites").show();
+    //         $(".indexH3").show();
+    //     }
+    // });
+    let searchResult = [];
+    $("#input").on('keypress',function() {
+    $("#productlist").empty();
+    //sökfunktion
+    let search = $("#input").val();
+     productlist.forEach(function(value) {
+        if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
+            searchResult.push(value);
+            // adderar bilder på de sökta objekten
+            let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + value.artnr).appendTo($("#productlist"));
+            let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+            let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
+            //hover bilder   
+                .mouseover(function() {
+                 image.attr("src", value.image2);
+                 })
+                 .mouseout(function() {
+                image.attr("src", value.image1);
+                 })
+                .appendTo(imageContainer); 
+                // skapar upp information
+                let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+                let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+                let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
+                let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+                localStorage.setItem("search", JSON.stringify(search));
+               
         }
+        //window.open("html/search.html","_searchpage");
+        
     });
+    
+});
+
 
 
     // Click on favoriteproduct -> product.html

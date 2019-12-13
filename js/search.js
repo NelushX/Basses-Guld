@@ -1,31 +1,38 @@
 $(document).ready(function() { 
-    let searchResult = [];
-    $("#input").on('keypress',function() {
-        let search = $("#input").val().toLowerCase();
-        console.log("Söker efter: ", search);
-        productlist.forEach(function(value) {
+       let searchResult = [];
+        $("#input").on('keypress',function() {
+        $("#productlist").empty();
+        //sökfunktion
+        let search = $("#input").val();
+         productlist.forEach(function(value) {
             if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
                 searchResult.push(value);
+                // adderar bilder på de sökta objekten
+                let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + value.artnr).appendTo($("#productlist"));
+                let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+                let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
+                //hover bilder   
+                    .mouseover(function() {
+                     image.attr("src", value.image2);
+                     })
+                     .mouseout(function() {
+                    image.attr("src", value.image1);
+                     })
+                    .appendTo(imageContainer); 
+                    // skapar upp information
+                    let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+                    let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+                    let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
+                    let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+                    //localStorage.setItem("search", JSON.stringify(search));
+                   // $("#input").val(localStorage.getItem(search));
             }
+           
+            
         });
-        console.log(searchResult);
-        let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + searchResult.artnr).appendTo($("#result"));
-
-        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-        let image = $("<img>").attr("src", searchResult.image1).attr("alt", searchResult.name)
-            .mouseover(function() {
-                image.attr("src", searchResult.image2);
-            })
-            .mouseout(function() {
-                image.attr("src", searchResult.image1);
-            })
-            .appendTo(imageContainer);  
-
-        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-        let brand = $("<p>").html("<b>" + searchResult.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-        let name = $("<p>").html(searchResult.name).addClass("pName").appendTo(infoContainer);
-        let price = $("<p>").html("<b>" + searchResult.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+        
     });
+    
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "../images/products/1_image0.JPG", "../images/products/1_image1.JPG", "../images/products/1_image2.JPG", "../images/products/1_image3.JPG");
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "../images/products/2_image0.JPG", "../images/products/2_image1.JPG", "../images/products/2_image2.JPG", "../images/products/2_image3.JPG");
     let prod3 = new Product("Cuff Links Golf Gold / Green", 10529410, "skultuna", 599, "Manschettknappar från Skultuna. En ny produktlinje som hyllar en av Storbritanniens mest klassiska sporter, golf. Tillverkade i guldpläterad mässing.", 17, "Finns i lager", "../images/products/3_image0.JPG", "../images/products/3_image1.JPG", "../images/products/3_image2.JPG", "../images/products/3_image3.JPG");
