@@ -100,16 +100,6 @@ $(document).ready(function() {
         this.image4 = image4;
     }
 
-
-    $(".prodlink").on("click", function() {
-        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
-    });
-
-    $(".lookalike").on("click", function() {
-        window.open("product.html?id=" + $(this).attr("id"), "_self");
-    });
-
-
     // Searchfunction
     // $("#input").keyup(function() {
     //     let search = $(this).val().toLowerCase();
@@ -133,64 +123,76 @@ $(document).ready(function() {
     //         $(".indexH3").show();
     //     }
     // });
+    
     let searchResult = [];
-    $("#input").on('keypress',function() {
-    $("#productlist").empty();
-    //sökfunktion
-    let search = $("#input").val();
-     productlist.forEach(function(value) {
-        if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
-            searchResult.push(value);
-            // adderar bilder på de sökta objekten
-            let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + value.artnr).appendTo($("#productlist"));
-            let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-            let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
-            //hover bilder   
-                .mouseover(function() {
-                 image.attr("src", value.image2);
-                 })
-                 .mouseout(function() {
-                image.attr("src", value.image1);
-                 })
-                .appendTo(imageContainer); 
+
+    $("#input").on("keypress", function() {
+        $("#productlist").empty();
+        //sökfunktion
+        let search = $("#input").val();
+        
+        productlist.forEach(function(value) {
+            if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
+                searchResult.push(value);
+                // adderar bilder på de sökta objekten
+                let productContainer = $("<div>").addClass("productContainer prodlink col-6 col-lg-3").attr("id", value.artnr).appendTo($("#productlist"));
+                let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+                let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
+                //hover bilder   
+                    .mouseover(function() {
+                        image.attr("src", value.image2);
+                    })
+                    .mouseout(function() {
+                        image.attr("src", value.image1);
+                    })
+                    .appendTo(imageContainer);
+
                 // skapar upp information
                 let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
                 let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
                 let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
                 let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+
                 localStorage.setItem("search", JSON.stringify(search));
                
-        }
-        //window.open("html/search.html","_searchpage");
-        
+            }
+        });
+            //window.open("html/search.html","_searchpage");
     });
     
-});
+
 
 
     // Shoppingcart
-    
-    
     let basketlist = JSON.parse(localStorage.getItem("prodList"));
     let basketimg = $("<img>").attr("src", "../" + basketlist.image1).addClass("img-fluid");
-     $("#addToBasket").on("click",function(){
-            let basket = [];
-             $("#basketImage").append(basketimg);
-             $("#basketTitle").html(basketlist.name);
-             $("#basketBrand").html(basketlist.brand);
-             $("#basketArtnr").html(basketlist.artnr);
-             $("#basketPrice").html("Pris: " + basketlist.price + ":-");
-            
-             if (localStorage.getItem("basket")){
-            let currentBasket = JSON.parse(localStorage.getItem("basket")) || {};
-            for (let i = 0; i < currentBasket.length; i++) {
-                basket.push(currentBasket[i]);
-            }
-             }
-             console.log(basketlist);
-             console.log(basket);
-             basket.push(basketlist);
-            localStorage.setItem("basket", JSON.stringify(basket));
-     });
+    
+    $("#addToBasket").on("click",function(){
 
+        let currentBasket = [];
+
+        if (localStorage.getItem("basket")) {
+            currentBasket = JSON.parse(localStorage.getItem("basket")) || {};
+        }
+
+        $("#basketImage").append(basketimg);
+        $("#basketTitle").html(basketlist.name);
+        $("#basketBrand").html(basketlist.brand);
+        $("#basketArtnr").html(basketlist.artnr);
+        $("#basketPrice").html("Pris: " + basketlist.price + ":-");
+    
+
+            console.log(basketlist);
+            console.log(currentBasket);
+            currentBasket.push(basketlist);
+            localStorage.setItem("basket", JSON.stringify(basket));
     });
+    
+    $(".prodlink").on("click", function() {
+        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
+    });
+
+    $(".lookalike").on("click", function() {
+        window.open("product.html?id=" + $(this).attr("id"), "_self");
+    });
+});

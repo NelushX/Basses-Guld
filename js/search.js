@@ -1,38 +1,4 @@
 $(document).ready(function() { 
-       let searchResult = [];
-        $("#input").on('keypress',function() {
-        $("#productlist").empty();
-        //sökfunktion
-        let search = $("#input").val();
-         productlist.forEach(function(value) {
-            if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
-                searchResult.push(value);
-                // adderar bilder på de sökta objekten
-                let productContainer = $("<div>").addClass("productContainer col-6 col-lg-3").attr("id", "id_" + value.artnr).appendTo($("#productlist"));
-                let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-                let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
-                //hover bilder   
-                    .mouseover(function() {
-                     image.attr("src", value.image2);
-                     })
-                     .mouseout(function() {
-                    image.attr("src", value.image1);
-                     })
-                    .appendTo(imageContainer); 
-                    // skapar upp information
-                    let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-                    let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-                    let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
-                    let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
-                    //localStorage.setItem("search", JSON.stringify(search));
-                   // $("#input").val(localStorage.getItem(search));
-            }
-           
-            
-        });
-        
-    });
-    
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "../images/products/1_image0.JPG", "../images/products/1_image1.JPG", "../images/products/1_image2.JPG", "../images/products/1_image3.JPG");
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "../images/products/2_image0.JPG", "../images/products/2_image1.JPG", "../images/products/2_image2.JPG", "../images/products/2_image3.JPG");
     let prod3 = new Product("Cuff Links Golf Gold / Green", 10529410, "skultuna", 599, "Manschettknappar från Skultuna. En ny produktlinje som hyllar en av Storbritanniens mest klassiska sporter, golf. Tillverkade i guldpläterad mässing.", 17, "Finns i lager", "../images/products/3_image0.JPG", "../images/products/3_image1.JPG", "../images/products/3_image2.JPG", "../images/products/3_image3.JPG");
@@ -45,8 +11,8 @@ $(document).ready(function() {
     let prod10 = new Product("Big Ben Cufflinks", 15020810, "paul Smith", 1099, "manschettknappar från Paul Smith tillverkade i koppar och zink. Föreställer avbildning av Big Ben. Logotyp graverad på bakfästena.", 18, "Finns i lager", "../images/products/10_image0.JPG", "../images/products/10_image1.JPG", "../images/products/10_image2.JPG", "../images/products/10_image3.JPG");
     let prod11 = new Product("Mother of Pearl Multistripe Cufflinks Ivory", 15043310, "paul Smith", 599, "Mother of Pearl Multistripe Cufflinks Ivory", 18, "Finns i lager", "../images/products/11_image0.JPG", "../images/products/11_image1.JPG", "../images/products/11_image2.JPG", "../images/products/11_image3.JPG");
     let prod12 = new Product("Logo Cufflink Copper", 16459610, "paul Smith", 1299, "Manschettknappar från Paul Smith tillverkade i silverfärgad koppar och zink. Prydda med en flerfärgade bricka med logotyp graverat på bricka samt bakfäste.", 16, "Finns i lager", "../images/products/12_image0.JPG", "../images/products/12_image1.JPG", "../images/products/12_image2.JPG", "../images/products/12_image3.JPG");
-    let productlist = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
     
+    let productlist = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
        
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4) {
         this.name = name;
@@ -62,4 +28,44 @@ $(document).ready(function() {
         this.image4 = image4;
     }
     
+    
+    let searchResult = [];
+
+    $("#input").on("keypress", function() {
+        $("#productlist").empty();
+        //sökfunktion
+        let search = $("#input").val();
+        
+        productlist.forEach(function(value) {
+            if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
+                searchResult.push(value);
+                // adderar bilder på de sökta objekten
+                let productContainer = $("<div>").addClass("productContainer prodlink col-6 col-lg-3").attr("id", value.artnr).appendTo($("#productlist"));
+                let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+                let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
+                //hover bilder   
+                    .mouseover(function() {
+                        image.attr("src", value.image2);
+                    })
+                    .mouseout(function() {
+                        image.attr("src", value.image1);
+                    })
+                    .appendTo(imageContainer);
+
+                // skapar upp information
+                let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+                let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+                let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
+                let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+
+                localStorage.setItem("search", JSON.stringify(search));
+               
+            }
+        });
+            //window.open("html/search.html","_searchpage");
+    });
+
+    $(".prodlink").on("click", function() {
+        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
+    });
 });
