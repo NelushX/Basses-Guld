@@ -57,12 +57,16 @@ $(document).ready(function() {
                 let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
                 let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
                 let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
-
+               
                 localStorage.setItem("search", JSON.stringify(search));
                
+                localStorage.getItem("search");  
+                
+               
             }
+            
         });
-            //window.open("html/search.html","_searchpage");
+            
     });
 
     $(".prodlink").on("click", function() {

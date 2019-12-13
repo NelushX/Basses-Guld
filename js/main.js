@@ -122,7 +122,7 @@ $(document).ready(function() {
     
     let searchResult = [];
 
-    $("#input").on("keypress", function() {
+    $("#searchButton").on("click", function() {
         $("#productlist").empty();
         //sökfunktion
         let search = $("#input").val();
@@ -150,10 +150,9 @@ $(document).ready(function() {
                 let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
 
                 localStorage.setItem("search", JSON.stringify(search));
-               
+               window.open("html/search.html?");
             }
         });
-            //window.open("html/search.html","_searchpage");
     });
     
 
