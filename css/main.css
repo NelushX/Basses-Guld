@@ -46,62 +46,11 @@ header.container-fluid {
 header.container-fluid {
   width: auto; }
 
-header .first {
-  height: 85px;
+header {
+  height: 175px;
   background-color: #09283a; }
-  @media (min-width: 768px) {
-    header .first {
-      height: 105px; } }
-  @media (min-width: 1200px) {
-    header .first {
-      height: 125px; } }
-  @media (min-width: 1600px) {
-    header .first {
-      height: 175px; } }
-  header .first .form-inline input {
-    width: 80px; }
-    @media (min-width: 768px) {
-      header .first .form-inline input {
-        width: 150px; } }
-    @media (min-width: 992px) {
-      header .first .form-inline input {
-        width: 175px; } }
-  header .first .form-inline input::placeholder {
-    opacity: 0; }
-    @media (min-width: 992px) {
-      header .first .form-inline input::placeholder {
-        opacity: 1; } }
-  header .first .img-fluid {
-    height: 50px;
-    margin-left: 40px; }
-    @media (min-width: 768px) {
-      header .first .img-fluid {
-        height: 70px;
-        margin-left: 50%; } }
-    @media (min-width: 840px) {
-      header .first .img-fluid {
-        margin-left: 70%; } }
-    @media (min-width: 992px) {
-      header .first .img-fluid {
-        margin-left: 110%;
-        height: auto; } }
-    @media (min-width: 1200px) {
-      header .first .img-fluid {
-        margin-left: 100%; } }
-  header .first i {
-    color: white;
-    font-size: 1.7rem;
-    margin-left: 20%; }
-    @media (min-width: 768px) {
-      header .first i {
-        font-size: 1.9rem;
-        margin-left: 45%; } }
-    @media (min-width: 992px) {
-      header .first i {
-        font-size: 2rem;
-        margin-left: 60%; } }
-  header .first .modal-body .img-fluid {
-    width: 40%; }
+  header i {
+    color: white; }
 
 * {
   font-family: 'Alata', sans-serif; }
