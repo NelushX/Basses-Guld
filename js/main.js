@@ -108,10 +108,6 @@ $(document).ready(function() {
     //     $(".carouselContainer").hide();
     //     $("#favorites").hide();
     //     $(".indexH3").hide();
-        
-
-        
-
     //     // Presentera searchResult
         
     //     if (search) $(".productContainer").not(":contains(" + search + ")").hide();
