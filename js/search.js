@@ -4,12 +4,12 @@ $(document).ready(function() {
     
     // let searchResult = [];    // Vad gör den här?
 
-    $("#input").on("keypress", function() {
+    $("#input").on("keyup", function() {
         $("#productlist").empty();
 
         let search = $("#input").val();
         $("#searchstring").html(search);
-
+        
         productPage.forEach(function(value) {
             if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
                 // searchResult.push(value);      // Vad gör den här?
@@ -34,10 +34,11 @@ $(document).ready(function() {
             }
             
         });
-            //window.open("html/search.html","_searchpage");
 
         $(".prodlink").on("click", function() {
             window.open("product.html?id=" + $(this).attr("id"), "_self");
         });
+
+        //window.open("html/search.html","_searchpage");
     });
 });

@@ -123,24 +123,23 @@ $(document).ready(function() {
 
     // let searchResult = [];    // Vad gör den här?
 
-    $("#searchButton").on("click", function() {
-        $("#productlist").empty();
+    $("#input").on("keypress", function() {
+        $(".carouselContainer, .productCategoriText, #favorites, .indexH3, .inspiration, #productlist").empty();
 
         let search = $("#input").val();
-        $("#searchstring").html(search);
 
-        productPage.forEach(function(value) {
+        productlist.forEach(function(value) {
             if(value.brand.indexOf(search) >= 0 || value.price.toString().indexOf(search) >= 0) {
                 // searchResult.push(value);      // Vad gör den här?
 
-                let productContainer = $("<div>").addClass("productContainer prodlink col-6 col-lg-3").attr("id", value.artnr).appendTo($("#productlist"));
+                let productContainer = $("<div>").addClass("productContainer prodlink col-6 col-lg-3").attr("id", value.artnr).appendTo($("#favorites"));
                 let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-                let image = $("<img>").attr("src", "../" + value.image1).attr("alt", value.name)
+                let image = $("<img>").attr("src", value.image1).attr("alt", value.name)
                     .mouseover(function() {
-                        image.attr("src", "../" + value.image2);
+                        image.attr("src", value.image2);
                     })
                     .mouseout(function() {
-                        image.attr("src", "../" + value.image1);
+                        image.attr("src", value.image1);
                     })
                     .appendTo(imageContainer);
 
@@ -148,15 +147,17 @@ $(document).ready(function() {
                 let brand = $("<p>").html("<b>" + value.brand + "</b>").addClass("pBrand").appendTo(infoContainer);
                 let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
                 let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
-
+               
                 localStorage.setItem("search", JSON.stringify(search));
             }
+            
         });
-            //window.open("html/search.html","_searchpage");
 
         $(".prodlink").on("click", function() {
-            window.open("product.html?id=" + $(this).attr("id"), "_self");
+            window.open("html/product.html?id=" + $(this).attr("id"), "_self");
         });
+
+        //window.open("html/search.html","_searchpage");
     });
     
 
