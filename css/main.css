@@ -316,6 +316,53 @@ header.container-fluid {
 header.container-fluid {
   width: auto; }
 
+.productpage {
+  text-align: center; }
+  .productpage .productleftcontainer .productpageimagecontainer {
+    padding: 15px; }
+    .productpage .productleftcontainer .productpageimagecontainer img {
+      margin-top: 10px;
+      width: 85%;
+      height: 400px;
+      object-fit: contain; }
+      @media (min-width: 768px) {
+        .productpage .productleftcontainer .productpageimagecontainer img {
+          width: 95%; } }
+  .productpage .productleftcontainer .productpagethumbnailcontainer .thumbnail {
+    margin-right: 20px;
+    width: 90px; }
+    @media (min-width: 768px) {
+      .productpage .productleftcontainer .productpagethumbnailcontainer .thumbnail {
+        margin-right: 15px;
+        margin-bottom: 50px;
+        width: 85px; } }
+    @media (min-width: 992px) {
+      .productpage .productleftcontainer .productpagethumbnailcontainer .thumbnail {
+        margin-right: 25px;
+        margin-bottom: 50px;
+        width: 105px; } }
+    @media (min-width: 1200px) {
+      .productpage .productleftcontainer .productpagethumbnailcontainer .thumbnail {
+        margin-top: 10px;
+        margin-right: 25px;
+        margin-bottom: 50px;
+        width: 125px; } }
+  .productpage .productrightcontainer {
+    padding: 15px; }
+    .productpage .productrightcontainer #productTitle {
+      margin-top: 50px;
+      text-transform: uppercase; }
+    .productpage .productrightcontainer #productBrand {
+      text-transform: uppercase;
+      font-size: 1.4rem; }
+    .productpage .productrightcontainer #productPrice {
+      font-size: 2rem; }
+    .productpage .productrightcontainer #productStock {
+      margin-top: 35px; }
+    .productpage .productrightcontainer #productArtnr {
+      margin-top: 25px;
+      font-size: 0.8rem; }
+
 * {
   font-family: 'Alata', sans-serif; }
 

@@ -1,1 +1,62 @@
 @import 'mixins_colors_general';
+
+.productpage {
+    text-align: center;
+    .productleftcontainer {
+        .productpageimagecontainer {
+            padding: 15px;
+            img {
+                margin-top: 10px;
+                width: 85%;
+                height: 400px;
+                object-fit: contain;
+                @include for-big-tablet-up {
+                    width: 95%;
+                }
+            }
+        }
+        .productpagethumbnailcontainer {
+            .thumbnail {
+                margin-right: 20px;
+                width: 90px;
+                @include for-big-tablet-up {
+                    margin-right: 15px;
+                    margin-bottom: 50px;
+                    width: 85px;
+                }
+                @include for-small-desktop-up {
+                    margin-right: 25px;
+                    margin-bottom: 50px;
+                    width: 105px;
+                }
+                @include for-desktop-up {
+                    margin-top: 10px;
+                    margin-right: 25px;
+                    margin-bottom: 50px;
+                    width: 125px;
+                }
+            }
+        }
+    }
+    .productrightcontainer {
+        padding: 15px;
+        #productTitle {
+            margin-top: 50px;
+            text-transform: uppercase;
+        }
+        #productBrand {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+        }
+        #productPrice {
+            font-size: 2rem;
+        }
+        #productStock {
+            margin-top: 35px;
+        }
+        #productArtnr {
+            margin-top: 25px;
+            font-size: 0.8rem;
+        }
+    }
+}
