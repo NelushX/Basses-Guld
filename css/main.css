@@ -100,6 +100,8 @@ header .first {
       header .first i {
         font-size: 2rem;
         margin-left: 60%; } }
+  header .first .modal-body .img-fluid {
+    width: 40%; }
 
 * {
   font-family: 'Alata', sans-serif; }
