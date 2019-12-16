@@ -4,16 +4,17 @@ $(document).ready(function() {
 
     $("form").on("submit", function(event) {
 
-        let form = $("form");
+    //     let form = $("form");
 
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            console.log("Validation failed");
-        }
-        form.classList.add('was-validated');
+    //     if (form.checkValidity() === false) {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //         console.log("Validation failed");
+    //     }
+    //     form.classList.add('was-validated');
 
-        
+        event.preventDefault();
+
         let ordernumber = Math.floor(Math.random()*999999);
         customers.push(ordernumber);
 
@@ -40,6 +41,7 @@ $(document).ready(function() {
         if($(this).hasClass("was-validated"))
             window.open("thankyou.html", "_self");
     });
+    
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
