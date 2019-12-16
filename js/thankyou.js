@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
     let customer = JSON.parse(sessionStorage.getItem("customerList"));
 
     $("#ordernumber").html(customer[0]);
@@ -15,6 +16,5 @@ $(document).ready(function() {
             let searchString = $("#input").val()
             localStorage.setItem("search", JSON.stringify(searchString));
         }
-       
     });
 });

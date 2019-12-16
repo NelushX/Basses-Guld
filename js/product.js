@@ -9,11 +9,8 @@ $(document).ready(function() {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
    
-
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
     
-    
-
     let productPage = JSON.parse(localStorage.getItem("prodList"));
 
 
@@ -44,13 +41,13 @@ $(document).ready(function() {
             let productArtnr = $("<p>").html("Artikelnummer: " + productPage[i].artnr).attr("id", "productArtnr").appendTo(productRightContainer);
         } 
     }
+
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
             let searchString = $("#input").val()
             localStorage.setItem("search", JSON.stringify(searchString));
         }
-    
     });
     
     $(".thumbnail").on("click", function() {
