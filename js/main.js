@@ -100,26 +100,6 @@ $(document).ready(function() {
         this.image4 = image4;
     }
 
-    // Searchfunction
-    // $("#input").keyup(function() {
-    //     let search = $(this).val().toLowerCase();
-    //     $(".productContainer").show();
-    //     $(".inspiration").hide();
-    //     $(".carouselContainer").hide();
-    //     $("#favorites").hide();
-    //     $(".indexH3").hide();
-    //     // Presentera searchResult
-        
-    //     if (search) $(".productContainer").not(":contains(" + search + ")").hide();
-
-    //     else {
-    //         $(".inspiration").show();
-    //         $(".carouselContainer").show();
-    //         $("#favorites").show();
-    //         $(".indexH3").show();
-    //     }
-    // });
-    
 
     // let searchResult = [];    // Vad gör den här?
 
@@ -185,6 +165,7 @@ $(document).ready(function() {
             currentBasket.push(basketlist);
             localStorage.setItem("basket", JSON.stringify(basket));
     });
+    
     
     $(".prodlink").on("click", function() {
         window.open("html/product.html?id=" + $(this).attr("id"), "_self");
