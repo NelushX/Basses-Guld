@@ -46,7 +46,7 @@ $(document).ready(function() {
     }
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
-            window.open("search.html?search=" + $("#input").val());
+            window.open("search.html?search=" + $("#input").val(), "_self");
             let searchString = $("#input").val()
             localStorage.setItem("search", JSON.stringify(searchString));
         }
