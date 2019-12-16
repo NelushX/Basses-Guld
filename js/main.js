@@ -4,7 +4,6 @@ $(document).ready(function() {
         $("html,body").animate({scrollTop:0},'50');
     });
 
-
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG");
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "images/products/2_image0.JPG", "images/products/2_image1.JPG", "images/products/2_image2.JPG", "images/products/2_image3.JPG");
@@ -141,37 +140,45 @@ $(document).ready(function() {
     });
     
 
-    // Shoppingcart
-    let basketlist = JSON.parse(localStorage.getItem("prodList"));
-    let basketimg = $("<img>").attr("src", "../" + basketlist.image1).addClass("img-fluid");
-    
-    $("#addToBasket").on("click",function(){
-
-        let currentBasket = [];
-
-        if (localStorage.getItem("basket")) {
-            currentBasket = JSON.parse(localStorage.getItem("basket")) || {};
-        }
-
-        $("#basketImage").append(basketimg);
-        $("#basketTitle").html(basketlist.name);
-        $("#basketBrand").html(basketlist.brand);
-        $("#basketArtnr").html(basketlist.artnr);
-        $("#basketPrice").html("Pris: " + basketlist.price + ":-");
-    
-
-            console.log(basketlist);
-            console.log(currentBasket);
-            currentBasket.push(basketlist);
-            localStorage.setItem("basket", JSON.stringify(basket));
-    });
+ 
     
     
     $(".prodlink").on("click", function() {
         window.open("html/product.html?id=" + $(this).attr("id"), "_self");
+        
     });
 
     $(".lookalike").on("click", function() {
         window.open("product.html?id=" + $(this).attr("id"), "_self");
     });
+});
+
+$(document).ready(function() {
+
+    var productInfo = JSON.parse(localStorage.getItem("currentBasket"))
+    for (let i = 0; i < productInfo.length; i++) {
+        
+     //Setting modal-body div attributes
+
+     let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
+     $("#imageCol").append(modalImg);
+
+    //productInfo
+    let basketTitle = $("<p>").html(productInfo[i].name);
+    $("#infoCol").append(basketTitle);
+
+    let basketBrand = $("<p>").html(productInfo[i].brand);
+    $("#infoCol").append(basketBrand);
+
+    let basketArtnr = $("<p>").html(productInfo[i].artnr);
+    $("#infoCol").append(basketArtnr);
+
+    let basketPrice = $("<p>").html(productInfo[i].price);
+    $("#infoCol").append(basketPrice);
+
+
+
+        
+    }
+
 });
