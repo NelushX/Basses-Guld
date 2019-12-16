@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+   
     let customers = [];
 
     $("form").on("submit", function(event) {
@@ -40,4 +40,12 @@ $(document).ready(function() {
         if($(this).hasClass("was-validated"))
             window.open("thankyou.html", "_self");
     });
+    $("#input").keypress(function(event) {
+        if (event.keyCode == 13) {
+            window.open("search.html?search=" + $("#input").val());
+            let searchString = $("#input").val()
+            localStorage.setItem("search", JSON.stringify(searchString));
+        }
+    });
+   
 });

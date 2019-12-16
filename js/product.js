@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
@@ -9,10 +8,10 @@ $(document).ready(function() {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-
+   
 
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
-    console.log("Session id: ", productId);
+    
     
 
     let productPage = JSON.parse(localStorage.getItem("prodList"));
@@ -43,9 +42,17 @@ $(document).ready(function() {
             $("<span>").html("<i class='fas fa-shopping-basket'</i>").appendTo(addToBasketButton);
 
             let productArtnr = $("<p>").html("Artikelnummer: " + productPage[i].artnr).attr("id", "productArtnr").appendTo(productRightContainer);
-        }
+        } 
     }
-
+    $("#input").keypress(function(event) {
+        if (event.keyCode == 13) {
+            window.open("search.html?search=" + $("#input").val());
+            let searchString = $("#input").val()
+            localStorage.setItem("search", JSON.stringify(searchString));
+        }
+    
+    });
+    
     $(".thumbnail").on("click", function() {
         let lg = $("#largeImage").attr("src");
 
