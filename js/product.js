@@ -8,9 +8,13 @@ $(document).ready(function() {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-   
+
+  
+
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
+    console.log("Session id: ", productId);
     
+
     let productPage = JSON.parse(localStorage.getItem("prodList"));
     let thisObject;
 
@@ -40,8 +44,10 @@ $(document).ready(function() {
 
             let productArtnr = $("<p>").html("Artikelnummer: " + productPage[i].artnr).attr("id", "productArtnr").appendTo(productRightContainer);
             thisObject = productPage[i];
-        } 
+        }
     }
+
+    console.log(thisObject);
 
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
@@ -50,7 +56,7 @@ $(document).ready(function() {
             localStorage.setItem("search", JSON.stringify(searchString));
         }
     });
-    
+
     $(".thumbnail").on("click", function() {
         let lg = $("#largeImage").attr("src");
 
@@ -59,54 +65,58 @@ $(document).ready(function() {
     });
 
 
-    $("#addToBasket").on("click", function() {
+    $("#addToBasket").on("click",function(){
 
-        // pushing info to new array
+    let setNewBasket = [];
+    if (localStorage.getItem("currentBasket")) {
+        let getCurrentBasket = JSON.parse(localStorage.getItem("currentBasket")) || [];
 
-        let setNewBasket = [];
-
-        if (localStorage.getItem("currentBasket")) {
-            let getCurrentBasket = JSON.parse(localStorage.getItem("currentBasket")) || [];
-
-            for (let i = 0; i < getCurrentBasket.length; i++) {
-                setNewBasket.push(getCurrentBasket[i]);
-                console.log(setNewBasket);
-            }
+        for (let i = 0; i < getCurrentBasket.length; i++) {
+            setNewBasket.push(getCurrentBasket[i]);
+            console.log(setNewBasket)
         }
+    }
 
-        setNewBasket.push(thisObject);
+
+    setNewBasket.push(thisObject);
+    localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
+    
+    var productInfo = JSON.parse(localStorage.getItem("currentBasket"))
+    for (let i = 0; i < productInfo.length; i++) {
         
-        localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
+        //Setting modal-body div attributes
+    let modalBody = $(".modal-body").addClass("container");
+    let modalRow = $("<div>").addClass("row");
+    let modalCol1 = $("<div>").addClass("col-6").attr("id", "imageCol");
+    let modalCol2 = $("<div>").addClass("col-6").attr("id", "infoCol");
+    modalRow.appendTo(modalBody)
+    modalCol1.appendTo(modalRow);
+    modalCol2.appendTo(modalRow);
 
-        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
-        for (let i = 0; i < productInfo.length; i++) {
+    // Image
+    let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
+    modalImg.appendTo(modalCol1);
 
-            //Setting modal-body div attributes
-            let modalBody = $(".modal-body").addClass("container");
-            let modalRow = $("<div>").addClass("row");
-            let modalCol1 = $("<div>").addClass("col-6").attr("id", "imageCol");
-            let modalCol2 = $("<div>").addClass("col-6").attr("id", "infoCol");
-            modalRow.appendTo(modalBody)
-            modalCol1.appendTo(modalRow);
-            modalCol2.appendTo(modalRow);
+    //productInfo
+    let basketTitle = $("<p>").html(productInfo[i].name);
+    basketTitle.appendTo(modalCol2);
 
-            // Image
-            let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-            modalImg.appendTo(modalCol1);
+    let basketBrand = $("<p>").html(productInfo[i].brand);
+    basketBrand.appendTo(modalCol2);
 
-            //productInfo
-            let basketTitle = $("<p>").html(productInfo[i].name);
-            basketTitle.appendTo(modalCol2);
+    let basketArtnr = $("<p>").html("Artikelnummer: " + productInfo[i].artnr);
+    basketArtnr.appendTo(modalCol2);
 
-            let basketBrand = $("<p>").html(productInfo[i].brand);
-            basketBrand.appendTo(modalCol2);
+    let basketPrice = $("<p>").html("Pris: " + productInfo[i].price);
+    basketPrice.appendTo(modalCol2);
 
-            let basketArtnr = $("<p>").html("Artikelnummer: " + productInfo[i].artnr);
-            basketArtnr.appendTo(modalCol2);
+        
+    }
+             
 
-            let basketPrice = $("<p>").html("Pris: " + productInfo[i].price);
-            basketPrice.appendTo(modalCol2);
-        }
     });
+
+
 });
+
