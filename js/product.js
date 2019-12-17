@@ -63,7 +63,6 @@ $(document).ready(function() {
     });
 
 
-
     $("#addToBasket").on("click", function() {
 
         let setNewBasket = [];
@@ -77,19 +76,6 @@ $(document).ready(function() {
             }
         }
 
-        let basketnumber = [];
-
-        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-       
-        for (let i = 0; i < quantitynumber.length; i++) {
-        if(quantitynumber.length > 0) {
-           let number = $("#number").html(quantitynumber.length);
-           number.addClass("number");
-           basketnumber.push(quantitynumber[i]);
-        }  
-       };
-        
-        
 
         setNewBasket.push(thisObject);
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
@@ -100,12 +86,15 @@ $(document).ready(function() {
             
             //Setting modal-body div attributes
             let modalBody = $(".modal-body").addClass("container");
-            let modalRow = $("<div>").addClass("row");
-            let modalCol1 = $("<div>").addClass("col-6").attr("id", "imageCol");
-            let modalCol2 = $("<div>").addClass("col-6").attr("id", "infoCol");
-            modalRow.appendTo(modalBody)
+            let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+            let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+            let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+            let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+            let modalTotal = $("<div>").addClass("col-12").attr("id", "totalCol");
+            modalRow.appendTo(modalBody);
             modalCol1.appendTo(modalRow);
             modalCol2.appendTo(modalRow);
+            modalCol3.appendTo(modalRow);
 
 
             // Image
@@ -113,17 +102,22 @@ $(document).ready(function() {
             modalImg.appendTo(modalCol1);
 
             //productInfo
-            let basketTitle = $("<p>").html(productInfo[i].name);
-            basketTitle.appendTo(modalCol2);
+            $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
 
-            let basketBrand = $("<p>").html(productInfo[i].brand);
-            basketBrand.appendTo(modalCol2);
+            $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
 
-            let basketArtnr = $("<p>").html("Artikelnummer: " + productInfo[i].artnr);
-            basketArtnr.appendTo(modalCol2);
+            $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
 
-            let basketPrice = $("<p>").html("Pris: " + productInfo[i].price);
-            basketPrice.appendTo(modalCol2);
+            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
+
+            $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
+
+            $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3);
+
+            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
+
+            let findTotalPrice = $("#modalTotalPrice");
+            findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
     });
 });
