@@ -1,4 +1,5 @@
-$(document).ready(function() { 
+$(document).ready(function() {
+
     let productPage = JSON.parse(localStorage.getItem("prodList"));
     let searchitem = JSON.parse(localStorage.getItem("search"));
 

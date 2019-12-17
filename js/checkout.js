@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
     let customers = [];
 
     $("#checkout").on('click', function(e) {
@@ -52,39 +52,3 @@ $(document).ready(function() {
     });
    
 });
-
-
-    // Keeping the varukorg
-    $(document).ready(function() {
-
-        var productInfo = JSON.parse(localStorage.getItem("currentBasket"))
-        for (let i = 0; i < productInfo.length; i++) {
-        
-            //Setting modal-body div attributes
-        let modalBody = $(".modal-body").addClass("container");
-        let modalRow = $("<div>").addClass("row");
-        let modalCol1 = $("<div>").addClass("col-6").attr("id", "imageCol");
-        let modalCol2 = $("<div>").addClass("col-6").attr("id", "infoCol");
-        modalRow.appendTo(modalBody)
-        modalCol1.appendTo(modalRow);
-        modalCol2.appendTo(modalRow);
-    
-    
-        // Image
-        let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-        modalImg.appendTo(modalCol1);
-    
-        //productInfo
-        let basketTitle = $("<p>").html(productInfo[i].name);
-        basketTitle.appendTo(modalCol2);
-    
-        let basketBrand = $("<p>").html(productInfo[i].brand);
-        basketBrand.appendTo(modalCol2);
-    
-        let basketArtnr = $("<p>").html("Artikelnummer: " + productInfo[i].artnr);
-        basketArtnr.appendTo(modalCol2);
-    
-        let basketPrice = $("<p>").html("Pris: " + productInfo[i].price);
-        basketPrice.appendTo(modalCol2);
-    
-        }});   
