@@ -124,14 +124,6 @@ $(document).ready(function() {
             basketnumber.push(quantitynumber[i]);
             }  
         }
-
-        $("#basketIncrease").on("click", function() {
-            for (let i = 0; i < quantitynumber.length; i++) {
-                console.log(quantitynumber[i].quantity);
-                setNewBasket.push(quantitynumber[i].quantity++);
-
-            }
-            localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
-        });
     });
+    
 });
