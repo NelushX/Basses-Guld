@@ -2,16 +2,17 @@ $(document).ready(function() {
     
     let customers = [];
 
-    $("form").on("submit", function(event) {
+    $("#checkout").on('click', function(e) {
+        if (!this.checkValidity()) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+  
+        $(this).addClass('was-validated');
+    });
 
-    //     let form = $("form");
 
-    //     if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //         console.log("Validation failed");
-    //     }
-    //     form.classList.add('was-validated');
+    $("#checkout").on("submit", function(event) {
 
         event.preventDefault();
 
