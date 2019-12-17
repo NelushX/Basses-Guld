@@ -63,6 +63,7 @@ $(document).ready(function() {
     });
 
 
+
     $("#addToBasket").on("click", function() {
 
         let setNewBasket = [];
@@ -76,6 +77,19 @@ $(document).ready(function() {
             }
         }
 
+        let basketnumber = [];
+
+        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
+       
+        for (let i = 0; i < quantitynumber.length; i++) {
+        if(quantitynumber.length > 0) {
+           let number = $("#number").html(quantitynumber.length);
+           number.addClass("number");
+           basketnumber.push(quantitynumber[i]);
+        }  
+       };
+        
+        
 
         setNewBasket.push(thisObject);
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));

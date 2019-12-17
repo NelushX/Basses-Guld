@@ -75,6 +75,11 @@ header {
   header i {
     color: white;
     font-size: 2rem; }
+  header i:hover {
+    cursor: pointer; }
+  header .number {
+    color: #ffce54;
+    font-size: 1,5rem; }
 
 * {
   font-family: 'Alata', sans-serif; }
