@@ -102,6 +102,15 @@ $(document).ready(function() {
     }
 
 
+    $(".prodlink").on("click", function() {
+        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
+    });
+
+    $(".lookalike").on("click", function() {
+        window.open("product.html?id=" + $(this).attr("id"), "_self");
+    });
+
+
     $("#input").on("keypress", function() {
         $(".carouselContainer, .productCategoriText, #favorites, .indexH3, .inspiration, #productlist").empty();
 
@@ -135,38 +144,4 @@ $(document).ready(function() {
         });
     });
     
-
-    // Shoppingcart
-    let basketlist = JSON.parse(localStorage.getItem("prodList"));
-    let basketimg = $("<img>").attr("src", "../" + basketlist.image1).addClass("img-fluid");
-    
-    $("#addToBasket").on("click",function(){
-
-        let currentBasket = [];
-
-        if (localStorage.getItem("basket")) {
-            currentBasket = JSON.parse(localStorage.getItem("basket")) || {};
-        }
-
-        $("#basketImage").append(basketimg);
-        $("#basketTitle").html(basketlist.name);
-        $("#basketBrand").html(basketlist.brand);
-        $("#basketArtnr").html(basketlist.artnr);
-        $("#basketPrice").html("Pris: " + basketlist.price + ":-");
-    
-
-            console.log(basketlist);
-            console.log(currentBasket);
-            currentBasket.push(basketlist);
-            localStorage.setItem("basket", JSON.stringify(basket));
-    });
-    
-    
-    $(".prodlink").on("click", function() {
-        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
-    });
-
-    $(".lookalike").on("click", function() {
-        window.open("product.html?id=" + $(this).attr("id"), "_self");
-    });
 });
