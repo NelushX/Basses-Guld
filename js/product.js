@@ -12,7 +12,7 @@ $(document).ready(function() {
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
     
     let productPage = JSON.parse(localStorage.getItem("prodList"));
-
+    let thisObject;
 
     for (let i = 0; i < productPage.length; i++) {
         if (productPage[i].artnr === productId) {
@@ -39,12 +39,13 @@ $(document).ready(function() {
             $("<span>").html("<i class='fas fa-shopping-basket'</i>").appendTo(addToBasketButton);
 
             let productArtnr = $("<p>").html("Artikelnummer: " + productPage[i].artnr).attr("id", "productArtnr").appendTo(productRightContainer);
+            thisObject = productPage[i];
         } 
     }
 
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
-            window.open("search.html?search=" + $("#input").val(), "_self");
+            window.open("search.html?search=" + $("#input").val());
             let searchString = $("#input").val()
             localStorage.setItem("search", JSON.stringify(searchString));
         }
@@ -55,5 +56,57 @@ $(document).ready(function() {
 
         $("#largeImage").attr("src", $(this).attr("src"));
         $(this).attr("src", lg);
+    });
+
+
+    $("#addToBasket").on("click", function() {
+
+        // pushing info to new array
+
+        let setNewBasket = [];
+
+        if (localStorage.getItem("currentBasket")) {
+            let getCurrentBasket = JSON.parse(localStorage.getItem("currentBasket")) || [];
+
+            for (let i = 0; i < getCurrentBasket.length; i++) {
+                setNewBasket.push(getCurrentBasket[i]);
+                console.log(setNewBasket);
+            }
+        }
+
+        setNewBasket.push(thisObject);
+        
+        localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
+
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+
+        for (let i = 0; i < productInfo.length; i++) {
+
+            //Setting modal-body div attributes
+            let modalBody = $(".modal-body").addClass("container");
+            let modalRow = $("<div>").addClass("row");
+            let modalCol1 = $("<div>").addClass("col-6").attr("id", "imageCol");
+            let modalCol2 = $("<div>").addClass("col-6").attr("id", "infoCol");
+            modalRow.appendTo(modalBody)
+            modalCol1.appendTo(modalRow);
+            modalCol2.appendTo(modalRow);
+
+            // Image
+            let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
+            modalImg.appendTo(modalCol1);
+
+            //productInfo
+            let basketTitle = $("<p>").html(productInfo[i].name);
+            basketTitle.appendTo(modalCol2);
+
+            let basketBrand = $("<p>").html(productInfo[i].brand);
+            basketBrand.appendTo(modalCol2);
+
+            let basketArtnr = $("<p>").html("Artikelnummer: " + productInfo[i].artnr);
+            basketArtnr.appendTo(modalCol2);
+
+            let basketPrice = $("<p>").html("Pris: " + productInfo[i].price);
+            basketPrice.appendTo(modalCol2);
+        }
     });
 });
