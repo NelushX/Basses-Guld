@@ -338,6 +338,28 @@ header.container-fluid {
       margin-top: 25px;
       font-size: 0.8rem; }
 
+#basketObject {
+  line-height: 1;
+  border-bottom: 1px solid #f3f3f3; }
+  #basketObject img {
+    width: 80%; }
+  #basketObject #basketName {
+    text-transform: uppercase; }
+  #basketObject #basketBrand {
+    text-transform: capitalize; }
+  #basketObject #basketRemove {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem; }
+  #basketObject #basketDecrease {
+    margin-right: 5px; }
+
+#modalTotalPriceH5 {
+  padding-bottom: 5px;
+  padding-right: 30px;
+  font-size: 1.2rem;
+  text-align: right; }
+
 * {
   font-family: 'Alata', sans-serif; }
 

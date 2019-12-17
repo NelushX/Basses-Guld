@@ -1,0 +1,29 @@
+#basketObject {
+    line-height: 1;
+    border-bottom: 1px solid $lightgreycolor;
+    img {
+        width: 80%;
+    }
+    #basketName {
+        text-transform: uppercase;
+    }
+    #basketBrand {
+        text-transform: capitalize;
+    }
+    #basketRemove {
+        display: flex;
+        justify-content: space-around;
+        font-size: 2rem;
+    }
+    #basketDecrease {
+        margin-right: 5px;
+        // background-color: $bluecolor;
+    }
+}
+
+#modalTotalPriceH5 {
+    padding-bottom: 5px;
+    padding-right: 30px;
+    font-size: 1.2rem;
+    text-align: right;
+}
