@@ -184,20 +184,4 @@ $(document).ready(function() {
             window.open("html/product.html?id=" + $(this).attr("id"), "_self");
         });
     });
-<<<<<<< HEAD
-
-    // number of items in basket
-    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-    let basketnumber = [];
-
-    for (let i = 0; i < quantitynumber.length; i++) {
-        if(quantitynumber.length >= 1) {
-        let number = $("#number").html(quantitynumber.length);
-        number.addClass("number");
-        basketnumber.push(quantitynumber[i]);
-        }  
-    };
-    
-=======
->>>>>>> f882d642bd04e531b675f7d396df219044f38dd5
 });
