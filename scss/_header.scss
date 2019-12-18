@@ -34,4 +34,11 @@ header {
         color: white;
         font-size: 2rem;
     }
+    i:hover {
+        cursor: pointer;
+    }
+    .number {
+        color: $yellowcolor;
+        font-size: 1.5rem;
+    }
 }
