@@ -17,6 +17,7 @@ $(document).ready(function() {
     let thisObject;
 
     for (let i = 0; i < productPage.length; i++) {
+
         if (productPage[i].artnr === productId) {
             let productLeftContainer = $("<div>").addClass("productleftcontainer").appendTo($("#productpageLeft"));
             let productPageImageContainer = $("<div>").addClass("productpageimagecontainer").appendTo(productLeftContainer);
@@ -42,10 +43,12 @@ $(document).ready(function() {
 
             let productArtnr = $("<p>").html("Artikelnummer: " + productPage[i].artnr).attr("id", "productArtnr").appendTo(productRightContainer);
             thisObject = productPage[i];
+           
         }
     }
 
     console.log(thisObject);
+
 
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
@@ -72,21 +75,8 @@ $(document).ready(function() {
 
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
-                console.log(setNewBasket)
             }
         }
-        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-       
-        let basketnumber = [];
-
-        for (let i = 0; i < quantitynumber.length; i++) {
-        if(quantitynumber.length >= 1) {
-           let number = $("#number").html(quantitynumber.length);
-           number.addClass("number");
-           basketnumber.push(quantitynumber[i]);
-        }  
-       };
-
 
         setNewBasket.push(thisObject);
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
@@ -94,20 +84,17 @@ $(document).ready(function() {
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
-            
             //Setting modal-body div attributes
-            let modalBody = $(".modal-body").addClass("container");
-            let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-            let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-            let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
-            let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
-            let modalTotal = $("<div>").addClass("col-12").attr("id", "totalCol");
-            modalRow.appendTo(modalBody);
-            modalCol1.appendTo(modalRow);
-            modalCol2.appendTo(modalRow);
-            modalCol3.appendTo(modalRow);
-
-
+                let modalBody = $(".modal-body").addClass("container");
+                let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+                let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+                let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+                let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+                modalRow.appendTo(modalBody);
+                modalCol1.appendTo(modalRow);
+                modalCol2.appendTo(modalRow);
+                modalCol3.appendTo(modalRow);
+            
             // Image
             let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
             modalImg.appendTo(modalCol1);
@@ -120,15 +107,28 @@ $(document).ready(function() {
             $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
 
             $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
-
+            // else productInfo[i].quantity++
             $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
 
             $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3);
 
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
 
-            let findTotalPrice = $("#modalTotalPrice");
             findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
-        }
+            }
+           
+        // number of items in basket
+        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
+        let basketnumber = [];
+
+        for (let i = 0; i < quantitynumber.length; i++) {
+            if (quantitynumber.length >= 1) {
+            let number = $("#number").html(quantitynumber.length);
+            number.addClass("number");
+            basketnumber.push(quantitynumber[i]);
+            }  
+        } 
+        
     });
+   
 });
