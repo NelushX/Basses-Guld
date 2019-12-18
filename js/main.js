@@ -4,6 +4,66 @@ $(document).ready(function() {
         $("html,body").animate({scrollTop:0},'50');
     });
 
+        if (localStorage.getItem("currentBasket")) {
+        
+            var productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+            for (let i = 0; i < productInfo.length; i++) {
+                
+                //Setting modal-body div attributes
+                let modalBody = $(".modal-body").addClass("container");
+                let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+                let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+                let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+                let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+                modalRow.appendTo(modalBody);
+                modalCol1.appendTo(modalRow);
+                modalCol2.appendTo(modalRow);
+                modalCol3.appendTo(modalRow);
+    
+                // Image
+                let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
+                modalImg.appendTo(modalCol1);
+    
+                //productInfo
+                $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
+    
+                $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
+    
+                $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
+    
+                $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
+    
+                $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
+    
+                $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3);
+    
+                $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
+    
+                let findTotalPrice = $("#modalTotalPrice");
+                findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+                
+            
+            }
+            }
+    
+       
+    
+            
+        
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
 
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG", 0);

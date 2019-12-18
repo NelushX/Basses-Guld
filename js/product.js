@@ -9,10 +9,8 @@ $(document).ready(function() {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-  
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
     
-
     let productPage = JSON.parse(localStorage.getItem("prodList"));
     let thisObject;
 
@@ -42,6 +40,7 @@ $(document).ready(function() {
 
             let productArtnr = $("<p>").html("Artikelnummer: " + productPage[i].artnr).attr("id", "productArtnr").appendTo(productRightContainer);
             thisObject = productPage[i];
+            thisObject.quantity = 1;
         }
     }
 
@@ -64,7 +63,7 @@ $(document).ready(function() {
 
 
     $("#addToBasket").on("click", function() {
-
+        
         let setNewBasket = [];
 
         if (localStorage.getItem("currentBasket")) {
@@ -72,52 +71,82 @@ $(document).ready(function() {
 
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
-                console.log(setNewBasket)
+                
             }
         }
 
-
         setNewBasket.push(thisObject);
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
+
         
-        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+            
+        createModalHtml();
+
+
+    });
+
+    function createModalHtml() {
+        // $(".modal-body").html('');
+
+        var modalBody = $(".modal-body").addClass("container");
+        var modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+        var modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+        var modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+        modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+        modalRow.appendTo(modalBody);
+        modalCol1.appendTo(modalRow);
+        modalCol2.appendTo(modalRow);
+        modalCol3.appendTo(modalRow);
+
+
+        let img1 = $("<img>").attr("class", "img-fluid")
+        .appendTo(modalCol1);
+
+        let p1 = $("<p>").attr("id", "basketName")
+        p1.appendTo(modalCol2);
+
+        let p2 = $("<p>").attr("id", "basketBrand")
+        p2.appendTo(modalCol2);
+
+        let p3 = $("<p>").attr("id", "basketPrice")
+        p3.appendTo(modalCol2);
+
+        let p4 = $("<p>").attr("id", "basketQuantity")
+        p4.appendTo(modalCol3);
+
+        let p5 = $("<button>").addClass("btn btn-dark").attr("id", "basketDecrease");
+        p5.appendTo(modalCol3);
+
+        let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease")
+        p6.appendTo(modalCol3);
+        
+        let p7 = $("<p>").attr("id", "basketRemove")
+        p7.appendTo(modalCol3);
+
+
+        var productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
-            
-            //Setting modal-body div attributes
-            let modalBody = $(".modal-body").addClass("container");
-            let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-            let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-            let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
-            let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
-            let modalTotal = $("<div>").addClass("col-12").attr("id", "totalCol");
-            modalRow.appendTo(modalBody);
-            modalCol1.appendTo(modalRow);
-            modalCol2.appendTo(modalRow);
-            modalCol3.appendTo(modalRow);
+            img1.attr("src", "../" + productInfo[i].image1)
+            p1.html(productInfo[i].name);
+            p2.html(productInfo[i].brand);
+            p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
+            p4.html("Antal: " + productInfo[i].quantity);
+            p5.html("-").on("click", function(){
+                productInfo[i].quantity--
+                let a = productInfo[i];
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                createModalHtml();
+            });
+            p6.html("+").on("click", function() {
+                productInfo[i].quantity++;
 
-
-            // Image
-            let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-            modalImg.appendTo(modalCol1);
-
-            //productInfo
-            $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
-
-            $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
-
-            $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
-
-            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
-
-            $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
-
-            $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3);
-
-            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
-
-            let findTotalPrice = $("#modalTotalPrice");
-            findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                createModalHtml();
+            })
+            p7.html("&times;")
         }
-    });
+    }
+    
 });
+
