@@ -42,13 +42,12 @@ $(document).ready(function() {
     }
 
     
+
     let productPage = JSON.parse(localStorage.getItem("prodList"));
     let searchitem = JSON.parse(localStorage.getItem("search"));
-
     $("#searchstring").html(searchitem);
     
     $("#productlist").empty();
-
     productPage.forEach(function(searchProduct) {
         if(searchProduct.brand.indexOf(searchitem) >= 0 || searchProduct.price.toString().indexOf(searchitem) >= 0) {
             let productContainer = $("<div>").addClass("productContainer prodlink col-6 col-lg-3").attr("id", searchProduct.artnr).appendTo($("#productlist"));
@@ -103,5 +102,25 @@ $(document).ready(function() {
             }  
         });
     });
+    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
+        let basketnumber = [];
+
+        for (let i = 0; i < quantitynumber.length; i++) {
+            if (quantitynumber.length >= 1) {
+            let number = $("#number").html(quantitynumber.length);
+            number.addClass("number");
+            basketnumber.push(quantitynumber[i]);
+            }  
+            $("#goToCheckout").on("click", function(){
+                if (quantitynumber[i].quantity <= 1) {
+                window.open("checkout.html","_self");
+            
+            }
+            else{
+                alert("Lägg en vara i varukorgen");
+            }
+        });
+        }
+    
     
 });

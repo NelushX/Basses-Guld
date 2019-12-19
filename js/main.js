@@ -205,12 +205,12 @@ $(document).ready(function() {
         }  
        
         $("#goToCheckout").on("click", function(){
-            if (productInfo[i].quantity <= 1) {
+            if (quantitynumber[i].quantity <= 1) {
             window.open("html/checkout.html","_self");
         
         }
         else{
-            alert("Lägg en vara i varukorgen");
+            prompt("Lägg en vara i varukorgen");
         }
     });
     };

@@ -35,6 +35,7 @@ $(document).ready(function() {
 
             let findTotalPrice = $("#modalTotalPrice");
             findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+
             console.log(productInfo);
         }
         
