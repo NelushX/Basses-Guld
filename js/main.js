@@ -22,10 +22,18 @@ $(document).ready(function() {
             modalCol3.appendTo(modalRow);
 
             // Image
-            let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
+            if(window.location.href.indexOf("index") > -1) {
+                let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
+            modalImg.appendTo(modalCol1);
+             }
+            else{
+                let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
             modalImg.appendTo(modalCol1);
 
+            }
+            
             //productInfo
+
             $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
 
             $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
