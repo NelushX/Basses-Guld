@@ -162,12 +162,22 @@ $(document).ready(function() {
         let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
 
+<<<<<<< HEAD
+        $("#removebutton").on("click", function(){
+           
+        });
+
+
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    
+=======
         
 
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
 
 
+>>>>>>> 1bccaf28eaf1ce1a19a866714800bccc25648387
         for (let i = 0; i < productInfo.length; i++) {
             
             let y = Object.keys(productInfo).length;
@@ -178,15 +188,15 @@ $(document).ready(function() {
             p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
             p4.html("Antal: " + productInfo[i].quantity);
             p5.html("-").on("click", function() {
-                if (productInfo[i].quantity <= 0) {
+                if (productInfo[i].quantity < 2) {
                     let a = productInfo;
                     a.splice(i, 1);
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                    createModalHtml();
                 }
                 else {
                     productInfo[i].quantity--;
-                    
                     localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-
                     createModalHtml();
                 }
             });
@@ -212,6 +222,15 @@ $(document).ready(function() {
             number.addClass("number");
             basketnumber.push(quantitynumber[i]);
             }  
+            $("#goToCheckout").on("click", function(){
+                if (quantitynumber[i].quantity <= 1) {
+                window.open("checkout.html","_self");
+            
+            }
+            else{
+            
+            }
+        });
         }
 
     }
