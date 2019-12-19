@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
     });
    
-     $("#input").on("keyup", function() {
+    $("#input").on("keyup", function() {
         $("#productlist").empty();
     
         let search = $("#input").val();

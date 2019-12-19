@@ -46,6 +46,7 @@ $(document).ready(function() {
 
     console.log(thisObject);
 
+    
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
@@ -53,6 +54,7 @@ $(document).ready(function() {
             localStorage.setItem("search", JSON.stringify(searchString));
         }
     });
+
 
     $(".thumbnail").on("click", function() {
         let lg = $("#largeImage").attr("src");
@@ -71,27 +73,23 @@ $(document).ready(function() {
 
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
-                
             }
         }
 
         setNewBasket.push(thisObject);
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
 
-        
-            
         createModalHtml();
-
-
     });
 
+
     function createModalHtml() {
-        
-        $(".modal-body").html('');
-        var modalBody = $(".modal-body").addClass("container");
-        var modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-        var modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-        var modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+        // $(".modal-body").html('');
+
+        let modalBody = $(".modal-body").addClass("container");
+        let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+        let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+        let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
         modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
         modalRow.appendTo(modalBody);
         modalCol1.appendTo(modalRow);
@@ -125,7 +123,7 @@ $(document).ready(function() {
 
         
 
-        var productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
             img1.attr("src", "../" + productInfo[i].image1)
@@ -162,6 +160,4 @@ $(document).ready(function() {
 
         }
     }
-    
 });
-
