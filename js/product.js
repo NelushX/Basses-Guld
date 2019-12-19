@@ -115,19 +115,14 @@ $(document).ready(function() {
         let p5 = $("<button>").addClass("btn btn-dark").attr("id", "basketDecrease");
         p5.appendTo(modalCol3);
 
-        let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease")
+        let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease");
         p6.appendTo(modalCol3);
         
-        let p7 = $("<button>").attr("id", "basketRemove")
+        let p7 = $("<p>").attr("id", "basketRemove");
         p7.appendTo(modalCol3);
-
-        $("#removebutton").on("click", function(){
            
-        });
-
-
+       
         
-
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
@@ -182,23 +177,8 @@ $(document).ready(function() {
             }
         });
         }
-
     }
-
-    // number of items in basket
-    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-    let basketnumber = [];
-
-    for (let i = 0; i < quantitynumber.length; i++) {
-        if(quantitynumber.length >= 1) {
-        let number = $("#number").html(quantitynumber.length);
-        number.addClass("number");
-        basketnumber.push(quantitynumber[i]);
-        }  
-    };
-
-    $("#goToCheckout").on("click", function() {
-        window.open("checkout.html", "_self");
-    });
+  
+    
     
 });
