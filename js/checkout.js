@@ -4,37 +4,43 @@ $(document).ready(function() {
 
     for (let i = 0; i < productInfo.length; i++) {
         
-        //Setting modal-body div attributes
-        let findRow = $("#productcart");
-        let findCol1 = $("<div>").addClass("col-5").attr("id", "imageColumn");
-        let findCol2 = $("<div>").addClass("col-4").attr("id", "infoColumn").addClass("align-middle");
-        let findCol3 = $("<div>").addClass("col-3").attr("id", "qtyColumn");
-        findCol1.appendTo(findRow);
-        findCol2.appendTo(findRow);
-        findCol3.appendTo(findRow);
-
-        // Image
-        let findImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-        findImg.appendTo(findCol1);
-
-        //productInfo
-        $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(findCol2);
-
-        $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(findCol2);
-
-        $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(findCol2);
-
-        $("<p>").html("&times;").attr("id", "basketRemove").appendTo(findCol3);
-
-        $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(findCol3);
-
-        $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(findCol3);
-
-        $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(findCol3);
-
-        let findTotalPrice = $("#modalTotalPrice");
-        findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
-        console.log(productInfo);
+        if (sessionStorage.getItem("currentBasket")) {
+            
+            let findRow = $("#productcart");
+            let findCol1 = $("<div>").addClass("col-5").attr("id", "imageColumn");
+            let findCol2 = $("<div>").addClass("col-4").attr("id", "infoColumn").addClass("align-middle");
+            let findCol3 = $("<div>").addClass("col-3").attr("id", "qtyColumn");
+            findCol1.appendTo(findRow);
+            findCol2.appendTo(findRow);
+            findCol3.appendTo(findRow);
+    
+            // Image
+            let findImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
+            findImg.appendTo(findCol1);
+    
+            //productInfo
+            $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(findCol2);
+    
+            $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(findCol2);
+    
+            $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(findCol2);
+    
+            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(findCol3);
+    
+            $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(findCol3);
+    
+            $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(findCol3);
+    
+            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(findCol3);
+    
+            let findTotalPrice = $("#modalTotalPrice");
+            findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+            console.log(productInfo);
+        }
+        else{
+            
+        }
+      
     }
 
 
