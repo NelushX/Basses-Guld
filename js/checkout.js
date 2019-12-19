@@ -1,12 +1,13 @@
 $(document).ready(function() {
 
+
     if (localStorage.getItem("currentBasket")) {
 
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
             //Setting modal-body div attributes
-            let findRow = $("#productcart");
+            let findRow = $("#productcart").addClass("align-items-center");
             let findCol1 = $("<div>").addClass("col-5").attr("id", "imageColumn");
             let findCol2 = $("<div>").addClass("col-4").attr("id", "infoColumn").addClass("align-middle");
             let findCol3 = $("<div>").addClass("col-3").attr("id", "qtyColumn");
@@ -33,8 +34,12 @@ $(document).ready(function() {
 
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(findCol3);
 
+            // let findTotalPrice = $("#modalTotalPrice");
+            // findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+
+            let z = productInfo[i].quantity * productInfo[i].price;
             let findTotalPrice = $("#modalTotalPrice");
-            findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+            findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
             console.log(productInfo);
         }
         

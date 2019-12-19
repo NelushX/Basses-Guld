@@ -378,6 +378,23 @@ header.container-fluid {
 .checkoutsite {
   margin-top: 15px;
   margin-bottom: 50px; }
+  .checkoutsite #freedelivery {
+    margin-bottom: 15px; }
+  .checkoutsite #productcart {
+    margin: 15px 0px;
+    line-height: 1; }
+  .checkoutsite img {
+    width: 50%; }
+  .checkoutsite #basketName {
+    text-transform: uppercase; }
+  .checkoutsite #basketBrand {
+    text-transform: capitalize; }
+  .checkoutsite #basketRemove {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem; }
+  .checkoutsite #basketDecrease {
+    margin-right: 5px; }
   .checkoutsite h2 {
     font-size: 2.5rem; }
   .checkoutsite h3 {
