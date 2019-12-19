@@ -167,10 +167,17 @@ $(document).ready(function() {
             number.addClass("number");
             basketnumber.push(quantitynumber[i]);
             }  
+            $("#goToCheckout").on("click", function(){
+                if (quantitynumber[i].quantity <= 1) {
+                window.open("checkout.html","_self");
+            
+            }
+            else{
+                alert("Lägg en vara i varukorgen");
+            }
+        });
         }
 
     }
-    $("#goToCheckout").on("click", function(){
-        window.open("checkout.html","_self");
-    });
+    
 });

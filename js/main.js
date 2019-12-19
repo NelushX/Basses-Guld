@@ -203,9 +203,17 @@ $(document).ready(function() {
         number.addClass("number");
         basketnumber.push(quantitynumber[i]);
         }  
-    };
-    $("#goToCheckout").on("click", function(){
-        window.open("html/checkout.html", "_self");
+       
+        $("#goToCheckout").on("click", function(){
+            if (productInfo[i].quantity <= 1) {
+            window.open("html/checkout.html","_self");
+        
+        }
+        else{
+            alert("Lägg en vara i varukorgen");
+        }
     });
-    
+    };
+
+
 }); 
