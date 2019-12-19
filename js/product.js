@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
@@ -44,6 +45,28 @@ $(document).ready(function() {
         }
     }
 
+    // Loop for lookalike
+    for (let i = 0; i < 4; i++) {
+        let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", productPage[i].artnr).appendTo($("#lookalike"));
+
+        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+        let image = $("<img>").attr("src", "../" + productPage[i].image1).attr("alt", productPage[i].name)
+            .mouseover(function() {
+                image.attr("src", "../" + productPage[i].image2);
+            })
+            .mouseout(function() {
+                image.attr("src", "../" + productPage[i].image1);
+            })
+            .appendTo(imageContainer);  
+
+        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+        let brand = $("<p>").html("<b>" + productPage[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        let name = $("<p>").html(productPage[i].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + productPage[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+    }
+    $(".lookalike").on("click", function() {
+        window.open("product.html?id=" + $(this).attr("id"), "_self");
+    });
     console.log(thisObject);
 
     
@@ -74,9 +97,24 @@ $(document).ready(function() {
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
             }
+            let alreadyInCart = false;
+            for (let i = 0; i < setNewBasket.length; i++) {
+                if (setNewBasket[i].artnr === thisObject.artnr) {
+                    alreadyInCart = true;
+                    setNewBasket[i].quantity++; 
+                }
+            }
+        if (!alreadyInCart) {
+            setNewBasket.push(thisObject);
+            
+         }
+        }
+        else{
+            setNewBasket.push(thisObject);
+
         }
 
-        setNewBasket.push(thisObject);
+
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
 
         createModalHtml();
@@ -84,8 +122,10 @@ $(document).ready(function() {
 
 
     function createModalHtml() {
-        // $(".modal-body").html('');
+        
+        $(".modal-body").html('');
 
+        
         let modalBody = $(".modal-body").addClass("container");
         let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
         let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
@@ -124,24 +164,28 @@ $(document).ready(function() {
        
         
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
 
         for (let i = 0; i < productInfo.length; i++) {
+            
+            let y = Object.keys(productInfo).length;
+            console.log(y);
             img1.attr("src", "../" + productInfo[i].image1)
             p1.html(productInfo[i].name);
             p2.html(productInfo[i].brand);
             p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
             p4.html("Antal: " + productInfo[i].quantity);
-            p5.html("-").on("click", function(){
+            p5.html("-").on("click", function() {
                 if (productInfo[i].quantity <= 0) {
                     let a = productInfo;
-                    a.splice(0);
+                    a.splice(i, 1);
                 }
                 else {
-                productInfo[i].quantity--
-                
-                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                    productInfo[i].quantity--;
+                    
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
-                createModalHtml();
+                    createModalHtml();
                 }
             });
 
@@ -150,7 +194,7 @@ $(document).ready(function() {
                 localStorage.setItem("currentBasket", JSON.stringify(productInfo));
                 var z = productInfo[i].quantity * productInfo[i].price;
                 let findTotalPrice = $("#modalTotalPrice");
-                findTotalPrice.html(z);
+                findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5");
 
                 createModalHtml();
             });
@@ -158,27 +202,13 @@ $(document).ready(function() {
             p7.html("&times;")
         }
 
-        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-        let basketnumber = [];
 
-        for (let i = 0; i < quantitynumber.length; i++) {
-            if (quantitynumber.length >= 1) {
-            let number = $("#number").html(quantitynumber.length);
+        for (let i = 0; i < productInfo.length; i++) {
+            let number = $("#number");
+            number.html(productInfo[i].quantity);
             number.addClass("number");
-            basketnumber.push(quantitynumber[i]);
-            }  
-            $("#goToCheckout").on("click", function(){
-                if (quantitynumber[i].quantity <= 1) {
-                window.open("checkout.html","_self");
-            
-            }
-            else{
-                alert("Lägg en vara i varukorgen");
-            }
-        });
         }
     }
-  
-    
+
     
 });
