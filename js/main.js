@@ -48,8 +48,12 @@ $(document).ready(function() {
 
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
 
+            // let findTotalPrice = $("#modalTotalPrice");
+            // findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+
+            let z = productInfo[i].quantity * productInfo[i].price;
             let findTotalPrice = $("#modalTotalPrice");
-            findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+            findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
     }
 

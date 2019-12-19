@@ -3,6 +3,30 @@
 .checkoutsite {
     margin-top: 15px;
     margin-bottom: 50px;
+    #freedelivery {
+        margin-bottom: 15px;
+    }
+    #productcart {
+        margin: 15px 0px;
+        line-height: 1;
+    }
+    img {
+        width: 50%;
+    }
+    #basketName {
+        text-transform: uppercase;
+    }
+    #basketBrand {
+        text-transform: capitalize;
+    }
+    #basketRemove {
+        display: flex;
+        justify-content: space-around;
+        font-size: 2rem;
+    }
+    #basketDecrease {
+        margin-right: 5px;
+    }
     h2 {
         font-size: 2.5rem;
     }
