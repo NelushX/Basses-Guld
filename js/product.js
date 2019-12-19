@@ -155,18 +155,19 @@ $(document).ready(function() {
             p7.html("&times;")
 
             
-         let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-         let basketnumber = [];
-
-        for (let i = 0; i < quantitynumber.length; i++) {
-            if (quantitynumber.length >= 1) {
-            let number = $("#number").html(quantitynumber.length);
-            number.addClass("number");
-            basketnumber.push(quantitynumber[i]);
-            }  
-        } 
+        
             
 
         }
+        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
+        let basketnumber = [];
+
+       for (let i = 0; i < quantitynumber.length; i++) {
+           if (quantitynumber.length >= 1) {
+           let number = $("#number").html(quantitynumber.length);
+           number.addClass("number");
+           basketnumber.push(quantitynumber[i]);
+           }  
+       } 
     }
 });
