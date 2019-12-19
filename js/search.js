@@ -18,7 +18,7 @@ $(document).ready(function() {
             modalCol3.appendTo(modalRow);
 
             // Image
-            let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
+            let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
             modalImg.appendTo(modalCol1);
 
             //productInfo
