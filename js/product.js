@@ -86,8 +86,8 @@ $(document).ready(function() {
     });
 
     function createModalHtml() {
-        // $(".modal-body").html('');
-
+        
+        $(".modal-body").html('');
         var modalBody = $(".modal-body").addClass("container");
         var modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
         var modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
@@ -123,6 +123,7 @@ $(document).ready(function() {
         let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
 
+        
 
         var productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
@@ -133,18 +134,32 @@ $(document).ready(function() {
             p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
             p4.html("Antal: " + productInfo[i].quantity);
             p5.html("-").on("click", function(){
+                if (productInfo[i].quantity <= 0) {
+                    let a = productInfo;
+                    a.splice(0);
+                }
+                else{
                 productInfo[i].quantity--
-                let a = productInfo[i];
+                
                 localStorage.setItem("currentBasket", JSON.stringify(productInfo));
                 createModalHtml();
+                }
             });
             p6.html("+").on("click", function() {
                 productInfo[i].quantity++;
-
                 localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                var z = productInfo[i].quantity * productInfo[i].price;
+                let findTotalPrice = $("#modalTotalPrice");
+                findTotalPrice.html(z);
                 createModalHtml();
-            })
+
+            });
             p7.html("&times;")
+
+            
+            
+            
+
         }
     }
     
