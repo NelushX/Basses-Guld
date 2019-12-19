@@ -25,11 +25,11 @@ $(document).ready(function() {
             if(window.location.href.indexOf("index") > -1) {
                 let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
             modalImg.appendTo(modalCol1);
-             }
-            else{
+            }
+
+            else {
                 let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
             modalImg.appendTo(modalCol1);
-
             }
             
             //productInfo
