@@ -244,7 +244,7 @@ $(document).ready(function() {
 
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
-        if (quantitynumber.length == 0) {
+        if (productInfo.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
     });
