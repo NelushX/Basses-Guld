@@ -74,9 +74,24 @@ $(document).ready(function() {
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
             }
+            let alreadyInCart = false;
+            for (let i = 0; i < setNewBasket.length; i++) {
+                if (setNewBasket[i].artnr === thisObject.artnr) {
+                    alreadyInCart = true;
+                    setNewBasket[i].quantity++; 
+                }
+            }
+        if (!alreadyInCart) {
+            setNewBasket.push(thisObject);
+            
+         }
+        }
+        else{
+            setNewBasket.push(thisObject);
+
         }
 
-        setNewBasket.push(thisObject);
+
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
 
         createModalHtml();
@@ -84,8 +99,10 @@ $(document).ready(function() {
 
 
     function createModalHtml() {
-        // $(".modal-body").html('');
+        
+        $(".modal-body").html('');
 
+        
         let modalBody = $(".modal-body").addClass("container");
         let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
         let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
@@ -124,8 +141,12 @@ $(document).ready(function() {
         
 
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
 
         for (let i = 0; i < productInfo.length; i++) {
+            
+            let y = Object.keys(productInfo).length;
+            console.log(y);
             img1.attr("src", "../" + productInfo[i].image1)
             p1.html(productInfo[i].name);
             p2.html(productInfo[i].brand);
