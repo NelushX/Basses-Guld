@@ -205,7 +205,7 @@ $(document).ready(function() {
         }  
     };
     $("#goToCheckout").on("click", function(){
-        window.open("html/checkout.html");
+        window.open("html/checkout.html", "_self");
     });
     
 }); 
