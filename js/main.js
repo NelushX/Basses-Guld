@@ -49,6 +49,35 @@ $(document).ready(function() {
 
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
 
+
+
+
+
+            $("#basketDecrease").html("-").on("click", function() {
+                if (productInfo[i].quantity < 0) {
+                    let a = productInfo;
+                    a.splice(i, 1);
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                    $(".modal-body").html('');
+                }
+                else {
+                    productInfo[i].quantity--;
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                    $(".modal-body").html('');
+                }
+            });
+
+            $("#basketIncrease").html("+").on("click", function() {
+                productInfo[i].quantity++;
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                var z = productInfo[i].quantity * productInfo[i].price;
+                let findTotalPrice = $("#modalTotalPrice");
+                findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5");
+                
+            });
+
+            
+
             // let findTotalPrice = $("#modalTotalPrice");
             // findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
 
@@ -56,7 +85,13 @@ $(document).ready(function() {
             let findTotalPrice = $("#modalTotalPrice");
             findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
+
     }
+    
+
+       
+    
+
 
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG", 1);
@@ -216,6 +251,9 @@ $(document).ready(function() {
         if (quantitynumber.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
+    });
+    $("#goToCheckout").on("click", function() {
+        window.open("html/checkout.html", "_self");
     });
 
 }); 

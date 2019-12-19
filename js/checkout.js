@@ -33,13 +33,15 @@ $(document).ready(function() {
             $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(findCol3);
 
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(findCol3);
-
-
-            let totalPrice = productInfo[i].quantity * productInfo[i].price;
-            $("#totalSum1").html(totalPrice + "kr");
-            $("#totalSum2").html(totalPrice + "kr");
-            $("#totalSum3").html(totalPrice + "kr");
         }
+
+        // for (let i = 0; i < productInfo.length; i++) {
+        //     let totalPrice = productInfo[i].quantity * productInfo[i].price;
+        //     $("#totalSum1").html(totalPrice + "kr");
+        //     $("#totalSum2").html(totalPrice + "kr");
+        //     $("#totalSum3").html(totalPrice + "kr");
+            
+        // }
         
     }
 

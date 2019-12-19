@@ -120,5 +120,8 @@ $(document).ready(function() {
             $("#openModal").removeAttr("data-toggle");
         }
     });
+    $("#goToCheckout").on("click", function() {
+        window.open("checkout.html", "_self");
+    });
     
 });
