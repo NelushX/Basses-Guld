@@ -102,25 +102,23 @@ $(document).ready(function() {
             }  
         });
     });
-    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-        let basketnumber = [];
 
-        for (let i = 0; i < quantitynumber.length; i++) {
-            if (quantitynumber.length >= 1) {
-            let number = $("#number").html(quantitynumber.length);
-            number.addClass("number");
-            basketnumber.push(quantitynumber[i]);
-            }  
-            $("#goToCheckout").on("click", function(){
-                if (quantitynumber[i].quantity <= 1) {
-                window.open("checkout.html","_self");
-            
-            }
-            else{
-                alert("Lägg en vara i varukorgen");
-            }
-        });
+    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
+    let basketnumber = [];
+
+    for (let i = 0; i < quantitynumber.length; i++) {
+        if (quantitynumber.length >= 1) {
+        let number = $("#number").html(quantitynumber.length);
+        number.addClass("number");
+        basketnumber.push(quantitynumber[i]);
+        }  
+    }
+
+    // Do not open shoppingcart if no content
+    $("#openModal").on("click", function(){
+        if (quantitynumber.length == 0) {
+            $("#openModal").removeAttr("data-toggle");
         }
-    
+    });
     
 });

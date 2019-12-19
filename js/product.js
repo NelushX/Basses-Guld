@@ -64,9 +64,11 @@ $(document).ready(function() {
         let name = $("<p>").html(productPage[i].name).addClass("pName").appendTo(infoContainer);
         let price = $("<p>").html("<b>" + productPage[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
+
     $(".lookalike").on("click", function() {
         window.open("product.html?id=" + $(this).attr("id"), "_self");
     });
+
     console.log(thisObject);
 
     
@@ -88,7 +90,6 @@ $(document).ready(function() {
 
 
     $("#addToBasket").on("click", function() {
-        
         let setNewBasket = [];
 
         if (localStorage.getItem("currentBasket")) {
@@ -158,13 +159,13 @@ $(document).ready(function() {
         let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease");
         p6.appendTo(modalCol3);
         
-        let p7 = $("<p>").attr("id", "basketRemove");
+        let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
-           
-       
+
         
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
+
 
         for (let i = 0; i < productInfo.length; i++) {
             
@@ -189,12 +190,11 @@ $(document).ready(function() {
                 }
             });
 
+
+
             p6.html("+").on("click", function() {
                 productInfo[i].quantity++;
                 localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-                var z = productInfo[i].quantity * productInfo[i].price;
-                let findTotalPrice = $("#modalTotalPrice");
-                findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5");
 
                 createModalHtml();
             });
@@ -210,5 +210,33 @@ $(document).ready(function() {
         }
     }
 
+    // number of items in basket
+    // let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
+    // let basketnumber = [];
+
+    // for (let i = 0; i < quantitynumber.length; i++) {
+    //     if(quantitynumber.length >= 1) {
+    //     let number = $("#number").html(quantitynumber.length);
+    //     number.addClass("number");
+    //     basketnumber.push(quantitynumber[i]);
+    //     }  
+    // };
+    
+
+    // // // Do not open shoppingcart if no content
+    // // $("#shoppingBasket").on("click", function(){
+    // //     if (quantitynumber.length == 0) {
+    // //         $("#shoppingBasket").removeAttr("data-toggle");
+    // //     }
+
+    // //     else {
+    // //         $("#shoppingBasket").attr("data-toggle", "modal");
+    // //     }
+    // // });
+
+
+    $("#goToCheckout").on("click", function() {
+        window.open("checkout.html", "_self");
+    });
     
 });
