@@ -34,15 +34,16 @@ $(document).ready(function() {
 
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(findCol3);
         }
+       
+        let totalPrices = 0;
+        $(productInfo).each(function(i){
+            totalPrices += productInfo[i].price * productInfo[i].quantity;
+        });
 
-        // for (let i = 0; i < productInfo.length; i++) {
-        //     let totalPrice = productInfo[i].quantity * productInfo[i].price;
-        //     $("#totalSum1").html(totalPrice + "kr");
-        //     $("#totalSum2").html(totalPrice + "kr");
-        //     $("#totalSum3").html(totalPrice + "kr");
-            
-        // }
-        
+            $("#totalSum1").html(totalPrices + "kr");
+            $("#totalSum2").html(totalPrices + "kr");
+            $("#totalSum3").html(totalPrices + "kr");
+
     }
 
     let customers = [];

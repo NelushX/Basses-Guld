@@ -161,7 +161,6 @@ $(document).ready(function() {
         
         let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
-
         
 
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
@@ -210,31 +209,6 @@ $(document).ready(function() {
             number.addClass("number");
         }
     }
-
-    // number of items in basket
-    // let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-    // let basketnumber = [];
-
-    // for (let i = 0; i < quantitynumber.length; i++) {
-    //     if(quantitynumber.length >= 1) {
-    //     let number = $("#number").html(quantitynumber.length);
-    //     number.addClass("number");
-    //     basketnumber.push(quantitynumber[i]);
-    //     }  
-    // };
-    
-
-    // // // Do not open shoppingcart if no content
-    // // $("#shoppingBasket").on("click", function(){
-    // //     if (quantitynumber.length == 0) {
-    // //         $("#shoppingBasket").removeAttr("data-toggle");
-    // //     }
-
-    // //     else {
-    // //         $("#shoppingBasket").attr("data-toggle", "modal");
-    // //     }
-    // // });
-
 
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
