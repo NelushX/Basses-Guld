@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    let productInfo = JSON.parse(sessionStorage.getItem("currentBasket"));
 
     for (let i = 0; i < productInfo.length; i++) {
         
@@ -87,7 +87,7 @@ $(document).ready(function() {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
             let searchString = $("#input").val()
-            localStorage.setItem("search", JSON.stringify(searchString));
+            sessionStorage.setItem("search", JSON.stringify(searchString));
         }
     });
    
