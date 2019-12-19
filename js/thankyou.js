@@ -21,9 +21,5 @@ $(document).ready(function() {
         $("#zipcodeThankYou").html(customer[6]);
 
     }
-
-    else {
-
-    }
     
 });
