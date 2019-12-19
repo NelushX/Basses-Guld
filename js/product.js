@@ -142,7 +142,7 @@ $(document).ready(function() {
         let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease")
         p6.appendTo(modalCol3);
         
-        let p7 = $("<button>").attr("id", "basketRemove")
+        let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
 
         
