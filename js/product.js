@@ -162,22 +162,12 @@ $(document).ready(function() {
         let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
 
-<<<<<<< HEAD
-        $("#removebutton").on("click", function(){
-           
-        });
-
-
-        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    
-=======
         
 
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
 
 
->>>>>>> 1bccaf28eaf1ce1a19a866714800bccc25648387
         for (let i = 0; i < productInfo.length; i++) {
             
             let y = Object.keys(productInfo).length;

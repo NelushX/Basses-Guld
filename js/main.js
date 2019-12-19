@@ -77,8 +77,6 @@ $(document).ready(function() {
                 
             });
 
-        }
-
             
 
             // let findTotalPrice = $("#modalTotalPrice");
@@ -88,12 +86,14 @@ $(document).ready(function() {
             let findTotalPrice = $("#modalTotalPrice");
             findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
+
     }
+    
 
        
     
 
-}
+
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG", 1);
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "images/products/2_image0.JPG", "images/products/2_image1.JPG", "images/products/2_image2.JPG", "images/products/2_image3.JPG", 1);
