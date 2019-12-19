@@ -103,7 +103,9 @@ $(document).ready(function() {
             }  
         });
     });
-    $("#goToCheckout").on("click", function(){
+
+    $("#goToCheckout").on("click", function() {
         window.open("checkout.html","_self");
     });
+
 });
