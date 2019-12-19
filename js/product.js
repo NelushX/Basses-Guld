@@ -139,8 +139,13 @@ $(document).ready(function() {
         let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease")
         p6.appendTo(modalCol3);
         
-        let p7 = $("<p>").attr("id", "basketRemove")
+        let p7 = $("<button>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
+
+        $("#removebutton").on("click", function(){
+           
+        });
+
 
         
 
@@ -188,6 +193,15 @@ $(document).ready(function() {
             number.addClass("number");
             basketnumber.push(quantitynumber[i]);
             }  
+            $("#goToCheckout").on("click", function(){
+                if (quantitynumber[i].quantity <= 1) {
+                window.open("checkout.html","_self");
+            
+            }
+            else{
+                alert("Lägg en vara i varukorgen");
+            }
+        });
         }
 
     }

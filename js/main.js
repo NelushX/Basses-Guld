@@ -211,10 +211,17 @@ $(document).ready(function() {
         number.addClass("number");
         basketnumber.push(quantitynumber[i]);
         }  
-    };
-    
-    $("#goToCheckout").on("click", function(){
-        window.open("html/checkout.html", "_self");
+       
+        $("#goToCheckout").on("click", function(){
+            if (quantitynumber[i].quantity <= 1) {
+            window.open("html/checkout.html","_self");
+        
+        }
+        else{
+            prompt("Lägg en vara i varukorgen");
+        }
     });
-    
+    };
+
+
 }); 
