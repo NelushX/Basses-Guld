@@ -14,7 +14,7 @@ $(document).ready(function() {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
             let searchString = $("#input").val()
-            localStorage.setItem("search", JSON.stringify(searchString));
+            sessionStorage.setItem("search", JSON.stringify(searchString));
         }
     });
 });

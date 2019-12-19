@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    let productPage = JSON.parse(localStorage.getItem("prodList"));
-    let searchitem = JSON.parse(localStorage.getItem("search"));
+    let productPage = JSON.parse(sessionStorage.getItem("prodList"));
+    let searchitem = JSON.parse(sessionStorage.getItem("search"));
 
     $("#searchstring").html(searchitem);
     
