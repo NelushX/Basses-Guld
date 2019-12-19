@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
     
-    let productPage = JSON.parse(sessionStorage.getItem("prodList"));
+    let productPage = JSON.parse(localStorage.getItem("prodList"));
     let thisObject;
 
     for (let i = 0; i < productPage.length; i++) {
@@ -51,7 +51,7 @@ $(document).ready(function() {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
             let searchString = $("#input").val()
-            sessionStorage.setItem("search", JSON.stringify(searchString));
+            localStorage.setItem("search", JSON.stringify(searchString));
         }
     });
 
@@ -68,8 +68,8 @@ $(document).ready(function() {
         
         let setNewBasket = [];
 
-        if (sessionStorage.getItem("currentBasket")) {
-            let getCurrentBasket = JSON.parse(sessionStorage.getItem("currentBasket")) || [];
+        if (localStorage.getItem("currentBasket")) {
+            let getCurrentBasket = JSON.parse(localStorage.getItem("currentBasket")) || [];
 
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
@@ -77,7 +77,7 @@ $(document).ready(function() {
         }
 
         setNewBasket.push(thisObject);
-        sessionStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
+        localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
 
         createModalHtml();
     });
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
         
 
-        let productInfo = JSON.parse(sessionStorage.getItem("currentBasket"));
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
             img1.attr("src", "../" + productInfo[i].image1)
@@ -139,7 +139,7 @@ $(document).ready(function() {
                 else {
                 productInfo[i].quantity--
                 
-                sessionStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
                 createModalHtml();
                 }
@@ -147,7 +147,7 @@ $(document).ready(function() {
 
             p6.html("+").on("click", function() {
                 productInfo[i].quantity++;
-                sessionStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
                 var z = productInfo[i].quantity * productInfo[i].price;
                 let findTotalPrice = $("#modalTotalPrice");
                 findTotalPrice.html(z);
@@ -158,7 +158,7 @@ $(document).ready(function() {
             p7.html("&times;")
         }
 
-        let quantitynumber = JSON.parse(sessionStorage.getItem("currentBasket")) || [];
+        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
         let basketnumber = [];
 
         for (let i = 0; i < quantitynumber.length; i++) {
