@@ -119,99 +119,93 @@ $(document).ready(function() {
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
 
         createModalHtml();
+        getTotalPrice();
     });
 
 
     function createModalHtml() {
-        
         $(".modal-body").html('');
-
-        
-        let modalBody = $(".modal-body").addClass("container");
-        let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-        let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-        let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
-        modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
-        modalRow.appendTo(modalBody);
-        modalCol1.appendTo(modalRow);
-        modalCol2.appendTo(modalRow);
-        modalCol3.appendTo(modalRow);
-
-
-        let img1 = $("<img>").attr("class", "img-fluid")
-        .appendTo(modalCol1);
-
-        let p1 = $("<p>").attr("id", "basketName")
-        p1.appendTo(modalCol2);
-
-        let p2 = $("<p>").attr("id", "basketBrand")
-        p2.appendTo(modalCol2);
-
-        let p3 = $("<p>").attr("id", "basketPrice")
-        p3.appendTo(modalCol2);
-
-        let p4 = $("<p>").attr("id", "basketQuantity")
-        p4.appendTo(modalCol3);
-
-        let p5 = $("<button>").addClass("btn btn-dark").attr("id", "basketDecrease");
-        p5.appendTo(modalCol3);
-
-        let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease");
-        p6.appendTo(modalCol3);
-        
-        let p7 = $("<p>").attr("id", "basketRemove")
-        p7.appendTo(modalCol3);
-        
-
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-        
-
 
         for (let i = 0; i < productInfo.length; i++) {
+            let modalBody = $(".modal-body").addClass("container");
+            let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+            let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+            let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+            let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+            modalRow.appendTo(modalBody);
+            modalCol1.appendTo(modalRow);
+            modalCol2.appendTo(modalRow);
+            modalCol3.appendTo(modalRow);
             
-            let y = Object.keys(productInfo).length;
-            console.log(y);
-            img1.attr("src", "../" + productInfo[i].image1)
-            p1.html(productInfo[i].name);
-            p2.html(productInfo[i].brand);
-            p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
-            p4.html("Antal: " + productInfo[i].quantity);
-            p5.html("-").on("click", function() {
-                if (productInfo[i].quantity < 2) {
-                    let a = productInfo;
-                    a.splice(i, 1);
-                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-                    createModalHtml();
-                }
-                else {
-                    productInfo[i].quantity--;
-                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-                    createModalHtml();
-                }
-            });
+            $("<img>").addClass("img-fluid").attr("src", "../" + productInfo[i].image1).appendTo(modalCol1);
+            $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
+            $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
+            $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
+            $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
+            $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3).on("click", function () {
+                basketDecreasing(i);
+            })
+            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3).on("click", function () {
+                basketIncreasing(i);
+            })
+            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
+            $("<p>")
 
-
-
-            p6.html("+").on("click", function() {
-                productInfo[i].quantity++;
-                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-
-                createModalHtml();
-            });
-
-            p7.html("&times;")
+            getTotalPrice();
         }
 
+    }
+
+    function basketDecreasing(i) {
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+
+        if (productInfo[i].quantity <= 1) {
+            let a = productInfo;
+            a.splice(i, 1);
+            localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+        }
+        else {
+            productInfo[i].quantity--;
+            localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+        }
+
+        createModalHtml();
+        getTotalPrice();
+    }
+    
+
+    function basketIncreasing(i) {
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+
+        productInfo[i].quantity++;
+        localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+
+        createModalHtml();
+        getTotalPrice();
+
+    }
+
+    function getTotalPrice(i){
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    
+        
+        let totalPrices = 0;
+        // $(productInfo).each(function(i){
+        //     totalPrices += productInfo[i].price * productInfo[i].quantity;
+        // });    
 
         for (let i = 0; i < productInfo.length; i++) {
-            let number = $("#number");
-            number.html(productInfo[i].quantity);
-            number.addClass("number");
+            totalPrices += productInfo[i].price * productInfo[i].quantity;
         }
+
+        let findTotalPrice = $("#modalTotalPriceH5");
+        findTotalPrice.html("Totalbelopp: " + totalPrices + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
+
     }
 
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
     });
-    
+
 });
