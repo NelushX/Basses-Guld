@@ -196,5 +196,8 @@ $(document).ready(function() {
         basketnumber.push(quantitynumber[i]);
         }  
     };
+    $("#goToCheckout").on("click", function(){
+        window.open("html/checkout.html");
+    });
     
 }); 
