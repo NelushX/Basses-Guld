@@ -162,11 +162,13 @@ $(document).ready(function() {
         let p7 = $("<p>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
 
-        
+        $("#removebutton").on("click", function(){
+           
+        });
+
+
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-        
-
-
+    
         for (let i = 0; i < productInfo.length; i++) {
             
             let y = Object.keys(productInfo).length;
@@ -177,15 +179,15 @@ $(document).ready(function() {
             p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
             p4.html("Antal: " + productInfo[i].quantity);
             p5.html("-").on("click", function() {
-                if (productInfo[i].quantity <= 0) {
+                if (productInfo[i].quantity < 2) {
                     let a = productInfo;
                     a.splice(i, 1);
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                    createModalHtml();
                 }
                 else {
                     productInfo[i].quantity--;
-                    
                     localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-
                     createModalHtml();
                 }
             });
