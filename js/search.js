@@ -189,12 +189,15 @@ $(document).ready(function() {
     //     number.addClass("number");
     // }
 
+    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket"));
+    
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
         if (quantitynumber.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
     });
+
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
     });

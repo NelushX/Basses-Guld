@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 
     function createModalHtml() {
-        $(".modal-body").html('');
+        $(".modal-body").html("");
 
         countQuantity ();
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
@@ -191,9 +191,8 @@ $(document).ready(function() {
             removed.splice(i, 1);
             localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
-        
+        createModalHtml();
         getTotalPrice();
-
     }
 
     function getTotalPrice(i){
@@ -207,7 +206,7 @@ $(document).ready(function() {
 
        
         
-       $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr")
+       $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
 
     }
 
