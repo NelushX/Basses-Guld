@@ -98,6 +98,7 @@ $(document).ready(function() {
             for (let i = 0; i < getCurrentBasket.length; i++) {
                 setNewBasket.push(getCurrentBasket[i]);
             }
+
             let alreadyInCart = false;
             for (let i = 0; i < setNewBasket.length; i++) {
                 if (setNewBasket[i].artnr === thisObject.artnr) {
@@ -105,14 +106,13 @@ $(document).ready(function() {
                     setNewBasket[i].quantity++; 
                 }
             }
-        if (!alreadyInCart) {
-            setNewBasket.push(thisObject);
-            
-         }
+
+            if (!alreadyInCart) {
+                setNewBasket.push(thisObject);
+            }
         }
         else{
             setNewBasket.push(thisObject);
-
         }
 
 
