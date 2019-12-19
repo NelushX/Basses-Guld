@@ -154,7 +154,7 @@ $(document).ready(function() {
         let p5 = $("<button>").addClass("btn btn-dark").attr("id", "basketDecrease");
         p5.appendTo(modalCol3);
 
-        let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease")
+        let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease");
         p6.appendTo(modalCol3);
         
         let p7 = $("<p>").attr("id", "basketRemove")
@@ -196,9 +196,15 @@ $(document).ready(function() {
                 createModalHtml();
             });
 
-            p7.html("&times;");
+            p7.html("&times;")
         }
 
+
+        for (let i = 0; i < productInfo.length; i++) {
+            let number = $("#number");
+            number.html(productInfo[i].quantity);
+            number.addClass("number");
+        }
     }
 
 

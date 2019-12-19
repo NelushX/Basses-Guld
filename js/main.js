@@ -5,9 +5,8 @@ $(document).ready(function() {
         $("html,body").animate({scrollTop:0},'50');
     });
 
-    
     if (localStorage.getItem("currentBasket")) {
-        
+    
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
@@ -89,10 +88,6 @@ $(document).ready(function() {
 
     }
     
-
-       
-    
-
 
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG", 1);
@@ -234,12 +229,23 @@ $(document).ready(function() {
         });
     });
 
+    // number of items in basket
+    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    for (let i = 0; i < productInfo.length; i++) {
+        let number = $("#number");
+        number.html(productInfo[i].quantity);
+        number.addClass("number");
+    }
+
 
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
-        if (quantitynumber.length == 0) {
+        if (productInfo.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
+    });
+    $("#goToCheckout").on("click", function() {
+        window.open("html/checkout.html", "_self");
     });
 
     $("#goToCheckout").on("click", function() {
