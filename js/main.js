@@ -88,9 +88,7 @@ $(document).ready(function() {
             let findTotalPrice = $("#modalTotalPrice");
             findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
-        $("#basketRemove").on("click", function() {
-            alert("hej");
-        });
+    }
 
        
     
@@ -245,18 +243,15 @@ $(document).ready(function() {
         let number = $("#number").html(quantitynumber.length);
         number.addClass("number");
         basketnumber.push(quantitynumber[i]);
-        }  
-       
-        $("#goToCheckout").on("click", function(){
-            if (quantitynumber[i].quantity <= 1) {
-            window.open("html/checkout.html","_self");
-        
         }
-        else{
-            prompt("Lägg en vara i varukorgen");
+    }
+
+
+    // Do not open shoppingcart if no content
+    $("#openModal").on("click", function(){
+        if (quantitynumber.length == 0) {
+            $("#openModal").removeAttr("data-toggle");
         }
     });
-    };
-
 
 }); 
