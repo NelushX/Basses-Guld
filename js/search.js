@@ -103,15 +103,11 @@ $(document).ready(function() {
         });
     });
 
-    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-    let basketnumber = [];
-
-    for (let i = 0; i < quantitynumber.length; i++) {
-        if (quantitynumber.length >= 1) {
-        let number = $("#number").html(quantitynumber.length);
+    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    for (let i = 0; i < productInfo.length; i++) {
+        let number = $("#number");
+        number.html(productInfo[i].quantity);
         number.addClass("number");
-        basketnumber.push(quantitynumber[i]);
-        }  
     }
 
     // Do not open shoppingcart if no content
