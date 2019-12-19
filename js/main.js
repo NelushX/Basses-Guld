@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     // Back-to-top icon
     $(".scrollupicon").on("click", function() {
         $("html,body").animate({scrollTop:0},'50');
@@ -24,12 +25,12 @@ $(document).ready(function() {
             // Image
             if(window.location.href.indexOf("index") > -1) {
                 let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
-            modalImg.appendTo(modalCol1);
+                modalImg.appendTo(modalCol1);
             }
 
             else {
                 let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-            modalImg.appendTo(modalCol1);
+                modalImg.appendTo(modalCol1);
             }
             
             //productInfo
@@ -55,6 +56,9 @@ $(document).ready(function() {
             let findTotalPrice = $("#modalTotalPrice");
             findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
+        $("#basketRemove").on("click", function() {
+            alert("hej");
+        });
     }
 
     // Class-objects
@@ -118,25 +122,25 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
-    // Loop for lookalike
-    for (let i = 0; i < lookalike.length; i++) {
-        let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", lookalike[i].artnr).appendTo($("#lookalike"));
+    // // Loop for lookalike
+    // for (let i = 0; i < lookalike.length; i++) {
+    //     let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", lookalike[i].artnr).appendTo($("#lookalike"));
 
-        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-        let image = $("<img>").attr("src", "../" + lookalike[i].image1).attr("alt", lookalike[i].name)
-            .mouseover(function() {
-                image.attr("src", "../" + lookalike[i].image2);
-            })
-            .mouseout(function() {
-                image.attr("src", "../" + lookalike[i].image1);
-            })
-            .appendTo(imageContainer);  
+    //     let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+    //     let image = $("<img>").attr("src", "../" + lookalike[i].image1).attr("alt", lookalike[i].name)
+    //         .mouseover(function() {
+    //             image.attr("src", "../" + lookalike[i].image2);
+    //         })
+    //         .mouseout(function() {
+    //             image.attr("src", "../" + lookalike[i].image1);
+    //         })
+    //         .appendTo(imageContainer);  
 
-        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-        let brand = $("<p>").html("<b>" + lookalike[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-        let name = $("<p>").html(lookalike[i].name).addClass("pName").appendTo(infoContainer);
-        let price = $("<p>").html("<b>" + lookalike[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
-    }
+    //     let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+    //     let brand = $("<p>").html("<b>" + lookalike[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+    //     let name = $("<p>").html(lookalike[i].name).addClass("pName").appendTo(infoContainer);
+    //     let price = $("<p>").html("<b>" + lookalike[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+    // }
 
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4, quantity) {
         this.name = name;
@@ -207,10 +211,17 @@ $(document).ready(function() {
         number.addClass("number");
         basketnumber.push(quantitynumber[i]);
         }  
-    };
-    
-    $("#goToCheckout").on("click", function(){
-        window.open("html/checkout.html", "_self");
+       
+        $("#goToCheckout").on("click", function(){
+            if (quantitynumber[i].quantity <= 1) {
+            window.open("html/checkout.html","_self");
+        
+        }
+        else{
+            prompt("Lägg en vara i varukorgen");
+        }
     });
-    
+    };
+
+
 }); 

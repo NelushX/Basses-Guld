@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
@@ -42,6 +43,26 @@ $(document).ready(function() {
             thisObject = productPage[i];
             thisObject.quantity = 1;
         }
+    }
+
+    // Loop for lookalike
+    for (let i = 0; i < 4; i++) {
+        let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", productPage[i].artnr).appendTo($("#lookalike"));
+
+        let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
+        let image = $("<img>").attr("src", "../" + productPage[i].image1).attr("alt", productPage[i].name)
+            .mouseover(function() {
+                image.attr("src", "../" + productPage[i].image2);
+            })
+            .mouseout(function() {
+                image.attr("src", "../" + productPage[i].image1);
+            })
+            .appendTo(imageContainer);  
+
+        let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
+        let brand = $("<p>").html("<b>" + productPage[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        let name = $("<p>").html(productPage[i].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + productPage[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
     console.log(thisObject);
@@ -135,8 +156,13 @@ $(document).ready(function() {
         let p6 = $("<button>").addClass("btn btn-dark").attr("id", "basketIncrease")
         p6.appendTo(modalCol3);
         
-        let p7 = $("<p>").attr("id", "basketRemove")
+        let p7 = $("<button>").attr("id", "basketRemove")
         p7.appendTo(modalCol3);
+
+        $("#removebutton").on("click", function(){
+           
+        });
+
 
         
 
@@ -152,17 +178,17 @@ $(document).ready(function() {
             p2.html(productInfo[i].brand);
             p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
             p4.html("Antal: " + productInfo[i].quantity);
-            p5.html("-").on("click", function(){
+            p5.html("-").on("click", function() {
                 if (productInfo[i].quantity <= 0) {
                     let a = productInfo;
-                    a.splice(0);
+                    a.splice(i, 1);
                 }
                 else {
-                productInfo[i].quantity--
-                
-                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                    productInfo[i].quantity--;
+                    
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
-                createModalHtml();
+                    createModalHtml();
                 }
             });
 
@@ -171,7 +197,7 @@ $(document).ready(function() {
                 localStorage.setItem("currentBasket", JSON.stringify(productInfo));
                 var z = productInfo[i].quantity * productInfo[i].price;
                 let findTotalPrice = $("#modalTotalPrice");
-                findTotalPrice.html(z);
+                findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5");
 
                 createModalHtml();
             });
@@ -188,6 +214,15 @@ $(document).ready(function() {
             number.addClass("number");
             basketnumber.push(quantitynumber[i]);
             }  
+            $("#goToCheckout").on("click", function(){
+                if (quantitynumber[i].quantity <= 1) {
+                window.open("checkout.html","_self");
+            
+            }
+            else{
+                alert("Lägg en vara i varukorgen");
+            }
+        });
         }
 
     }
@@ -203,6 +238,7 @@ $(document).ready(function() {
         basketnumber.push(quantitynumber[i]);
         }  
     };
+
 
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
