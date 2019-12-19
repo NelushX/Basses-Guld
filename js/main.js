@@ -234,24 +234,16 @@ $(document).ready(function() {
         });
     });
 
-    // number of items in basket
-    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-    let basketnumber = [];
-
-    for (let i = 0; i < quantitynumber.length; i++) {
-        if(quantitynumber.length >= 1) {
-        let number = $("#number").html(quantitynumber.length);
-        number.addClass("number");
-        basketnumber.push(quantitynumber[i]);
-        }
-    }
-
 
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
         if (quantitynumber.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
+    });
+
+    $("#goToCheckout").on("click", function() {
+        window.open("html/checkout.html", "_self");
     });
 
 }); 

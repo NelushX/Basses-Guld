@@ -123,10 +123,8 @@ $(document).ready(function() {
 
 
     function createModalHtml() {
-        
-        $(".modal-body").html('');
+        // $(".modal-body").html('');
 
-        
         let modalBody = $(".modal-body").addClass("container");
         let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
         let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
@@ -169,16 +167,14 @@ $(document).ready(function() {
 
 
         for (let i = 0; i < productInfo.length; i++) {
-            
-            let y = Object.keys(productInfo).length;
-            console.log(y);
             img1.attr("src", "../" + productInfo[i].image1)
             p1.html(productInfo[i].name);
             p2.html(productInfo[i].brand);
             p3.html("<b>" + productInfo[i].price + "kr" + "</b>");
             p4.html("Antal: " + productInfo[i].quantity);
+
             p5.html("-").on("click", function() {
-                if (productInfo[i].quantity < 2) {
+                if (productInfo[i].quantity < 0) {
                     let a = productInfo;
                     a.splice(i, 1);
                     localStorage.setItem("currentBasket", JSON.stringify(productInfo));
@@ -200,54 +196,10 @@ $(document).ready(function() {
                 createModalHtml();
             });
 
-            p7.html("&times;")
-        }
-
-        let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-        let basketnumber = [];
-
-        for (let i = 0; i < quantitynumber.length; i++) {
-            if (quantitynumber.length >= 1) {
-            let number = $("#number").html(quantitynumber.length);
-            number.addClass("number");
-            basketnumber.push(quantitynumber[i]);
-            }  
-            $("#goToCheckout").on("click", function(){
-                if (quantitynumber[i].quantity <= 1) {
-                window.open("checkout.html","_self");
-            
-            }
-            else{
-            
-            }
-        });
+            p7.html("&times;");
         }
 
     }
-
-    // number of items in basket
-    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket")) || [];
-    let basketnumber = [];
-
-    for (let i = 0; i < quantitynumber.length; i++) {
-        if(quantitynumber.length >= 1) {
-        let number = $("#number").html(quantitynumber.length);
-        number.addClass("number");
-        basketnumber.push(quantitynumber[i]);
-        }  
-    };
-    
-
-    // // Do not open shoppingcart if no content
-    // $("#shoppingBasket").on("click", function(){
-    //     if (quantitynumber.length == 0) {
-    //         $("#shoppingBasket").removeAttr("data-toggle");
-    //     }
-
-    //     else {
-    //         $("#shoppingBasket").attr("data-toggle", "modal");
-    //     }
-    // });
 
 
     $("#goToCheckout").on("click", function() {
