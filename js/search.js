@@ -103,12 +103,12 @@ $(document).ready(function() {
         });
     });
 
-    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    for (let i = 0; i < productInfo.length; i++) {
-        let number = $("#number");
-        number.html(productInfo[i].quantity);
-        number.addClass("number");
-    }
+    // let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    // for (let i = 0; i < productInfo.length; i++) {
+    //     let number = $("#number");
+    //     number.html(productInfo[i].quantity);
+    //     number.addClass("number");
+    // }
 
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){

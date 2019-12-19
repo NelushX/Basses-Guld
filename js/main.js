@@ -75,15 +75,6 @@ $(document).ready(function() {
                 findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5");
                 
             });
-
-            
-
-            // let findTotalPrice = $("#modalTotalPrice");
-            // findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
-
-            let z = productInfo[i].quantity * productInfo[i].price;
-            let findTotalPrice = $("#modalTotalPrice");
-            findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
         }
 
     }
@@ -229,13 +220,13 @@ $(document).ready(function() {
         });
     });
 
-    // number of items in basket
-    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    for (let i = 0; i < productInfo.length; i++) {
-        let number = $("#number");
-        number.html(productInfo[i].quantity);
-        number.addClass("number");
-    }
+    // // number of items in basket
+    // let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    // for (let i = 0; i < productInfo.length; i++) {
+    //     let number = $("#number");
+    //     number.html(productInfo[i].quantity);
+    //     number.addClass("number");
+    // }
 
 
     // Do not open shoppingcart if no content
@@ -244,12 +235,10 @@ $(document).ready(function() {
             $("#openModal").removeAttr("data-toggle");
         }
     });
-    $("#goToCheckout").on("click", function() {
-        window.open("html/checkout.html", "_self");
-    });
 
     $("#goToCheckout").on("click", function() {
         window.open("html/checkout.html", "_self");
     });
+
 
 }); 
