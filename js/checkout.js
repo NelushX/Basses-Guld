@@ -37,10 +37,7 @@ $(document).ready(function() {
             findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
             console.log(productInfo);
         }
-    }
-
-    else {
-
+        
     }
 
 
@@ -87,6 +84,7 @@ $(document).ready(function() {
             window.open("thankyou.html", "_self");
     });
     
+
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
             window.open("search.html?search=" + $("#input").val());
