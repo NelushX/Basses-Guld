@@ -4,9 +4,9 @@ $(document).ready(function() {
         $("html,body").animate({scrollTop:0},'50');
     });
 
-    if (sessionStorage.getItem("currentBasket")) {
+    if (localStorage.getItem("currentBasket")) {
     
-        let productInfo = JSON.parse(sessionStorage.getItem("currentBasket"));
+        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
         for (let i = 0; i < productInfo.length; i++) {
             
@@ -63,7 +63,7 @@ $(document).ready(function() {
     let favorites = [prod6, prod9, prod12, prod10];
     let lookalike = [prod5, prod7, prod11, prod2];
 
-    sessionStorage.setItem("prodList", JSON.stringify(productlist));
+    localStorage.setItem("prodList", JSON.stringify(productlist));
 
     
     // Loop for favoritelist
@@ -176,7 +176,7 @@ $(document).ready(function() {
                 let name = $("<p>").html(value.name).addClass("pName").appendTo(infoContainer);
                 let price = $("<p>").html("<b>" + value.price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
                
-                sessionStorage.setItem("search", JSON.stringify(search));
+                localStorage.setItem("search", JSON.stringify(search));
             }
         });
 
