@@ -248,17 +248,8 @@ $(function(){
     });
 
     // number of items in basket
-<<<<<<< HEAD
-    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    for (let i = 0; i < productInfo.length; i++) {
-        let number = $("#number");
-        number.html(productInfo[i].quantity * productInfo[i].length);
-        number.addClass("number");
-    }
-=======
     let quantitynumber = JSON.parse(localStorage.getItem("currentBasket"));
    
->>>>>>> 365015041ca0f00d962cb48af267c44aa6275df0
 
 
     // Do not open shoppingcart if no content

@@ -95,22 +95,6 @@ $(document).ready(function() {
                 $("#totalSum1").html("Totalbelopp: " + totalPrices + "kr");
                 console.log(totalPrices);
 
-<<<<<<< HEAD
-            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(findCol3);
-        }
-       
-        let totalPrices = 0;
-        $(productInfo).each(function(i){
-            totalPrices += productInfo[i].price * productInfo[i].quantity;
-        });
-
-            $("#totalSum1").html(totalPrices + "kr");
-            $("#totalSum2").html(totalPrices + "kr");
-            $("#totalSum3").html(totalPrices + "kr");
-
-    }
-    
-=======
                 $("#totalSum2").html("Totalbelopp: " + totalPrices + "kr");
                 console.log(totalPrices);
 
@@ -125,7 +109,6 @@ $(document).ready(function() {
             });
     
     };
->>>>>>> 365015041ca0f00d962cb48af267c44aa6275df0
 
     let customers = [];
 
