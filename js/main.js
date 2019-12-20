@@ -5,81 +5,126 @@ $(document).ready(function() {
         $("html,body").animate({scrollTop:0},'50');
     });
 
+$(function(){
+    onPageLoad();
+});
+
+
     if (localStorage.getItem("currentBasket")) {
+        
+        function onPageLoad() {
+
+            $(".modal-body").html('');
+            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+
+            countQuantity();
+
     
-        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-
-        for (let i = 0; i < productInfo.length; i++) {
-            
-            //Setting modal-body div attributes
-            let modalBody = $(".modal-body").addClass("container");
-            let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-            let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-            let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
-            let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
-            modalRow.appendTo(modalBody);
-            modalCol1.appendTo(modalRow);
-            modalCol2.appendTo(modalRow);
-            modalCol3.appendTo(modalRow);
-
-            // Image
-            if(window.location.href.indexOf("index") > -1) {
-                let modalImg = $("<img>").attr("src", productInfo[i].image1).attr("class", "img-fluid");
-                modalImg.appendTo(modalCol1);
-            }
-
-            else {
-                let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-                modalImg.appendTo(modalCol1);
-            }
-            
-            //productInfo
-
-            $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
-
-            $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
-
-            $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
-
-            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
-
-            $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
-
-            $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3);
-
-            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
-
-
-
-
-
-            $("#basketDecrease").html("-").on("click", function() {
-                if (productInfo[i].quantity < 0) {
-                    let a = productInfo;
-                    a.splice(i, 1);
-                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-                    $(".modal-body").html('');
-                }
-                else {
-                    productInfo[i].quantity--;
-                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-                    $(".modal-body").html('');
-                }
-            });
-
-            $("#basketIncrease").html("+").on("click", function() {
-                productInfo[i].quantity++;
-                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-                var z = productInfo[i].quantity * productInfo[i].price;
-                let findTotalPrice = $("#modalTotalPrice");
-                findTotalPrice.html("Totalbelopp: " + z + "kr").attr("id", "modalTotalPriceH5");
+            for (let i = 0; i < productInfo.length; i++) {
+                let modalBody = $(".modal-body").addClass("container");
+                let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+                let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+                let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+                let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+                modalRow.appendTo(modalBody);
+                modalCol1.appendTo(modalRow);
+                modalCol2.appendTo(modalRow);
+                modalCol3.appendTo(modalRow);
                 
-            });
-        }
-
-    }
+                $("<img>").addClass("img-fluid").attr("src", productInfo[i].image1).appendTo(modalCol1);
+                $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
+                $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
+                $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
+                $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3).on("click", function(){
+                    removeItem(i)
+                });
+                $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
+                $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3).on("click", function () {
+                    basketDecreasing(i);
+                })
+                $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3).on("click", function () {
+                    basketIncreasing(i);
+                })
+                
+                
     
+                getTotalPrice();
+            }
+    
+        }
+        //DECREASE QUANTITY OF ITEM
+        function basketDecreasing(i) {
+            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+            // countQuantityDeacrease();
+    
+            if (productInfo[i].quantity <= 1) {
+                let a = productInfo;
+                a.splice(i, 1);
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+            }
+            else {
+                productInfo[i].quantity--;
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+            }
+    
+            onPageLoad();
+            getTotalPrice();
+        }
+        
+        //INCREASE QUANTITY OF ITEM
+        function basketIncreasing(i) {
+            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    
+            productInfo[i].quantity++;
+            localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
+            onPageLoad();
+            getTotalPrice();
+    
+        }
+        //REMOVING ITEM FROM ARRAY
+        function removeItem(i) {
+            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    
+                let removed = productInfo;
+                removed.splice(i, 1);
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+    
+            onPageLoad();
+            getTotalPrice();
+    
+        }
+        // GETTING THE FULL PRICE OF ALL ITEMS
+        function getTotalPrice(i){
+            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
+            
+            let totalPrices = 0;
+            $(productInfo).each(function(i){
+                totalPrices += productInfo[i].price * productInfo[i].quantity;});    
+    
+            $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
+    
+        }
+        // ADDING QUANTITY
+        function countQuantity(i){
+            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+            let totalQuantity = 0;
+            $(productInfo).each(function(i){
+            totalQuantity += productInfo[i].quantity;
+           
+            }); 
+            $("#number").html(totalQuantity);
+            
+        }
+        // SUBTRACTING QUANTITY
+    
+        
+        $("#goToCheckout").on("click", function() {
+            window.open("html/checkout.html", "_self");
+        });
+
+};
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG", 1);
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "images/products/2_image0.JPG", "images/products/2_image1.JPG", "images/products/2_image2.JPG", "images/products/2_image3.JPG", 1);
@@ -141,25 +186,7 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
-    // // Loop for lookalike
-    // for (let i = 0; i < lookalike.length; i++) {
-    //     let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", lookalike[i].artnr).appendTo($("#lookalike"));
-
-    //     let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-    //     let image = $("<img>").attr("src", "../" + lookalike[i].image1).attr("alt", lookalike[i].name)
-    //         .mouseover(function() {
-    //             image.attr("src", "../" + lookalike[i].image2);
-    //         })
-    //         .mouseout(function() {
-    //             image.attr("src", "../" + lookalike[i].image1);
-    //         })
-    //         .appendTo(imageContainer);  
-
-    //     let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-    //     let brand = $("<p>").html("<b>" + lookalike[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-    //     let name = $("<p>").html(lookalike[i].name).addClass("pName").appendTo(infoContainer);
-    //     let price = $("<p>").html("<b>" + lookalike[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
-    // }
+   
 
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4, quantity) {
         this.name = name;
@@ -221,24 +248,24 @@ $(document).ready(function() {
     });
 
     // number of items in basket
+<<<<<<< HEAD
     let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
     for (let i = 0; i < productInfo.length; i++) {
         let number = $("#number");
         number.html(productInfo[i].quantity * productInfo[i].length);
         number.addClass("number");
     }
+=======
+    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket"));
+   
+>>>>>>> 365015041ca0f00d962cb48af267c44aa6275df0
 
 
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
-        if (productInfo.length == 0) {
+        if (quantitynumber.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
     });
-
-    $("#goToCheckout").on("click", function() {
-        window.open("html/checkout.html", "_self");
-    });
-
 
 }); 

@@ -1,46 +1,125 @@
 $(document).ready(function() {
 
-    if (localStorage.getItem("currentBasket")) {
+    $(function(){
+        onPageLoad();
+    });
     
-        let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-
-        for (let i = 0; i < productInfo.length; i++) {
+    
+        if (localStorage.getItem("currentBasket")) {
             
-            //Setting modal-body div attributes
-            let modalBody = $(".modal-body").addClass("container");
-            let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-            let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-            let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
-            let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
-            modalRow.appendTo(modalBody);
-            modalCol1.appendTo(modalRow);
-            modalCol2.appendTo(modalRow);
-            modalCol3.appendTo(modalRow);
-
-            // Image
-            let modalImg = $("<img>").attr("src", "../" + productInfo[i].image1).attr("class", "img-fluid");
-            modalImg.appendTo(modalCol1);
-
-            //productInfo
-            $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
-
-            $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
-
-            $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
-
-            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3);
-
-            $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
-
-            $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3);
-
-            $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3);
-
-            let findTotalPrice = $("#modalTotalPrice");
-            findTotalPrice.html("Totalbelopp: " + productInfo[i].price + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
-        }
-    }
-
+            function onPageLoad() {
+    
+                $(".modal-body").html('');
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    
+                countQuantity();
+    
+        
+                for (let i = 0; i < productInfo.length; i++) {
+                    let modalBody = $(".modal-body").addClass("container");
+                    let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+                    let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+                    let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+                    let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+                    modalRow.appendTo(modalBody);
+                    modalCol1.appendTo(modalRow);
+                    modalCol2.appendTo(modalRow);
+                    modalCol3.appendTo(modalRow);
+                    
+                    $("<img>").addClass("img-fluid").attr("src", "../" + productInfo[i].image1).appendTo(modalCol1);
+                    $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
+                    $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
+                    $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
+                    $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3).on("click", function(){
+                        removeItem(i)
+                    });
+                    $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
+                    $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3).on("click", function () {
+                        basketDecreasing(i);
+                    })
+                    $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3).on("click", function () {
+                        basketIncreasing(i);
+                    })
+                    
+                    
+        
+                    getTotalPrice();
+                }
+        
+            }
+            //DECREASE QUANTITY OF ITEM
+            function basketDecreasing(i) {
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+                // countQuantityDeacrease();
+        
+                if (productInfo[i].quantity <= 1) {
+                    let a = productInfo;
+                    a.splice(i, 1);
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                }
+                else {
+                    productInfo[i].quantity--;
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                }
+        
+                onPageLoad();
+                getTotalPrice();
+            }
+            
+            //INCREASE QUANTITY OF ITEM
+            function basketIncreasing(i) {
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
+                productInfo[i].quantity++;
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+    
+                onPageLoad();
+                getTotalPrice();
+        
+            }
+            //REMOVING ITEM FROM ARRAY FIXME:
+            function removeItem(i) {
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
+                    let removed = productInfo;
+                    removed.splice(i, 1);
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+        
+                onPageLoad();
+                getTotalPrice();
+        
+            }
+            // GETTING THE FULL PRICE OF ALL ITEMS
+            function getTotalPrice(i){
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+            
+                
+                let totalPrices = 0;
+                $(productInfo).each(function(i){
+                    totalPrices += productInfo[i].price * productInfo[i].quantity;});    
+        
+                $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
+        
+            }
+            // ADDING QUANTITY
+            function countQuantity(i){
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+                let totalQuantity = 0;
+                $(productInfo).each(function(i){
+                totalQuantity += productInfo[i].quantity;
+               
+                }); 
+                $("#number").html(totalQuantity);
+                
+            }
+            // SUBTRACTING QUANTITY
+        
+            
+            $("#goToCheckout").on("click", function() {
+                window.open("checkout.html", "_self");
+            });
+    
+    };
     
 
     let productPage = JSON.parse(localStorage.getItem("prodList"));
@@ -110,12 +189,15 @@ $(document).ready(function() {
     //     number.addClass("number");
     // }
 
+    let quantitynumber = JSON.parse(localStorage.getItem("currentBasket"));
+    
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
         if (quantitynumber.length == 0) {
             $("#openModal").removeAttr("data-toggle");
         }
     });
+
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
     });
