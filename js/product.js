@@ -169,7 +169,7 @@ $(document).ready(function() {
             productInfo[i].quantity--;
             localStorage.setItem("currentBasket", JSON.stringify(productInfo));
         }
-
+        numberBasket ()
         createModalHtml();
         getTotalPrice();
     }
@@ -183,7 +183,7 @@ $(document).ready(function() {
 
         createModalHtml();
         getTotalPrice();
-
+        numberBasket ()
     }
 
     function getTotalPrice(i){
@@ -201,8 +201,17 @@ $(document).ready(function() {
 
         let findTotalPrice = $("#modalTotalPriceH5");
         findTotalPrice.html("Totalbelopp: " + totalPrices + "kr").attr("id", "modalTotalPriceH5").appendTo(findTotalPrice);
-
+        
     }
+    let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+    // number of items in basket
+    function numberBasket (i){
+    for (let i = 0; i < productInfo.length; i++) {
+        let number = $("#number");
+        number.html(productInfo[i].quantity);
+        number.addClass("number");
+    }
+}
 
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");

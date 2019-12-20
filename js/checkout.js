@@ -45,6 +45,7 @@ $(document).ready(function() {
             $("#totalSum3").html(totalPrices + "kr");
 
     }
+    
 
     let customers = [];
 
