@@ -1,150 +1,140 @@
 $(document).ready(function() {
 
-    // Back-to-top icon
-    $(".scrollupicon").on("click", function() {
-        $("html,body").animate({scrollTop:0},'50');
+    $(function(){
+        onPageLoad();
     });
 
-$(function(){
-    onPageLoad();
-});
 
+        if (localStorage.getItem("currentBasket")) {
+            
+            function onPageLoad() {
 
-    if (localStorage.getItem("currentBasket")) {
+                $(".modal-body").html('');
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+
+                countQuantity();
+
         
-        function onPageLoad() {
+                for (let i = 0; i < productInfo.length; i++) {
+                    let modalBody = $(".modal-body").addClass("container");
+                    let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
+                    let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
+                    let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
+                    let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
+                    modalRow.appendTo(modalBody);
+                    modalCol1.appendTo(modalRow);
+                    modalCol2.appendTo(modalRow);
+                    modalCol3.appendTo(modalRow);
+                    
+                    $("<img>").addClass("img-fluid").attr("src", productInfo[i].image1).appendTo(modalCol1);
+                    $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
+                    $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
+                    $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
+                    $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3).on("click", function(){
+                        removeItem(i)
+                    });
+                    $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
+                    $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3).on("click", function () {
+                        basketDecreasing(i);
+                    })
+                    $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3).on("click", function () {
+                        basketIncreasing(i);
+                    })
+                    
+        
+                    getTotalPrice();
+                }
+            }
 
-            $(".modal-body").html('');
-            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+            
+            function basketDecreasing(i) {
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
+                if (productInfo[i].quantity <= 1) {
+                    let a = productInfo;
+                    a.splice(i, 1);
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                }
+                else {
+                    productInfo[i].quantity--;
+                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                }
 
-            countQuantity();
+                let totalQuantity = 0;
+                $(productInfo).each(function(i){
+                    totalQuantity += productInfo[i].quantity;
+                }); 
 
-    
-            for (let i = 0; i < productInfo.length; i++) {
-                let modalBody = $(".modal-body").addClass("container");
-                let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
-                let modalCol1 = $("<div>").addClass("col-5").attr("id", "imageCol");
-                let modalCol2 = $("<div>").addClass("col-4").attr("id", "infoCol");
-                let modalCol3 = $("<div>").addClass("col-3").attr("id", "qtyCol");
-                modalRow.appendTo(modalBody);
-                modalCol1.appendTo(modalRow);
-                modalCol2.appendTo(modalRow);
-                modalCol3.appendTo(modalRow);
-                
-                $("<img>").addClass("img-fluid").attr("src", productInfo[i].image1).appendTo(modalCol1);
-                $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
-                $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
-                $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
-                $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3).on("click", function(){
-                    removeItem(i)
-                });
-                $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
-                $("<button>").html("-").addClass("btn btn-dark").attr("id", "basketDecrease").appendTo(modalCol3).on("click", function () {
-                    basketDecreasing(i);
-                })
-                $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3).on("click", function () {
-                    basketIncreasing(i);
-                })
-                
-                
-    
+                if (totalQuantity == 0) {
+                    $("#shoppingModal .close").click()
+                }
+        
+                onPageLoad();
                 getTotalPrice();
             }
-    
-        }
-        //DECREASE QUANTITY OF ITEM
-        function basketDecreasing(i) {
-            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-            // countQuantityDeacrease();
-    
-            if (productInfo[i].quantity <= 1) {
-                let a = productInfo;
-                a.splice(i, 1);
-                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-            }
-            else {
-                productInfo[i].quantity--;
-                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
-            }
-
-            let totalQuantity = 0;
-            $(productInfo).each(function(i){
-            totalQuantity += productInfo[i].quantity;
-           
-            }); 
-
-            if (totalQuantity == 0) {
-                $("#shoppingModal .close").click()
-            }
-    
-            onPageLoad();
-            getTotalPrice();
-        }
+            
+            
+            function basketIncreasing(i) {
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
-        //INCREASE QUANTITY OF ITEM
-        function basketIncreasing(i) {
-            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    
-            productInfo[i].quantity++;
-            localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                productInfo[i].quantity++;
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
-            onPageLoad();
-            getTotalPrice();
-    
-        }
-        //REMOVING ITEM FROM ARRAY
-        function removeItem(i) {
-            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    
+                onPageLoad();
+                getTotalPrice();
+            }
+
+            
+            function removeItem(i) {
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+        
                 let removed = productInfo;
                 removed.splice(i, 1);
                 localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
                 let totalQuantity = 0;
                 $(productInfo).each(function(i){
-                totalQuantity += productInfo[i].quantity;
-               
+                    totalQuantity += productInfo[i].quantity;
                 }); 
     
                 if (totalQuantity == 0) {
                     $("#shoppingModal .close").click()
                 }
-    
-            onPageLoad();
-            getTotalPrice();
-    
-        }
-        // GETTING THE FULL PRICE OF ALL ITEMS
-        function getTotalPrice(i){
-            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
+                onPageLoad();
+                getTotalPrice();
+            }
             
-            let totalPrices = 0;
-            $(productInfo).each(function(i){
-                totalPrices += productInfo[i].price * productInfo[i].quantity;});    
-    
-            $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
-    
-        }
-        // ADDING QUANTITY
-        function countQuantity(i){
-            let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-            let totalQuantity = 0;
-            $(productInfo).each(function(i){
-            totalQuantity += productInfo[i].quantity;
-           
-            }); 
-            $("#number").html(totalQuantity);
-            
-        }
-        // SUBTRACTING QUANTITY
-    
-        
-        $("#goToCheckout").on("click", function() {
-            window.open("html/checkout.html", "_self");
-        });
 
-};
+            function getTotalPrice(i){
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+                
+                let totalPrices = 0;
+                $(productInfo).each(function(i){
+                    totalPrices += productInfo[i].price * productInfo[i].quantity;});    
+        
+                $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
+            }
+            
+
+            function countQuantity(i){
+                let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
+                let totalQuantity = 0;
+
+                $(productInfo).each(function(i){
+                    totalQuantity += productInfo[i].quantity;
+                });
+
+                $("#number").html(totalQuantity);
+            }
+        
+            
+            $("#goToCheckout").on("click", function() {
+                window.open("html/checkout.html", "_self");
+            });
+
+        };
+
     // Class-objects
     let prod1 = new Product("Cuff Links Hunter Wild Boar Gold / Green", 10531310, "skultuna", 599, "Manschettknappar från Skultuna. Tillhör The Hunter kollektionen en kollektion som innehåller klassiska djurmotiv, utmärkt gåva till den jaktintresserade.", 17, "Finns i lager", "images/products/1_image0.JPG", "images/products/1_image1.JPG", "images/products/1_image2.JPG", "images/products/1_image3.JPG", 1);
     let prod2 = new Product("Cuff Links Tre Kronor Gold / Royal Blue", 10530010, "skultuna", 599, "Manschettknappar från Skultuna. Tillverkad i 18K guldpläterad mässing och prydd med de tre kronorna, Sveriges heraldiska nationalsymbol.", 17, "Finns i lager", "images/products/2_image0.JPG", "images/products/2_image1.JPG", "images/products/2_image2.JPG", "images/products/2_image3.JPG", 1);
@@ -161,7 +151,6 @@ $(function(){
 
     let productlist = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12];
     let favorites = [prod6, prod9, prod12, prod10];
-    let lookalike = [prod5, prod7, prod11, prod2];
 
     localStorage.setItem("prodList", JSON.stringify(productlist));
 
@@ -186,6 +175,7 @@ $(function(){
         let price = $("<p>").html("<b>" + favorites[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
+
     // Loop for productlist
     for (let i = 0; i < productlist.length; i++) {
         let productContainer = $("<div>").addClass("productContainer prodlink col-6 col-lg-3").attr("id", productlist[i].artnr).appendTo($("#productlist"));
@@ -206,7 +196,6 @@ $(function(){
         let price = $("<p>").html("<b>" + productlist[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
-   
 
     function Product(name, artnr, brand, price, description, size, stock, image1, image2, image3, image4, quantity) {
         this.name = name;
@@ -223,14 +212,14 @@ $(function(){
         this.quantity = quantity;
     }
 
-
-    $(".prodlink").on("click", function() {
-        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
+    
+    $(".scrollupicon").on("click", function() {
+        $("html,body").animate({scrollTop:0},'50');
     });
 
 
-    $(".lookalike").on("click", function() {
-        window.open("product.html?id=" + $(this).attr("id"), "_self");
+    $(".prodlink").on("click", function() {
+        window.open("html/product.html?id=" + $(this).attr("id"), "_self");
     });
 
 
@@ -267,10 +256,8 @@ $(function(){
         });
     });
 
-    // number of items in basket
+    
     let quantitynumber = JSON.parse(localStorage.getItem("currentBasket"));
-   
-
 
     // Do not open shoppingcart if no content
     $("#openModal").on("click", function(){
@@ -279,4 +266,4 @@ $(function(){
         }
     });
 
-}); 
+});

@@ -47,6 +47,7 @@ $(document).ready(function() {
         }
     }
 
+
     let lookalike = [productPage[4], productPage[8], productPage[10], productPage[7]];
 
     // Loop for lookalike
@@ -69,6 +70,7 @@ $(document).ready(function() {
         let price = $("<p>").html("<b>" + lookalike[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
+
     $(".lookalike").on("click", function() {
         window.open("product.html?id=" + $(this).attr("id"), "_self");
     });
@@ -82,6 +84,7 @@ $(document).ready(function() {
         }
     });
 
+
     $(".thumbnail").on("click", function() {
         let lg = $("#largeImage").attr("src");
 
@@ -89,6 +92,7 @@ $(document).ready(function() {
         $(this).attr("src", lg);
     });
 
+    
     $("#addToBasket").on("click", function() {
         let setNewBasket = [];
 
@@ -111,10 +115,9 @@ $(document).ready(function() {
                 setNewBasket.push(thisObject);
             }
         }
-        else{
+        else {
             setNewBasket.push(thisObject);
         }
-
 
         localStorage.setItem("currentBasket", JSON.stringify(setNewBasket));
         createModalHtml();
@@ -139,12 +142,11 @@ $(document).ready(function() {
             modalCol2.appendTo(modalRow);
             modalCol3.appendTo(modalRow);
             
-            $("<img>").addClass("img-fluid").attr("src", "../" + productInfo[i].image1).appendTo(modalCol1).on("click", function(){
-            });
+            $("<img>").addClass("img-fluid").attr("src", "../" + productInfo[i].image1).appendTo(modalCol1);
             $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(modalCol2);
             $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(modalCol2);
             $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(modalCol2);
-            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3).on("click", function(){
+            $("<p>").html("&times;").attr("id", "basketRemove").appendTo(modalCol3).on("click", function() {
                 removeItem(i);
             });
             $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(modalCol3);
@@ -157,8 +159,8 @@ $(document).ready(function() {
 
             getTotalPrice();
         }
-
     }
+
 
     function basketDecreasing(i) {
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
@@ -175,8 +177,7 @@ $(document).ready(function() {
 
         let totalQuantity = 0;
         $(productInfo).each(function(i){
-        totalQuantity += productInfo[i].quantity;
-       
+            totalQuantity += productInfo[i].quantity;
         }); 
 
         if (totalQuantity == 0) {
@@ -187,6 +188,7 @@ $(document).ready(function() {
         getTotalPrice();
     }
     
+
     function basketIncreasing(i) {
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
@@ -197,6 +199,8 @@ $(document).ready(function() {
         getTotalPrice();
 
     }
+
+
     function removeItem(i) {
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
 
@@ -206,8 +210,7 @@ $(document).ready(function() {
 
             let totalQuantity = 0;
             $(productInfo).each(function(i){
-            totalQuantity += productInfo[i].quantity;
-           
+                totalQuantity += productInfo[i].quantity;
             }); 
 
             if (totalQuantity == 0) {
@@ -221,31 +224,28 @@ $(document).ready(function() {
     function getTotalPrice(i){
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
     
-    
         let totalPrices = 0;
         $(productInfo).each(function(i){
             totalPrices += productInfo[i].price * productInfo[i].quantity;
         });    
-
-       
         
        $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
-
     }
 
-     // ADDING QUANTITY
-     function countQuantity(i){
+    
+    function countQuantity(i){
         let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         let totalQuantity = 0;
+
         $(productInfo).each(function(i){
-        totalQuantity += productInfo[i].quantity;
-       
-        }); 
+            totalQuantity += productInfo[i].quantity;
+        });
+
         $("#number").html(totalQuantity);
         
     }
 
-    //GOING TO CHECKOUT
+
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
     });

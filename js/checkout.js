@@ -9,7 +9,7 @@ $(document).ready(function() {
         if (localStorage.getItem("currentBasket")) {
             
             function onPageLoad() {
-                $("#productcart").html('');
+                $("#productcart").html("");
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
                 for (let i = 0; i < productInfo.length; i++) {
@@ -25,7 +25,7 @@ $(document).ready(function() {
                     $("<p>").html(productInfo[i].name).attr("id", "basketName").appendTo(findCol2);
                     $("<p>").html(productInfo[i].brand).attr("id", "basketBrand").appendTo(findCol2);
                     $("<p>").html("<b>" + productInfo[i].price + "kr" + "</b>").attr("id", "basketPrice").appendTo(findCol2);
-                    $("<p>").html("&times;").attr("id", "basketRemove").appendTo(findCol3).on("click", function(){
+                    $("<p>").html("&times;").attr("id", "basketRemove").appendTo(findCol3).on("click", function() {
                         removeItem(i);
                     });
                     $("<p>").html("Antal: " + productInfo[i].quantity).attr("id", "basketQuantity").appendTo(findCol3);
@@ -36,13 +36,13 @@ $(document).ready(function() {
                         basketIncreasing(i);
                     });
                     
-                   
         
                     getTotalPrice();
                 }
         
             }
         
+
             function basketDecreasing(i) {
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
@@ -58,8 +58,7 @@ $(document).ready(function() {
 
                 let totalQuantity = 0;
                 $(productInfo).each(function(i){
-                totalQuantity += productInfo[i].quantity;
-               
+                    totalQuantity += productInfo[i].quantity;
                 }); 
     
                 if (totalQuantity == 0) {
@@ -81,8 +80,9 @@ $(document).ready(function() {
         
                 onPageLoad();
                 getTotalPrice();
-        
             }
+
+
             function removeItem(i) {
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
                     let totalQuantity = 0;
                     $(productInfo).each(function(i){
-                    totalQuantity += productInfo[i].quantity;
+                        totalQuantity += productInfo[i].quantity;
                    
                     }); 
         
@@ -104,8 +104,8 @@ $(document).ready(function() {
         
                 onPageLoad();
                 getTotalPrice();
-        
             }
+
         
             function getTotalPrice(i){
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
@@ -117,23 +117,17 @@ $(document).ready(function() {
                 });    
             
                 $("#totalSum1").html("Totalbelopp: " + totalPrices + "kr");
-                console.log(totalPrices);
-
                 $("#totalSum2").html("Totalbelopp: " + totalPrices + "kr");
-                console.log(totalPrices);
-
                 $("#totalSum3").html("Totalbelopp: " + totalPrices + "kr");
-                console.log(totalPrices);
-        
             }
-        
         
             $("#goToCheckout").on("click", function() {
                 window.open("checkout.html", "_self");
             });
-    
+
     };
 
+    
     let customers = [];
 
     $("#checkout").on('click', function(e) {
@@ -175,6 +169,7 @@ $(document).ready(function() {
     
         if($(this).hasClass("was-validated"))
             window.open("thankyou.html", "_self");
+            localStorage.removeItem("currentBasket");
     });
     
 

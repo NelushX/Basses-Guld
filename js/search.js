@@ -4,7 +4,6 @@ $(document).ready(function() {
         onPageLoad();
     });
     
-    
         if (localStorage.getItem("currentBasket")) {
             
             function onPageLoad() {
@@ -14,7 +13,6 @@ $(document).ready(function() {
     
                 countQuantity();
     
-        
                 for (let i = 0; i < productInfo.length; i++) {
                     let modalBody = $(".modal-body").addClass("container");
                     let modalRow = $("<div>").attr("id", "basketObject").addClass("row align-items-center");
@@ -41,16 +39,13 @@ $(document).ready(function() {
                         basketIncreasing(i);
                     })
                     
-                    
-        
                     getTotalPrice();
                 }
-        
             }
-            //DECREASE QUANTITY OF ITEM
+
+            
             function basketDecreasing(i) {
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-                // countQuantityDeacrease();
         
                 if (productInfo[i].quantity <= 1) {
                     let a = productInfo;
@@ -64,8 +59,7 @@ $(document).ready(function() {
 
                 let totalQuantity = 0;
                 $(productInfo).each(function(i){
-                totalQuantity += productInfo[i].quantity;
-               
+                    totalQuantity += productInfo[i].quantity;
                 }); 
     
                 if (totalQuantity == 0) {
@@ -76,7 +70,7 @@ $(document).ready(function() {
                 getTotalPrice();
             }
             
-            //INCREASE QUANTITY OF ITEM
+            
             function basketIncreasing(i) {
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
@@ -85,65 +79,61 @@ $(document).ready(function() {
     
                 onPageLoad();
                 getTotalPrice();
-        
             }
-            //REMOVING ITEM FROM ARRAY FIXME:
+            
+
             function removeItem(i) {
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
         
-                    let removed = productInfo;
-                    removed.splice(i, 1);
-                    localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+                let removed = productInfo;
+                removed.splice(i, 1);
+                localStorage.setItem("currentBasket", JSON.stringify(productInfo));
 
-                    let totalQuantity = 0;
-                    $(productInfo).each(function(i){
+                let totalQuantity = 0;
+                $(productInfo).each(function(i){
                     totalQuantity += productInfo[i].quantity;
-                   
-                    }); 
-        
-                    if (totalQuantity == 0) {
-                        $("#shoppingModal .close").click()
-                    }
+                }); 
+    
+                if (totalQuantity == 0) {
+                    $("#shoppingModal .close").click()
+                }
         
                 onPageLoad();
                 getTotalPrice();
-        
             }
-            // GETTING THE FULL PRICE OF ALL ITEMS
+
+
             function getTotalPrice(i){
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
             
-                
                 let totalPrices = 0;
                 $(productInfo).each(function(i){
                     totalPrices += productInfo[i].price * productInfo[i].quantity;});    
         
                 $("#modalTotalPrice").html("Totalbelopp: " + totalPrices + "kr");
-        
             }
-            // ADDING QUANTITY
+
+            
             function countQuantity(i){
                 let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
                 let totalQuantity = 0;
                 $(productInfo).each(function(i){
-                totalQuantity += productInfo[i].quantity;
-               
-                }); 
+                    totalQuantity += productInfo[i].quantity;
+                });
+
                 $("#number").html(totalQuantity);
-                
             }
-            // SUBTRACTING QUANTITY
         
             
             $("#goToCheckout").on("click", function() {
                 window.open("checkout.html", "_self");
             });
-    
     };
     
 
     let productPage = JSON.parse(localStorage.getItem("prodList"));
     let searchitem = JSON.parse(localStorage.getItem("search"));
+    
     $("#searchstring").html(searchitem);
     
     $("#productlist").empty();
@@ -202,12 +192,6 @@ $(document).ready(function() {
         });
     });
 
-    // let productInfo = JSON.parse(localStorage.getItem("currentBasket"));
-    // for (let i = 0; i < productInfo.length; i++) {
-    //     let number = $("#number");
-    //     number.html(productInfo[i].quantity);
-    //     number.addClass("number");
-    // }
 
     let quantitynumber = JSON.parse(localStorage.getItem("currentBasket"));
     
@@ -218,8 +202,8 @@ $(document).ready(function() {
         }
     });
 
+    
     $("#goToCheckout").on("click", function() {
         window.open("checkout.html", "_self");
     });
-    
 });
