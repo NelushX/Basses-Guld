@@ -410,3 +410,7 @@ header.container-fluid {
     background-color: #f3f3f3; }
   .checkoutsite .paybox {
     background-color: #f3f3f3; }
+
+#checkoutEmpty {
+  margin-top: 25px;
+  text-align: center; }

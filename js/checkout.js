@@ -63,7 +63,9 @@ $(document).ready(function() {
                 }); 
     
                 if (totalQuantity == 0) {
-                    $("#shoppingModal .close").click()
+                    $("main").html("");
+                    $("<p>").html("Din varukorg är tom.").appendTo($("#checkoutEmpty")).addClass("checkouttext");
+                    $("<a>").attr("href", "../index.html").html("Gå tillbaka till startsidan!").appendTo($("#checkoutEmpty")).addClass("checkouttext");
                 }
         
                 onPageLoad();
@@ -95,7 +97,9 @@ $(document).ready(function() {
                     }); 
         
                     if (totalQuantity == 0) {
-                        $("#shoppingModal .close").click()
+                        $("main").html("");
+                        $("<p>").html("Din varukorg är tom.").appendTo($("#checkoutEmpty")).addClass("checkouttext");
+                        $("<a>").attr("href", "../index.html").html("Gå tillbaka till startsidan!").appendTo($("#checkoutEmpty")).addClass("checkouttext");
                     }
         
                 onPageLoad();
