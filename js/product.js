@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     countQuantity ();
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -13,6 +14,7 @@ $(document).ready(function() {
     let productId = parseInt(getParameterByName("id")); // parseInt gör om string till nummer, så att den ska matcha productPage[i].artnr
     
     let productPage = JSON.parse(localStorage.getItem("prodList"));
+
     let thisObject;
 
     for (let i = 0; i < productPage.length; i++) {
@@ -45,29 +47,32 @@ $(document).ready(function() {
         }
     }
 
+    let lookalike = [productPage[4], productPage[8], productPage[10], productPage[7]];
+
     // Loop for lookalike
-    for (let i = 0; i < 4; i++) {
-        let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", productPage[i].artnr).appendTo($("#lookalike"));
+    for (let i = 0; i < lookalike.length; i++) {
+        let productContainer = $("<div>").addClass("productContainer lookalike col-6 col-lg-3").attr("id", lookalike[i].artnr).appendTo($("#lookalike"));
 
         let imageContainer = $("<div>").addClass("imageContainer").appendTo(productContainer);
-        let image = $("<img>").attr("src", "../" + productPage[i].image1).attr("alt", productPage[i].name)
+        let image = $("<img>").attr("src", "../" + lookalike[i].image1).attr("alt", lookalike[i].name)
             .mouseover(function() {
-                image.attr("src", "../" + productPage[i].image2);
+                image.attr("src", "../" + lookalike[i].image2);
             })
             .mouseout(function() {
-                image.attr("src", "../" + productPage[i].image1);
+                image.attr("src", "../" + lookalike[i].image1);
             })
             .appendTo(imageContainer);  
 
         let infoContainer = $("<div>").addClass("infoContainer mt-3").appendTo(productContainer);
-        let brand = $("<p>").html("<b>" + productPage[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
-        let name = $("<p>").html(productPage[i].name).addClass("pName").appendTo(infoContainer);
-        let price = $("<p>").html("<b>" + productPage[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
+        let brand = $("<p>").html("<b>" + lookalike[i].brand + "</b>").addClass("pBrand").appendTo(infoContainer);
+        let name = $("<p>").html(lookalike[i].name).addClass("pName").appendTo(infoContainer);
+        let price = $("<p>").html("<b>" + lookalike[i].price + " kr" + "</b>").addClass("pPrice").appendTo(infoContainer);
     }
 
     $(".lookalike").on("click", function() {
         window.open("product.html?id=" + $(this).attr("id"), "_self");
     });
+
 
     $("#input").keypress(function(event) {
         if (event.keyCode == 13) {
@@ -149,8 +154,6 @@ $(document).ready(function() {
             $("<button>").html("+").addClass("btn btn-dark").attr("id", "basketIncrease").appendTo(modalCol3).on("click", function () {
                 basketIncreasing(i);
             })
-            
-            
 
             getTotalPrice();
         }
@@ -190,6 +193,16 @@ $(document).ready(function() {
             let removed = productInfo;
             removed.splice(i, 1);
             localStorage.setItem("currentBasket", JSON.stringify(productInfo));
+
+            let totalQuantity = 0;
+            $(productInfo).each(function(i){
+            totalQuantity += productInfo[i].quantity;
+           
+            }); 
+
+            if (totalQuantity == 0) {
+                $("#shoppingModal .close").click()
+            }
 
         createModalHtml();
         getTotalPrice();
