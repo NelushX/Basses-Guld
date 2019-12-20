@@ -173,6 +173,16 @@ $(document).ready(function() {
             localStorage.setItem("currentBasket", JSON.stringify(productInfo));
         }
 
+        let totalQuantity = 0;
+        $(productInfo).each(function(i){
+        totalQuantity += productInfo[i].quantity;
+       
+        }); 
+
+        if (totalQuantity == 0) {
+            $("#shoppingModal .close").click()
+        }
+
         createModalHtml();
         getTotalPrice();
     }
